@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const handlebars = require('express-handlebars');
 const app = express();
-const route = require('./routes');
+const route = require('./src/routes');
 
 const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://goddie9x:Mtamhm97@cluster0.hlbwa.mongodb.net/Cluster0?retryWrites=true&w=majority";
@@ -13,7 +13,7 @@ client.connect(err => {
     client.close();
 });
 //create static direct
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'src/public')));
 
 app.use(
     express.urlencoded({
@@ -54,4 +54,4 @@ app.engine(
 
 
 app.set('view engine', 'tam');
-app.set('views', path.join(__dirname, 'resource', 'views'));
+app.set('views', path.join(__dirname, 'src', 'resource', 'views'));
