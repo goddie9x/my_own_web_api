@@ -3,15 +3,10 @@ const path = require('path');
 const handlebars = require('express-handlebars');
 const app = express();
 const route = require('./src/routes');
+const db = require('./src/config/db');
 
-const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://goddie9x:Mtamhm97@cluster0.hlbwa.mongodb.net/Cluster0?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-    const collection = client.db("test").collection("devices");
-    // perform actions on the collection object
-    client.close();
-});
+db.connect();
+
 //create static direct
 app.use(express.static(path.join(__dirname, 'src/public')));
 
@@ -55,3 +50,5 @@ app.engine(
 
 app.set('view engine', 'tam');
 app.set('views', path.join(__dirname, 'src', 'resource', 'views'));
+
+route(app);
