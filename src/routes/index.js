@@ -1,7 +1,7 @@
 const siteRouter = require('./site');
 
 function route(app) {
-    app.use('/', siteRouter);
+    app.use('goddie9x.netlify.app', siteRouter);
 }
 
 module.exports = route;
