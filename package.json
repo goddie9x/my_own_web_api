@@ -1,0 +1,34 @@
+{
+    "name": "my_web",
+    "version": "1.0.0",
+    "description": "create my own web",
+    "main": "./src/index.js",
+    "scripts": {
+        "start": "nodemon --inspect src/index.js",
+        "comcss": "node-sass --watch src/resource/scss/ -o src/public/css/",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/goddie9x/my_own_web.git"
+    },
+    "keywords": [
+        "my_own_web"
+    ],
+    "author": "HoangTam",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/goddie9x/my_own_web/issues"
+    },
+    "homepage": "https://github.com/goddie9x/my_own_web#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "express-handlebars": "^5.3.3",
+        "method-override": "^3.0.0",
+        "mongodb": "^4.1.0",
+        "node-sass": "^6.0.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.12"
+    }
+}
