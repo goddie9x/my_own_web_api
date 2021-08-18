@@ -1,0 +1,97 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./">Trang chủ</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="./schedule">Lịch học</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="./schedule/create">Đăng lịch học</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="./schedule/stored">Quản lý lịch học</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <button type="button" class="ms-4 btn btn-primary" data-bs-toggle="modal" data-bs-target="#loggin">
+          Đăng nhập
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Modal -->
+  <div class="modal fade" id="loggin" tabindex="-1" aria-labelledby="logginLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logginLabel">Đăng nhập để thêm nhiều tính năng hơn</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="InputStudentCode" class="form-label">Student code</label>
+              <input type="StudentCode" class="form-control" id="InputStudentCode" aria-describedby="StudentCodeHelp">
+              <div id="StudentCodeHelp" class="form-text">I'll never share your student code with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="InputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="InputPassword1">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="Check1">
+              <label class="form-check-label" for="Check1">Save password</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Loggin</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <p>Have not account? register now --></p>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  data-bs-toggle="modal" data-bs-target="#register">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="register" tabindex="-1" aria-labelledby="registerLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registerLabel">Sign up for an account</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="InputStudentCode" class="form-label">Student code</label>
+              <input type="StudentCode" class="form-control" id="InputStudentCode" aria-describedby="StudentCodeHelp">
+              <div id="StudentCodeHelp" class="form-text">We'll never share your StudentCode with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="InputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="InputPassword1">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="Check1">
+              <label class="form-check-label" for="Check1">Save password</label>
+            </div>
+            <button type="submit" class="btn btn-primary">register</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+           <p>Already have an account? loggin --></p>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  data-bs-toggle="modal" data-bs-target="#loggin">Loggin</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,14 @@
+.canv .app {
+  position: relative;
+  z-index: 4; }
+  .canv .app header .modal.fade {
+    background-color: rgba(0, 0, 0, 0.5); }
+    .canv .app header .modal.fade .modal-footer {
+      justify-content: flex-start; }
+  .canv .app footer {
+    background-color: #1c2331; }
+    .canv .app footer .top-footer {
+      background-color: #6351ce; }
+
+.canv .modal-backdrop {
+  display: none; }

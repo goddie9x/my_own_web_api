@@ -1,0 +1,84 @@
+<footer class="text-center text-lg-start text-white">
+    <section class="d-flex justify-content-between p-4 top-footer">
+        <div class="me-5">
+            <span>Get connected with me on social networks:</span>
+        </div>
+        <div>
+            <a href="https://www.facebook.com/goddie9x/" class="text-white me-4">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com/goddie9x" class="text-white me-4">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="" class="text-white me-4">
+                <i class="fab fa-google"></i>
+            </a>
+            <a href="https://www.instagram.com/goddie9x/" class="text-white me-4">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/ho%C3%A0ng-minh-t%C3%A2m-209236212/" class="text-white me-4">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/goddie9x" class="text-white me-4">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </section>
+    <section class="main-footer">
+        <div class="container text-center text-md-start mt-5">
+            <div class="row mt-3">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold">Cá nhân Hoàng Tâm</h6>
+                    <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: #7c4dff; height: 2px" />
+                    <p>
+                        Xin chào, tôi là tâm, bạn đang ở trên trang web của mình
+                    </p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold">Products</h6>
+                    <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: #7c4dff; height: 2px" />
+                    <p>
+                        <a href="#!" class="text-white">Web/ blog</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white">Poem</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white">Art</a>
+                    </p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold">Useful links</h6>
+                    <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: #7c4dff; height: 2px" />
+                    <p>
+                        <a href="#!" class="text-white">Your Account</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white">Become an Affiliate</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white">Shipping Rates</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white">Help</a>
+                    </p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h6 class="text-uppercase fw-bold">Contact</h6>
+                    <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: #7c4dff; height: 2px" />
+                    <p><i class="fas fa-home mr-3"></i> Hà Nội, Việt Nam</p>
+                    <p><i class="fas fa-envelope mr-3"></i> boykeodang@gmail.com</p>
+                    <p><i class="fas fa-phone mr-3"></i> 0326152310</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2021 Copyright:
+        <a class="text-white" href="./">Hoàng Tâm</a>
+    </div>
+</footer>

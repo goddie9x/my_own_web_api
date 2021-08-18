@@ -3,6 +3,7 @@ const path = require('path');
 const handlebars = require('express-handlebars');
 const app = express();
 const route = require('./routes');
+const methodOverride = require('method-override');
 const db = require('./config/db');
 const PORT = process.env.PORT || 3000;
 
@@ -51,6 +52,8 @@ app.engine(
 
 app.set('view engine', 'tam');
 app.set('views', path.join(__dirname, 'resourse', 'views'));
+
+app.use(methodOverride('_method'));
 
 route(app);
 
