@@ -4,7 +4,7 @@
     "description": "create my own web",
     "main": "./index.js",
     "scripts": {
-        "start": "node index.js",
+        "start": "node src/index.js",
         "comcss": "node-sass --watch src/resource/scss/ -o src/public/css/",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
