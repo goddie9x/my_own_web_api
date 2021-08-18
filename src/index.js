@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 db.connect();
 
 //create static direct
-app.use(express.static(path.join(__dirname, 'src/public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(
     express.urlencoded({
@@ -50,7 +50,7 @@ app.engine(
 
 
 app.set('view engine', 'tam');
-app.set('views', path.join(__dirname, 'src', 'resource', 'views'));
+app.set('views', path.join(__dirname, 'resourse', 'views'));
 
 route(app);
 
