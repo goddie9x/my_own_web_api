@@ -2,8 +2,9 @@ const express = require('express');
 const path = require('path');
 const handlebars = require('express-handlebars');
 const app = express();
-const route = require('./src/routes');
-const db = require('./src/config/db');
+const route = require('./routes');
+const db = require('./config/db');
+const PORT = process.env.PORT || 3000;
 
 db.connect();
 
@@ -15,9 +16,9 @@ app.use(
         extended: true,
     }),
 );
-
+//convert req to json
 app.use(express.json());
-
+//use engine handlebars to create view
 app.engine(
     'tam',
     handlebars({
@@ -52,3 +53,7 @@ app.set('view engine', 'tam');
 app.set('views', path.join(__dirname, 'src', 'resource', 'views'));
 
 route(app);
+
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
