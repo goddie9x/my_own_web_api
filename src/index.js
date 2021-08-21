@@ -25,6 +25,20 @@ app.engine(
     handlebars({
         extname: '.tam',
         helpers: {
+            convetDayOfWeek: (day) => {
+                const DOW = [
+                    "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy", "Chủ Nhật"
+                ];
+                return DOW[day];
+            },
+            convetPartOfDay: (part) => {
+                const POD = [
+                    "Sáng",
+                    "Chiều",
+                    "Tối"
+                ]
+                return POD[part];
+            },
             sum: (a, b) => a + b,
             sortable: (field, sort) => {
                 const sortType = field == sort.column ? sort.type : 'default';

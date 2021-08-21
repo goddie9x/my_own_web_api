@@ -18,8 +18,8 @@
       <tr>
         <th scope="row">{{@index}}</th>
         <td>{{this.name}}</td>
-        <td>{{this.dayOfWeek}}</td>
-        <td>{{this.partOfDay}}</td>
+         <td>{{DOW this.dayOfWeek}}</td>
+        <td>{{POD this.partOfDay}}</td>
         <td>{{this.room}}</td>
         <td>{{this.dayStart}} - {{this.dayEnd}}</td>
         <td>

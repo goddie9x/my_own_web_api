@@ -16,19 +16,19 @@
                 <div class="select-day-of-week-item extendable d-flex mb-2">
                     <select name="dayOfWeek" class="form-select-cus" aria-label="Day of week" required>
                         <option selected>Thứ</option>
-                        <option value="1">Hai</option>
-                        <option value="2">Ba</option>
-                        <option value="3">Tư</option>
-                        <option value="4">Năm</option>
-                        <option value="5">Sáu</option>
-                        <option value="6">Bảy</option>
-                        <option value="7">Chủ Nhật</option>
+                        <option value="0">Hai</option>
+                        <option value="1">Ba</option>
+                        <option value="2">Tư</option>
+                        <option value="3">Năm</option>
+                        <option value="4">Sáu</option>
+                        <option value="5">Bảy</option>
+                        <option value="6">Chủ Nhật</option>
                     </select>
                     <select name="partOfDay" class="form-select-cus" aria-label="Part of day" required>
                         <option selected>Buổi</option>
-                        <option value="1">Sáng</option>
-                        <option value="2">Chiều</option>
-                        <option value="3">Tối</option>
+                        <option value="0">Sáng</option>
+                        <option value="1">Chiều</option>
+                        <option value="2">Tối</option>
                     </select>
                     <span class="btn add-input input-group-text bg-success" onclick="addElementAfter(this)">+</span>
                     <span class="btn remove-input input-group-text bg-danger" onclick="removeCurrentElement(this)">-</span>
