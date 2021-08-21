@@ -40,17 +40,17 @@
         <div class="modal-body">
           <form>
             <div class="mb-3">
-              <label for="InputStudentCode" class="form-label">Student code</label>
-              <input type="StudentCode" class="form-control" id="InputStudentCode" aria-describedby="StudentCodeHelp">
-              <div id="StudentCodeHelp" class="form-text">I'll never share your student code with anyone else.</div>
+              <label for="account-log" class="form-label">account </label>
+              <input type="account" class="form-control" id="account-log" aria-describedby="accountHelp">
+              <div id="accountHelp" class="form-text">I'll never share your account  with anyone else.</div>
             </div>
             <div class="mb-3">
-              <label for="InputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="InputPassword1">
+              <label for="Password-log"name="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="Password-log">
             </div>
             <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="Check1">
-              <label class="form-check-label" for="Check1">Save password</label>
+              <input type="checkbox" class="form-check-input" id="save-password">
+              <label class="form-check-label" for="save-password">Save password</label>
             </div>
             <button type="submit" class="btn btn-primary">Loggin</button>
           </form>
@@ -72,17 +72,17 @@
         <div class="modal-body">
           <form>
             <div class="mb-3">
-              <label for="InputStudentCode" class="form-label">Student code</label>
-              <input type="StudentCode" class="form-control" id="InputStudentCode" aria-describedby="StudentCodeHelp">
-              <div id="StudentCodeHelp" class="form-text">We'll never share your StudentCode with anyone else.</div>
+              <label for="account-reg" class="form-label">account </label>
+              <input type="account" class="form-control" id="account-reg" aria-describedby="accountHelp">
+              <div id="accountHelp" class="form-text">We'll never share your account with anyone else.</div>
             </div>
             <div class="mb-3">
-              <label for="InputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="InputPassword1">
+              <label for="input-password-reg" name="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="input-password-reg">
             </div>
             <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="Check1">
-              <label class="form-check-label" for="Check1">Save password</label>
+              <input type="checkbox" class="form-check-input" id="except-term">
+              <label class="form-check-label" for="except-term">Save password</label>
             </div>
             <button type="submit" class="btn btn-primary">register</button>
           </form>

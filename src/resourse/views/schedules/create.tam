@@ -1,0 +1,97 @@
+<h2 class="text-center my-5">
+    Tạo lịch mới
+</h2>
+<form class="my-5 create-schedule" method="post" action="./stored">
+    <div class="container">
+        <div class="row">
+            <div class="form-floating mb-3 col-12 col-sm-6">
+                <input type="text" class="form-control" name="name" required id="name" placeholder="Nhập tên môn học">
+                <label class="ms-2" for="name">Tên môn học</label>
+            </div>
+            <div class="form-floating mb-3 col-12 col-sm-6">
+                <input type="text" class="form-control" name="room" required id="room" placeholder="Nhập tên môn học">
+                <label class="ms-2" for="room">Phòng học</label>
+            </div>
+            <div class="form-floating mb-3 flex-wrap d-flex col-12">
+                <div class="select-day-of-week-item extendable d-flex mb-2">
+                    <select name="dayOfWeek" class="form-select-cus" aria-label="Day of week" required>
+                        <option selected>Thứ</option>
+                        <option value="1">Hai</option>
+                        <option value="2">Ba</option>
+                        <option value="3">Tư</option>
+                        <option value="4">Năm</option>
+                        <option value="5">Sáu</option>
+                        <option value="6">Bảy</option>
+                        <option value="7">Chủ Nhật</option>
+                    </select>
+                    <select name="partOfDay" class="form-select-cus" aria-label="Part of day" required>
+                        <option selected>Buổi</option>
+                        <option value="1">Sáng</option>
+                        <option value="2">Chiều</option>
+                        <option value="3">Tối</option>
+                    </select>
+                    <span class="btn add-input input-group-text bg-success" onclick="addElementAfter(this)">+</span>
+                    <span class="btn remove-input input-group-text bg-danger" onclick="removeCurrentElement(this)">-</span>
+                </div>
+            </div>
+            <div class="form-floating mb-3 col-12 col-sm-6">
+                <input type="date" class="form-control" required name="dayStart" id="dayStart" />
+                <label class="ms-2" for="dayStart" class="form-label">Chọn ngày bắt đầu</label>
+                <div class="message"></div>
+            </div>
+            <div class="form-floating mb-3 col-12 col-sm-6">
+                <input type="date" class="form-control" required name="dayEnd" id="dayEnd"/>
+                <label class="ms-2" for="dayEnd" class="form-label">Chọn ngày kết thúc</label>
+                <div class="message"></div>
+            </div>
+            <div class="mb-3 col-12 flex-wrap d-flex">
+                <div class="link-meet form-floating extendable col-auto mb-2">
+                    <input type="linkMeet" class="form-select-cus form-control" name="linkMeet" id="linkMeet" />
+                    <label class="ms-2" for="linkMeet" class="form-label">Link Meet</label>
+                    <span class="btn add-input input-group-text bg-success" onclick="addElementAfter(this)">+</span>
+                    <span class="btn remove-input input-group-text bg-danger" onclick="removeCurrentElement(this)">-</span>
+                </div>
+            </div>
+            <button type="submit" class="ms-2 btn col-12 col-sm-4 btn-primary">Tạo</button>
+        </div>
+    </div>
+</form>
+
+<script>
+        function addElementAfter(element) {
+            let elementExtendable = $(element).closest('.extendable');
+            let cloneElement = elementExtendable.clone();
+            cloneElement.insertAfter(elementExtendable);
+        }
+        function removeCurrentElement(element) {
+            elementExtendable = $(element).closest('.extendable').remove();
+        }
+        $(document).ready(function() {
+            let dayEnd=$('#dayEnd');
+            let dayStart=$('#dayStart');
+            let formCreateSchedule=$('.create-schedule');
+            let submitCreateSchedule=formCreateSchedule.find('button[type="submit"]');
+            let message=$('.message');
+            let valStart;
+            let valEnd;
+
+            dayEnd.on('change',function(){
+                valStart=Date.parse(dayStart.val());
+                valEnd=Date.parse(dayEnd.val());
+
+                if(valStart<valEnd){
+                    message.html('');
+                    submitCreateSchedule.on('click',function(){
+                        formCreateSchedule.submit();
+                    })
+                }
+                else{
+                    submitCreateSchedule.on('click',function(e){
+                        e.preventDefault();
+                    })
+                    message.html('Ngày kết thúc phải sau ngày bắt đầu, nhập lại đi cho chắc cú');
+                }
+            });
+
+        });
+</script>
