@@ -32,7 +32,7 @@
       </tr>
     {{else}}
         <tr>
-          <th scope="row">Hiện không có thời khoá biểu khả dụng</th>
+          <th colspan="7"class="text-center" scope="row">Hiện không có thời khoá biểu khả dụng</th>
         </tr>
   {{/each}}
   </tbody>

@@ -1,40 +1,39 @@
 <h2 class="text-center">
-  Thời khoá biểu
+  Danh sách thời khoá biểu
 </h2>
 <table class="table table-dark">
   <thead>
     <tr>
       <th scope="col">STT</th>
+      <th scope="col">Tên</th>
       <th scope="col">Thứ</th>
       <th scope="col">Buoi</th>
       <th scope="col">Phòng</th>
       <th scope="col">Hạn sử dụng</th>
       <th scope="col">Link</th>
-      <th scope="col">Edit</th>
     </tr>
   </thead>
   <br>
-  {{#each schedule}}
+  {{#each schedules}}
       <tr>
         <th scope="row">{{@index}}</th>
         <td>{{this.name}}</td>
         <td>{{this.dayOfWeek}}</td>
         <td>{{this.partOfDay}}</td>
+        <td>{{this.room}}</td>
         <td>{{this.dayStart}} - {{this.dayEnd}}</td>
         <td>
           {{#each this.linkMeet}}
-              <a href="this">Link {{@index}}</a>
+          <a href="{{this}}">Link {{@index}}</a>
+          {{else}}
+          <a href="{{this.linkMeet}}">Link</a>
           {{/each}}
         </td>
-        <td>
-          
-        </td>
       </tr>
-    {{#else}}
+    {{else}}
         <tr>
-          <th scope="row">Hiện không có thời khoá biểu khả dụng</th>
+          <th colspan="7"class="text-center" scope="row">Hiện không có thời khoá biểu khả dụng</th>
         </tr>
-    {{/else}}
   {{/each}}
   </tbody>
 </table>
