@@ -1,0 +1,72 @@
+<h2 class="text-center">
+  Danh sách thời khoá biểu
+</h2>
+<table class="table table-dark ">
+  <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">Tên</th>
+      <th scope="col">Thứ</th>
+      <th scope="col">Buoi</th>
+      <th scope="col">Phòng</th>
+      <th scope="col">Hạn sử dụng</th>
+      <th scope="col">Link</th>
+      <th scope="col" >Quản lý</th>
+    </tr>
+  </thead>
+  <br>
+  {{#each schedules}}
+  <tr>
+    <th scope="row">{{@index}}</th>
+    <td>{{this.name}}</td>
+    <td>{{convetDayOfWeek this.dayOfWeek}}</td>
+    <td>{{convetPartOfDay this.partOfDay}}</td>
+    <td>{{this.room}}</td>
+    <td>{{this.dayStart}} - {{this.dayEnd}}</td>
+    <td>
+      {{#each this.linkMeet}}
+      <a href="{{this}}">Link {{@index}}</a>
+      {{else}}
+      <a href="{{this.linkMeet}}">Link</a>
+      {{/each}}
+    </td>
+    <td class="d-flex justify-content-evenly">
+      <form method="GET" action="modify/{{this._id}}">
+        <button class="btn bg-primary">Sửa</button>
+      </form>
+      <button class="btn bg-danger delete" data-bs-toggle="modal" data-bs-target="#alertDelete"
+        value="{{this._id}}">Xoá</button>
+    </td>
+  </tr>
+  {{else}}
+  <tr>
+    <th colspan="7" rowspan="3" class="text-center" scope="row">Hiện không có thời khoá biểu khả dụng</th>
+  </tr>
+  {{/each}}
+  </tbody>
+</table>
+
+<div class="modal fade" id="alertDelete" tabindex="-1" aria-labelledby="alertDeleteLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Bạn có thực sự muốn xoá môn này?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex justify-content-evenly">
+        <form method="POST" >
+          <button class="btn bg-danger">Xoá luôn</button>
+        </form>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đừng, chỉ là lỡ tay thôi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+      $('.delete').on('click', function(e){
+        $('#alertDelete form').attr('action', `stored/${$(this).val()}?_method=delete`);
+      })
+  });
+</script>

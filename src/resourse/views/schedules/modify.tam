@@ -1,21 +1,23 @@
 <h2 class="text-center my-5">
     Cập nhật lịch
 </h2>
-<form class="my-5" method="post" action="./schedule/stored">
+<form class="my-5" method="post" action="/schedules/stored/{{this._id}}?_method=patch">
     <div class="container">
         <div class="row">
             <div class="form-floating mb-3 col-12 col-sm-6">
-                <input type="text" class="form-control" name="name" required id="name" placeholder="Nhập tên môn học">
+                <input type="text" class="form-control" name="name" value="{{this.name}}" id="name"
+                    placeholder="Nhập tên môn học" required>
                 <label class="ms-2" for="name">Tên môn học</label>
             </div>
             <div class="form-floating mb-3 col-12 col-sm-6">
-                <input type="text" class="form-control" name="room" required id="room" placeholder="Nhập tên môn học">
+                <input type="text" class="form-control" name="room" value="{{this.room}}" id="room"
+                    placeholder="Nhập tên môn học" required>
                 <label class="ms-2" for="room">Phòng học</label>
             </div>
             <div class="form-floating mb-3 flex-wrap d-flex col-12">
                 <div class="select-day-of-week-item extendable d-flex mb-2">
                     <select name="dayOfWeek" class="form-select-cus" aria-label="Day of week" required>
-                        <option selected>Thứ</option>
+                        <option selected>Thứ {{this.dayOfWeek}}</option>
                         <option value="1">Hai</option>
                         <option value="2">Ba</option>
                         <option value="3">Tư</option>
@@ -25,43 +27,48 @@
                         <option value="7">Chủ Nhật</option>
                     </select>
                     <select name="partOfDay" class="form-select-cus" aria-label="Part of day" required>
-                        <option selected>Buổi</option>
+                        <option selected>Buổi {{this.partOfDay}}</option>
                         <option value="1">Sáng</option>
                         <option value="2">Chiều</option>
                         <option value="3">Tối</option>
                     </select>
                     <span class="btn add-input input-group-text bg-success" onclick="addElementAfter(this)">+</span>
-                    <span class="btn remove-input input-group-text bg-danger" onclick="removeCurrentElement(this)">-</span>
+                    <span class="btn remove-input input-group-text bg-danger"
+                        onclick="removeCurrentElement(this)">-</span>
                 </div>
             </div>
             <div class="form-floating mb-3 col-12 col-sm-6">
-                <input type="date" class="form-control" required name="dateStart" id="dateStart" />
+                <input type="date" class="form-control" value="{{this.dayStart}}" name="dateStart" id="dateStart"
+                    required />
                 <label class="ms-2" for="dateStart" class="form-label">Chọn ngày bắt đầu</label>
             </div>
             <div class="form-floating mb-3 col-12 col-sm-6">
-                <input type="date" class="form-control" required name="dateEnd" id="dateEnd" />
+                <input type="date" class="form-control" value="{{this.dayEnd}}" name="dateEnd" id="dateEnd" required />
                 <label class="ms-2" for="dateEnd" class="form-label">Chọn ngày kết thúc</label>
             </div>
             <div class="mb-3 col-12 flex-wrap d-flex">
-                <div class="link-meet form-floating extendable col-auto mb-2">
-                    <input type="linkMeet" class="form-select-cus" name="linkMeet" id="linkMeet" />
-                    <label class="ms-2" for="linkMeet" class="form-label">Link Meet</label>
-                    <span class="btn add-input input-group-text bg-success" onclick="addElementAfter(this)">+</span>
-                    <span class="btn remove-input input-group-text bg-danger" onclick="removeCurrentElement(this)">-</span>
-                </div>
+                {{#each this.linkMeet}}
+                    <div class="link-meet form-floating extendable col-auto mb-2">
+                        <input type="linkMeet" class="form-select-cus form-control" name="linkMeet" value="{{{this}}}" id="linkMeet" />
+                        <label class="ms-2" for="linkMeet" class="form-label">Link Meet</label>
+                        <span class="btn add-input input-group-text bg-success" onclick="addElementAfter(this)">+</span>
+                        <span class="btn remove-input input-group-text bg-danger"
+                            onclick="removeCurrentElement(this)">-</span>
+                    </div>
+                {{/each}}
             </div>
-            <button type="submit" class="ms-2 btn col-12 col-sm-4 btn-primary">Tạo</button>
+            <button type="submit" class="ms-2 btn col-12 col-sm-4 btn-primary">Sửa</button>
         </div>
     </div>
 </form>
 
 <script>
-        function addElementAfter(element) {
-            let elementExtendable = $(element).closest('.extendable');
-            let cloneElement = elementExtendable.clone();
-            cloneElement.insertAfter(elementExtendable);
-        }
-        function removeCurrentElement(element) {
-            elementExtendable = $(element).closest('.extendable').remove();
-        }
+    function addElementAfter(element) {
+        let elementExtendable = $(element).closest('.extendable');
+        let cloneElement = elementExtendable.clone();
+        cloneElement.insertAfter(elementExtendable);
+    }
+    function removeCurrentElement(element) {
+        elementExtendable = $(element).closest('.extendable').remove();
+    }
 </script>

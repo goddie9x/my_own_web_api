@@ -9,7 +9,8 @@
     .canv .app header .modal.fade .modal-footer {
       justify-content: flex-start; }
   .canv .app table {
-    width: 100%; }
+    width: 100%;
+    text-align: center; }
     .canv .app table td,
     .canv .app table th {
       vertical-align: middle; }

@@ -10,7 +10,7 @@
       <th scope="col">Buoi</th>
       <th scope="col">Phòng</th>
       <th scope="col">Hạn sử dụng</th>
-      <th scope="col">Link</th>
+      <th scope="col" class="text-center">Link</th>
     </tr>
   </thead>
   <br>
@@ -18,8 +18,8 @@
       <tr>
         <th scope="row">{{@index}}</th>
         <td>{{this.name}}</td>
-        <td>{{DOW this.dayOfWeek}}</td>
-        <td>{{POD this.partOfDay}}</td>
+         <td>{{convetDayOfWeek this.dayOfWeek}}</td>
+        <td>{{convetPartOfDay this.partOfDay}}</td>
         <td>{{this.room}}</td>
         <td>{{this.dayStart}} - {{this.dayEnd}}</td>
         <td>
@@ -32,7 +32,7 @@
       </tr>
     {{else}}
         <tr>
-          <th colspan="7"class="text-center" scope="row">Hiện không có thời khoá biểu khả dụng</th>
+          <th colspan="7" rowspan="3" class="text-center" scope="row">Hiện không có thời khoá biểu khả dụng</th>
         </tr>
   {{/each}}
   </tbody>

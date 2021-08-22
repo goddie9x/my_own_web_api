@@ -1,15 +1,15 @@
 <h2 class="text-center my-5">
     Tạo lịch mới
 </h2>
-<form class="my-5 create-schedule" method="post" action="./stored">
+<form class="my-5 create-schedule" method="POST" action="stored">
     <div class="container">
         <div class="row">
             <div class="form-floating mb-3 col-12 col-sm-6">
-                <input type="text" class="form-control" name="name" required id="name" placeholder="Nhập tên môn học">
+                <input type="text" class="form-control" name="name"  id="name" placeholder="Nhập tên môn học" required>
                 <label class="ms-2" for="name">Tên môn học</label>
             </div>
             <div class="form-floating mb-3 col-12 col-sm-6">
-                <input type="text" class="form-control" name="room" required id="room" placeholder="Nhập tên môn học">
+                <input type="text" class="form-control" name="room"  id="room" placeholder="Nhập tên môn học" required>
                 <label class="ms-2" for="room">Phòng học</label>
             </div>
             <div class="form-floating mb-3 flex-wrap d-flex col-12">
@@ -35,12 +35,12 @@
                 </div>
             </div>
             <div class="form-floating mb-3 col-12 col-sm-6">
-                <input type="date" class="form-control" required name="dayStart" id="dayStart" />
+                <input type="date" class="form-control"  name="dayStart" id="dayStart" required/>
                 <label class="ms-2" for="dayStart" class="form-label">Chọn ngày bắt đầu</label>
                 <div class="message"></div>
             </div>
             <div class="form-floating mb-3 col-12 col-sm-6">
-                <input type="date" class="form-control" required name="dayEnd" id="dayEnd"/>
+                <input type="date" class="form-control"  name="dayEnd" id="dayEnd" required/>
                 <label class="ms-2" for="dayEnd" class="form-label">Chọn ngày kết thúc</label>
                 <div class="message"></div>
             </div>
