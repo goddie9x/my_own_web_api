@@ -17,7 +17,7 @@
             <div class="form-floating mb-3 flex-wrap d-flex col-12">
                 <div class="select-day-of-week-item extendable d-flex mb-2">
                     <select name="dayOfWeek" class="form-select-cus" aria-label="Day of week" required>
-                        <option selected>Thứ {{this.dayOfWeek}}</option>
+                        <option selected value="{{this.dayOfWeek}}">Thứ {{convetDayOfWeek this.dayOfWeek}}</option>
                         <option value="1">Hai</option>
                         <option value="2">Ba</option>
                         <option value="3">Tư</option>
@@ -27,7 +27,7 @@
                         <option value="7">Chủ Nhật</option>
                     </select>
                     <select name="partOfDay" class="form-select-cus" aria-label="Part of day" required>
-                        <option selected>Buổi {{this.partOfDay}}</option>
+                        <option selected value="{{this.partOfDay}}">Buổi {{convetPartOfDay this.partOfDay }}</option>
                         <option value="1">Sáng</option>
                         <option value="2">Chiều</option>
                         <option value="3">Tối</option>
@@ -38,13 +38,13 @@
                 </div>
             </div>
             <div class="form-floating mb-3 col-12 col-sm-6">
-                <input type="date" class="form-control" value="{{this.dayStart}}" name="dateStart" id="dateStart"
+                <input type="date" class="form-control" value="{{this.dayStart}}" name="dayStart" id="dayStart"
                     required />
-                <label class="ms-2" for="dateStart" class="form-label">Chọn ngày bắt đầu</label>
+                <label class="ms-2" for="dayStart" class="form-label">Chọn ngày bắt đầu</label>
             </div>
             <div class="form-floating mb-3 col-12 col-sm-6">
-                <input type="date" class="form-control" value="{{this.dayEnd}}" name="dateEnd" id="dateEnd" required />
-                <label class="ms-2" for="dateEnd" class="form-label">Chọn ngày kết thúc</label>
+                <input type="date" class="form-control" value="{{this.dayEnd}}" name="dayEnd" id="dayEnd" required />
+                <label class="ms-2" for="dayEnd" class="form-label">Chọn ngày kết thúc</label>
             </div>
             <div class="mb-3 col-12 flex-wrap d-flex">
                 {{#each this.linkMeet}}
