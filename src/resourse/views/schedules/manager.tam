@@ -69,9 +69,7 @@
           {{/each}}
         </td>
         <td class="d-flex justify-content-evenly">
-          <form method="GET" action="modify/{{this._id}}">
-            <button class="btn bg-primary">Sửa</button>
-          </form>
+            <a href="/schedules/modify/{{this._id}}" class="btn bg-primary">Sửa</a>
           <button class="btn bg-danger delete" data-bs-toggle="modal" data-bs-target="#alertDelete"
             value="{{this._id}}">Xoá</button>
         </td>
