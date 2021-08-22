@@ -1,5 +1,5 @@
 <h2 class="text-center">
-  Thời khoá biểu
+  Danh sách thời khoá biểu
 </h2>
 <table class="table table-dark">
   <thead>
@@ -10,7 +10,7 @@
       <th scope="col">Buoi</th>
       <th scope="col">Phòng</th>
       <th scope="col">Hạn sử dụng</th>
-      <th scope="col"class="text-center">Link</th>
+      <th scope="col" class="text-center">Link</th>
     </tr>
   </thead>
   <br>

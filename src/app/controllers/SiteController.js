@@ -10,7 +10,7 @@ class SiteController {
         Schedule.find({
                 dayStart: { $lt: today },
                 dayEnd: { $gt: today }
-            })
+            }).sort({ dayOfWeek: "asc", partOfDay: "asc" })
             .then(schedules => {
                 schedules = multipleMongooseToObjects(schedules);
 
@@ -22,11 +22,8 @@ class SiteController {
                     schedule.dayEnd = `${dayEnd.getDate()}/${dayEnd.getMonth()}/${dayEnd.getFullYear()}`;
                     return schedule;
                 });
-                schedules.sort((a, b) => {
-                    return a.dayOfWeek >= b.dayOfWeek && a.partOfDay > b.partOfDay;
-                })
 
-                res.render('schedules/stored', schedules);
+                res.render('home', { schedules });
             })
             .catch(next);
     }
