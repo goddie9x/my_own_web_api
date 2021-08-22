@@ -24,9 +24,9 @@
         <td>{{this.dayStart}} - {{this.dayEnd}}</td>
         <td>
           {{#each this.linkMeet}}
-          <a href="{{this}}">Link {{plusOne @index}}</a>
+          <a href="http://{{this}}">Link {{plusOne @index}}</a>
           {{else}}
-          <a href="{{this.linkMeet}}">Link</a>
+          <a href="http://{{this.linkMeet}}">Link</a>
           {{/each}}
         </td>
       </tr>
