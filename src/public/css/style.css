@@ -8,6 +8,12 @@
     background-color: rgba(0, 0, 0, 0.5); }
     .canv .app header .modal.fade .modal-footer {
       justify-content: flex-start; }
+  .canv .app .select-all {
+    align-items: center; }
+    .canv .app .select-all .action-select {
+      max-width: 130px; }
+  .canv .app .select-all > * {
+    margin-left: 16px; }
   .canv .app table {
     width: 100%;
     text-align: center; }

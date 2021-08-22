@@ -3,6 +3,7 @@ const router = express.Router();
 const scheduleController = require('../app/controllers/scheduleController');
 
 router.get('/create', scheduleController.create);
+router.post('/handleMultiAction', scheduleController.handleMultiAction);
 router.get('/modify/:id', scheduleController.modify);
 router.delete('/stored/:id', scheduleController.delete);
 router.patch('/stored/:id', scheduleController.update);
