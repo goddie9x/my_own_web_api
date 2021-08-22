@@ -16,7 +16,7 @@
   <br>
   {{#each schedules}}
       <tr>
-        <th scope="row">{{@index}}</th>
+        <th scope="row">{{plusOne @index}}</th>
         <td>{{this.name}}</td>
          <td>{{convetDayOfWeek this.dayOfWeek}}</td>
         <td>{{convetPartOfDay this.partOfDay}}</td>
@@ -24,7 +24,7 @@
         <td>{{this.dayStart}} - {{this.dayEnd}}</td>
         <td>
           {{#each this.linkMeet}}
-          <a href="{{this}}">Link {{@index}}</a>
+          <a href="{{this}}">Link {{plusOne @index}}</a>
           {{else}}
           <a href="{{this.linkMeet}}">Link</a>
           {{/each}}

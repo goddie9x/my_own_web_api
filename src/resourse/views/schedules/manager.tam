@@ -55,7 +55,7 @@
         <td>
           <input class="check-item" type="checkbox" name="id" value="{{this._id}}">
         </td>
-        <td>{{@index}}</td>
+        <td>{{plusOne @index}}</td>
         <td>{{this.name}}</td>
         <td>{{convetDayOfWeek this.dayOfWeek}}</td>
         <td>{{convetPartOfDay this.partOfDay}}</td>
@@ -63,7 +63,7 @@
         <td>{{this.dayStart}} - {{this.dayEnd}}</td>
         <td>
           {{#each this.linkMeet}}
-          <a href="{{this}}">Link {{@index}}</a>
+          <a href="{{this}}">Link {{plusOne @index}}</a>
           {{else}}
           <a href="{{this.linkMeet}}">Link</a>
           {{/each}}

@@ -39,6 +39,9 @@ app.engine(
                 ]
                 return POD[part];
             },
+            plusOne: function(index) {
+                return index + 1;
+            },
             sum: (a, b) => a + b,
             sortable: (field, sort) => {
                 const sortType = field == sort.column ? sort.type : 'default';
