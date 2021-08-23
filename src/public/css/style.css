@@ -45,7 +45,12 @@
   .canv .app form .link-meet {
     flex-grow: 1;
     justify-content: space-evenly;
-    display: flex; }
+    display: flex;
+    padding-right: 15px; }
+    .canv .app form .select-day-of-week-item select[name="dayOfWeek"],
+    .canv .app form .link-meet select[name="dayOfWeek"] {
+      width: 21%;
+      margin-right: calc(var(--bs-gutter-x)); }
     .canv .app form .select-day-of-week-item .form-select-cus,
     .canv .app form .link-meet .form-select-cus {
       padding: 0.375rem 2.25rem 0.375rem 0.75rem;
@@ -62,7 +67,10 @@
     margin-right: calc(var(--bs-gutter-x) * .5); }
   .canv .app form .link-meet {
     flex-grow: 1; }
+    .canv .app form .link-meet .input-group-text {
+      line-height: 180%; }
   .canv .app form .input-group-text {
+    color: #fff;
     line-height: 140%;
     font-size: 20px;
     font-weight: 700;
