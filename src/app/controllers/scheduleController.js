@@ -3,22 +3,23 @@ const { multipleMongooseToObjects, mongooseToObject } = require('../../utils/mon
 
 class ScheduleController {
     index(req, res, next) {
-        Schedule.find({}).sort({ dayOfWeek: "asc", partOfDay: "asc" })
-            .then(schedules => {
-                schedules = multipleMongooseToObjects(schedules);
+            Schedule.find({}).sort({ dayOfWeek: "asc", partOfDay: "asc" })
+                .then(schedules => {
+                    schedules = multipleMongooseToObjects(schedules);
 
-                schedules = schedules.map(function(schedule) {
-                    let dayStart = new Date(schedule.dayStart);
-                    let dayEnd = new Date(schedule.dayEnd);
+                    schedules = schedules.map(function(schedule) {
+                        let dayStart = new Date(schedule.dayStart);
+                        let dayEnd = new Date(schedule.dayEnd);
 
-                    schedule.dayStart = `${dayStart.getDate()}/${dayStart.getMonth()+1}/${dayStart.getFullYear()}`;
-                    schedule.dayEnd = `${dayEnd.getDate()}/${dayEnd.getMonth()+1}/${dayEnd.getFullYear()}`;
-                    return schedule;
-                });
-                res.render('schedules/stored', { schedules });
-            })
-            .catch(next);
-    }
+                        schedule.dayStart = `${dayStart.getDate()}/${dayStart.getMonth()+1}/${dayStart.getFullYear()}`;
+                        schedule.dayEnd = `${dayEnd.getDate()}/${dayEnd.getMonth()+1}/${dayEnd.getFullYear()}`;
+                        return schedule;
+                    });
+                    res.render('schedules/stored', { schedules });
+                })
+                .catch(next);
+        }
+        //create a schedule
     create(req, res, next) {
         res.render('schedules/create');
     }
@@ -26,7 +27,7 @@ class ScheduleController {
         let rawSchedule = {...req.body };
         let dayOfWeek = rawSchedule.dayOfWeek;
         let schedules = [];
-
+        //if schedule got more  dayOfWeek than spreed to multiple schedules
         if (Array.isArray(dayOfWeek)) {
             dayOfWeek.forEach((day, currentIndex) => {
                 let temp = {...rawSchedule };
@@ -51,8 +52,11 @@ class ScheduleController {
             .catch(next);
     }
     manager(req, res, next) {
-        Schedule.find({}).sort({ dayOfWeek: "asc", partOfDay: "asc" })
-            .then(schedules => {
+        let counterDeletedSchedule = Schedule.countDeleted();
+        let finderSchedule = Schedule.find({}).sort({ dayOfWeek: "asc", partOfDay: "asc" });
+
+        Promise.all([finderSchedule, counterDeletedSchedule])
+            .then(([schedules, deleted]) => {
                 schedules = multipleMongooseToObjects(schedules);
 
                 schedules = schedules.map(function(schedule) {
@@ -63,7 +67,7 @@ class ScheduleController {
                     schedule.dayEnd = `${dayEnd.getDate()}/${dayEnd.getMonth()+1}/${dayEnd.getFullYear()}`;
                     return schedule;
                 });
-                res.render('schedules/manager', { schedules });
+                res.render('schedules/manager', { schedules, deleted });
             })
             .catch(next);
     }
@@ -71,7 +75,6 @@ class ScheduleController {
         let id = req.params.id;
         Schedule.findOne({ '_id': id })
             .then(schedule => {
-
                 res.render('schedules/modify', mongooseToObject(schedule));
             })
             .catch(next);
@@ -88,7 +91,7 @@ class ScheduleController {
         let id = req.params.id;
         let rawSchedule = {...req.body };
         let dayOfWeek = rawSchedule.dayOfWeek;
-
+        //if schedule got more  dayOfWeek than spreed to multiple schedules
         if (Array.isArray(dayOfWeek)) {
             dayOfWeek = [...dayOfWeek];
             let schedules = [];
@@ -142,7 +145,68 @@ class ScheduleController {
                     .catch(next);
                     break;
                 }
+            case 'restore':
+                {
+                    Schedule.restore({ '_id': scheduleIds })
+                    .then(
+                        function(done) {
+                            res.redirect('/schedules/trash');
+                        }
+                    )
+                    .catch(next);
+                    break;
+                }
+            case 'forceDelete':
+                {
+                    Schedule.findDeleted({ '_id': scheduleIds }).remove()
+                    .then(
+                        function(done) {
+                            res.redirect('/schedules/trash');
+                        }
+                    )
+                    .catch(next);
+                    break;
+                }
         }
+    }
+    restore(req, res, next) {
+        let id = req.params.id;
+        Schedule.restore({ '_id': id })
+            .then(() => {
+                res.redirect('/schedules/trash');
+            })
+            .catch(next);
+    }
+    trash(req, res, next) {
+        let schedulesDeletedFind = Schedule.findDeleted({}).sort({ dayOfWeek: "asc", partOfDay: "asc" });
+        let countScheduleNotDelete = Schedule.countDocuments();
+
+        Promise.all([schedulesDeletedFind, countScheduleNotDelete])
+            .then(function([schedulesDeleted, countNotDelete]) {
+                schedulesDeleted = multipleMongooseToObjects(schedulesDeleted);
+
+                schedulesDeleted = schedulesDeleted.map(function(schedule) {
+                    let dayStart = new Date(schedule.dayStart);
+                    let dayEnd = new Date(schedule.dayEnd);
+
+                    schedule.dayStart = `${dayStart.getDate()}/${dayStart.getMonth()+1}/${dayStart.getFullYear()}`;
+                    schedule.dayEnd = `${dayEnd.getDate()}/${dayEnd.getMonth()+1}/${dayEnd.getFullYear()}`;
+                    return schedule;
+                });
+                res.render('schedules/trash', { schedulesDeleted, countNotDelete });
+            })
+            .catch(next);
+    }
+    forceDeleteAnItem(req, res, next) {
+        let id = req.params.id;
+
+        Schedule.findDeleted({ '_id': id }).remove()
+            .then(
+                function(done) {
+                    res.redirect('/schedules/trash');
+                }
+            )
+            .catch(next);
     }
 }
 

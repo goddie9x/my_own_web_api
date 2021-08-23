@@ -1,6 +1,9 @@
 <h2 class="text-center">
   Danh sách thời khoá biểu
 </h2>
+<div class="col-12 my-3">
+    <a href="/schedules/trash" class="trash text-primary col-12">Thùng rác <span class="countVal ">{{deleted}}</span> </a>
+</div>
 <form class="form-container" method="POST" action="/schedules/handleMultiAction">
   <div class="form-check">
     <div class="d-flex select-all">
@@ -63,15 +66,15 @@
         <td>{{this.dayStart}} - {{this.dayEnd}}</td>
         <td>
           {{#each this.linkMeet}}
-          <a href="http://{{this}}">Link {{plusOne @index}}</a>
+          <a href="http://{{this}}" target="_blank">Link {{plusOne @index}}</a>
           {{else}}
-          <a href="http://{{this.linkMeet}}">Link</a>
+          <a href="http://{{this.linkMeet}}"target="_blank">Link</a>
           {{/each}}
         </td>
         <td class="d-flex justify-content-evenly">
             <a href="/schedules/modify/{{this._id}}" class="btn bg-primary">Sửa</a>
-          <button class="btn bg-danger delete" data-bs-toggle="modal" data-bs-target="#alertDelete"
-            value="{{this._id}}">Xoá</button>
+          <div class="btn bg-danger delete" data-bs-toggle="modal" data-bs-target="#alertDelete"
+            btn-value="{{this._id}}">Xoá</div>
         </td>
       </tr>
       {{else}}
@@ -99,7 +102,7 @@
     </div>
   </div>
 </div>
-
+</div>
 <script>
   $(document).ready(function () {
     const checkAll = $('.checkall');
@@ -157,7 +160,7 @@
     });
 
     $('.delete').on('click', function (e) {
-      $('#alertDelete form').attr('action', `stored/${$(this).val()}?_method=delete`);
+      $('#alertDelete form').attr('action', `stored/${$(this).attr('btn-value')}?_method=delete`);
     });
   });
 </script>

@@ -1,48 +1,168 @@
 <h2 class="text-center">
   Danh sách thời khoá biểu
 </h2>
-<table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col">STT</th>
-      <th scope="col">Tên</th>
-      <th scope="col">Thứ</th>
-      <th scope="col">Buoi</th>
-      <th scope="col">Phòng</th>
-      <th scope="col">Hạn sử dụng</th>
-      <th scope="col">Link</th>
-      <th scope="col" class="text-center">Quản lý</th>
-    </tr>
-  </thead>
-  <br>
-  {{#each schedules}}
+<div class="col-12 my-3">
+    <a href="/schedules/stored" class="manager-back text-primary col-12">Về trang quản lý <span class="countVal ">{{countNotDelete}}</span> </a>
+</div>
+{{!-- form for multiple select --}}
+<form class="form-container" method="POST" action="/schedules/handleMultiAction">
+  <div class="form-check">
+    <div class="d-flex select-all">
+      <input class="checkall" type="checkbox" value="" id="checkall">
+      <label class="form-check-label" for="checkall">
+        Chọn tất cả
+      </label>
+      <select class="form-select action-select " aria-label="select action" name="method">
+        <option selected>Hành động</option>
+        <option value="restore">Khôi phục</option>
+        <option value="forceDelete">Xoá</option>
+      </select>
+      <div class="btn bg-danger action-all-btn" data-bs-toggle="modal" data-bs-target="#action-all-modal">Phang luôn
+      </div>
+{{!-- modal for multiple actions --}}
+      <div class="modal fade" id="action-all-modal" tabindex="-1" aria-labelledby="action-all-modalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="action-all-modalLabel">Thực thi hành động?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary real-action-all-btn">Chiến thôi</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cũng là lỡ tay thôi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table class="table table-dark ">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">STT</th>
+          <th scope="col">Tên</th>
+          <th scope="col">Thứ</th>
+          <th scope="col">Buoi</th>
+          <th scope="col">Phòng</th>
+          <th scope="col">Hạn sử dụng</th>
+          <th scope="col">Link</th>
+          <th scope="col">Quản lý</th>
+        </tr>
+      </thead>
+      <br>
+      {{#each schedulesDeleted}}
       <tr>
-        <th scope="row">{{@index}}</th>
+        <td>
+          <input class="check-item" type="checkbox" name="id" value="{{this._id}}">
+        </td>
+        <td>{{plusOne @index}}</td>
         <td>{{this.name}}</td>
-         <td>{{convetDayOfWeek this.dayOfWeek}}</td>
+        <td>{{convetDayOfWeek this.dayOfWeek}}</td>
         <td>{{convetPartOfDay this.partOfDay}}</td>
         <td>{{this.room}}</td>
         <td>{{this.dayStart}} - {{this.dayEnd}}</td>
         <td>
           {{#each this.linkMeet}}
-          <a href="{{this}}">Link {{@index}}</a>
+          <a href="http://{{this}}" target="_blank">Link {{plusOne @index}}</a>
           {{else}}
-          <a href="{{this.linkMeet}}">Link</a>
+          <a href="http://{{this.linkMeet}}"target="_blank">Link</a>
           {{/each}}
         </td>
         <td class="d-flex justify-content-evenly">
-            <form method="GET" action="modify/{{this._id}}">
-                <button class="btn bg-primary" >Sửa</button>
-            </form>
-            <form method="POST" action="{{this._id}}?_method=delete">
-                <button class="btn bg-danger" >Xoá</button>
-            </form>
+            <a href="/schedules/restore/{{this._id}}" class="btn bg-primary">Khôi phục</a>
+          <div class="btn bg-danger delete" data-bs-toggle="modal" data-bs-target="#alertDelete"
+            btn-value="{{this._id}}">Xoá vĩnh viễn</div>
         </td>
       </tr>
-    {{else}}
-        <tr>
-          <th colspan="7" rowspan="3" class="text-center" scope="row">Hiện không có thời khoá biểu khả dụng</th>
-        </tr>
-  {{/each}}
-  </tbody>
-</table>
+      {{else}}
+      <tr>
+        <th colspan="7" rowspan="3" class="text-center" scope="row">Hiện không có thời khoá biểu khả dụng</th>
+      </tr>
+      {{/each}}
+      </tbody>
+    </table>
+</form>
+
+<div class="modal fade" id="alertDelete" tabindex="-1" aria-labelledby="alertDeleteLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Bạn có thực sự muốn xoá vĩnh viễn môn này? bạn sẽ không thể khôi phục lại đâu.</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex justify-content-evenly">
+        <form method="POST">
+          <button class="btn bg-danger">Xoá luôn</button>
+        </form>
+        <div type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đừng, chỉ là lỡ tay thôi</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>  
+<script>
+  $(document).ready(function () {
+    const checkAll = $('.checkall');
+    const checkItem = $('.check-item');
+    const realActionAll = $('.real-action-all-btn');
+    //handle multiple actions
+    checkAll.on('change', function () {
+      if (this.checked) {
+        checkItem.prop('checked', true);
+      }
+      else {
+        checkItem.prop('checked', false);
+      }
+    });
+    checkItem.each(function (index, element) {
+
+      $(element).on('change', function () {
+        let allCheckHasChecked = true;
+
+        if (!this.checked) {
+          checkAll.prop('checked', false);
+        }
+
+        checkItem.each(function (index2, element2) {
+          if (!element2.checked) {
+            allCheckHasChecked = false;
+          }
+        });
+        if (allCheckHasChecked) {
+          checkAll.prop('checked', true);
+        }
+      });
+    });
+
+    $('.action-all-btn').on('click', function () {
+      $('#action-all-modal .modal-body').html('<h2>Chiến</h2>');
+    })
+
+    realActionAll.on('click', function (e) {
+
+      let countChecked = 0;
+      checkItem.each(function (index, element) {
+        if (element.checked) {
+          countChecked++;
+        }
+      });
+      if (countChecked && $('.action-select').val() != 'Hành động') {
+        $('#action-all-modal .modal-body').html('<h2>Chiến</h2>');
+
+        $('.form-container').submit();
+      }
+      else {
+        $('#action-all-modal .modal-body').html('<h2>Chẳng có việc gì làm ở đây cả</h2>');
+      }
+    });
+
+  //handle delete current item
+    $('.delete').on('click', function (e) {
+      $('#alertDelete form').attr('action', `trash/${$(this).attr('btn-value')}?_method=delete`);
+    });
+  });
+</script>
