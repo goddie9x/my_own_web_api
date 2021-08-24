@@ -85,6 +85,7 @@ route(app);
 io.on('connection', function(socket) {
     console.log('user log' + socket);
 });
-server.listen(PORT, () => {
+
+app.listen(PORT, () => {
     console.log(`Our app is running on port ${ PORT }`);
 });
