@@ -8,8 +8,8 @@ const db = require('./config/db');
 const PORT = process.env.PORT || 3000;
 const getBreadcrumbs = require('./app/middlewares/BreadCrumsCreate');
 //create server socket
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+/* const server = require('http').createServer(app);
+const io = require('socket.io')(server); */
 
 db.connect();
 
@@ -82,9 +82,9 @@ app.use(getBreadcrumbs);
 
 route(app);
 
-io.on('connection', function(socket) {
+/* io.on('connection', function(socket) {
     console.log('user log' + socket);
-});
+}); */
 server.listen(PORT, () => {
     console.log(`Our app is running on port ${ PORT }`);
 });
