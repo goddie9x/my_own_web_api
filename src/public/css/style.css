@@ -1,3 +1,6 @@
+.canv .btn {
+  color: #fff; }
+
 .canv a {
   text-decoration: none; }
 
@@ -11,72 +14,72 @@
     background-color: rgba(0, 0, 0, 0.5); }
     .canv .app header .modal.fade .modal-footer {
       justify-content: flex-start; }
-  .canv .app .trash,
-  .canv .app .manager-back {
-    line-height: 30px;
-    margin-left: 100px;
-    position: relative; }
-    .canv .app .trash .countVal,
-    .canv .app .manager-back .countVal {
-      text-align: center;
-      position: absolute;
-      color: #fff;
-      top: -9px;
-      right: -21px;
-      line-height: 20px;
-      border-radius: 50px;
-      font-size: 14px;
-      width: 20px;
-      height: 20px;
-      background-color: #fa1c1c; }
-  .canv .app .select-all {
-    align-items: center; }
-    .canv .app .select-all .action-select {
-      max-width: 130px; }
-  .canv .app .select-all > * {
-    margin-left: 16px; }
-  .canv .app table {
-    width: 100%;
-    text-align: center; }
-    .canv .app table td,
-    .canv .app table th {
-      vertical-align: middle; }
-  .canv .app form .select-day-of-week-item,
-  .canv .app form .link-meet {
-    flex-grow: 1;
-    justify-content: space-evenly;
-    display: flex;
-    padding-right: 15px; }
-    .canv .app form .select-day-of-week-item select[name="dayOfWeek"],
-    .canv .app form .link-meet select[name="dayOfWeek"] {
-      width: 21%;
-      margin-right: calc(var(--bs-gutter-x)); }
-    .canv .app form .select-day-of-week-item .form-select-cus,
-    .canv .app form .link-meet .form-select-cus {
+  .canv .app .container {
+    padding: 20px 0; }
+    .canv .app .container h2 {
+      color: #fff; }
+    .canv .app .container .trash,
+    .canv .app .container .manager-back {
+      line-height: 30px;
+      margin-left: 100px;
+      position: relative; }
+      .canv .app .container .trash .countVal,
+      .canv .app .container .manager-back .countVal {
+        text-align: center;
+        position: absolute;
+        color: #fff;
+        top: -9px;
+        right: -21px;
+        line-height: 20px;
+        border-radius: 50px;
+        font-size: 14px;
+        width: 20px;
+        height: 20px;
+        background-color: #fa1c1c; }
+    .canv .app .container .select-all {
+      align-items: center; }
+      .canv .app .container .select-all .action-select {
+        max-width: 130px; }
+    .canv .app .container .select-all > * {
+      margin-left: 16px; }
+    .canv .app .container table {
+      width: 100%;
+      text-align: center; }
+      .canv .app .container table td,
+      .canv .app .container table th {
+        vertical-align: middle; }
+    .canv .app .container form .form-select-cus {
       padding: 0.375rem 2.25rem 0.375rem 0.75rem;
       -moz-padding-start: calc(0.75rem - 3px);
       font-size: 1rem;
       font-weight: 400;
       line-height: 1.5;
+      width: 70%;
+      margin-left: calc(var(--bs-gutter-x) * .8); }
+    .canv .app .container form .input-group-text {
+      color: #fff;
+      font-weight: 700;
+      width: calc(15% - 16px); }
+    .canv .app .container form .message {
+      color: red; }
+    .canv .app .container form .select-day-of-week-item {
       flex-grow: 1;
-      margin-right: calc(var(--bs-gutter-x) * .3); }
-    .canv .app form .select-day-of-week-item .form-select-cus .input-group-text,
-    .canv .app form .link-meet .form-select-cus .input-group-text {
-      margin-right: calc(var(--bs-gutter-x) * 1.7); }
-  .canv .app form .select-day-of-week-item:nth-child(odd):not(:last-child) {
-    margin-right: calc(var(--bs-gutter-x) * .5); }
-  .canv .app form .link-meet {
-    flex-grow: 1; }
-    .canv .app form .link-meet .input-group-text {
-      line-height: 180%; }
-  .canv .app form .input-group-text {
-    color: #fff;
-    line-height: 140%;
-    font-size: 20px;
-    font-weight: 700;
-    margin-right: 10px; }
-  .canv .app form .message {
-    color: red; }
+      justify-content: space-evenly;
+      display: flex;
+      padding-right: 15px; }
+      .canv .app .container form .select-day-of-week-item select[name="dayOfWeek"] {
+        width: calc(100% - 6px); }
+    .canv .app .container form .link-meet {
+      flex-grow: 1;
+      display: flex;
+      width: calc(50% - 16px);
+      margin-right: 16px; }
+      .canv .app .container form .link-meet .input-group-text {
+        line-height: 180%;
+        margin-left: 8px; }
+      .canv .app .container form .link-meet .form-select-cus {
+        margin-left: 0;
+        margin-right: 0; }
   .canv .app footer {
     background-color: #1c2331; }
     .canv .app footer .top-footer {
@@ -85,9 +88,15 @@
 .canv .modal-backdrop {
   display: none; }
 
+@media (max-width: 575px) {
+  .container {
+    width: 99%; } }
+
 @media (max-width: 430px) {
   .table {
-    font-size: 12px; } }
+    font-size: 12px; }
+  .hidden-mb {
+    display: none; } }
 
 @media (max-width: 350px) {
   .table {

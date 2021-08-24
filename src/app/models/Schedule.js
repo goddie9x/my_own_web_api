@@ -10,7 +10,7 @@ const Schedule = new Schema({
     partOfDay: { type: Number, required: true },
     dayStart: { type: Number, required: true },
     dayEnd: { type: Number, required: true },
-    linkMeet: [{ type: String, maxLength: 255, required: true }],
+    linkMeet: [{ type: String, maxLength: 255 }],
 }, { timestamps: true });
 
 //add plugin

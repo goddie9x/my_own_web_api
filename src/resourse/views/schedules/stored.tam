@@ -4,7 +4,7 @@
 <table class="table table-dark">
   <thead>
     <tr>
-      <th scope="col">STT</th>
+      <th scope="col" class="hidden-mb">STT</th>
       <th scope="col">Tên</th>
       <th scope="col">Thứ</th>
       <th scope="col">Buoi</th>
@@ -16,7 +16,7 @@
   <br>
   {{#each schedules}}
       <tr>
-        <th scope="row">{{plusOne @index}}</th>
+        <th class="hidden-mb" scope="row">{{plusOne @index}}</th>
         <td>{{this.name}}</td>
          <td>{{convetDayOfWeek this.dayOfWeek}}</td>
         <td>{{convetPartOfDay this.partOfDay}}</td>

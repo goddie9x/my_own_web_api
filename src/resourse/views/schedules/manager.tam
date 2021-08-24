@@ -42,7 +42,7 @@
       <thead>
         <tr>
           <th scope="col"></th>
-          <th scope="col">STT</th>
+          <th scope="col" class="hidden-mb">STT</th>
           <th scope="col">Tên</th>
           <th scope="col">Thứ</th>
           <th scope="col">Buoi</th>
@@ -59,7 +59,7 @@
           <input class="check-item" type="checkbox" name="id" value="{{this._id}}">
         </td>
         <td>{{plusOne @index}}</td>
-        <td>{{this.name}}</td>
+        <td class="hidden-mb">{{this.name}}</td>
         <td>{{convetDayOfWeek this.dayOfWeek}}</td>
         <td>{{convetPartOfDay this.partOfDay}}</td>
         <td>{{this.room}}</td>

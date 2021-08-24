@@ -1,6 +1,6 @@
 const Schedule = require('../models/Schedule');
 const { multipleMongooseToObjects } = require('../../utils/mongoose');
-class SiteController {
+class siteController {
 
     index(req, res, next) {
         let today = new Date();
@@ -29,13 +29,23 @@ class SiteController {
     }
     search(req, res, next) {
         Schedule.find({
-                'name': req.query.name
+                name: { $regex: '.*' + req.query.name + '.*' }
             })
-            .then(function(results) {
+            .then(schedules => {
+                schedules = multipleMongooseToObjects(schedules);
 
-                res.render('sites/search', results);
+                schedules = schedules.map(function(schedule) {
+                    let dayStart = new Date(schedule.dayStart);
+                    let dayEnd = new Date(schedule.dayEnd);
+
+                    schedule.dayStart = `${dayStart.getDate()}/${dayStart.getMonth()}/${dayStart.getFullYear()}`;
+                    schedule.dayEnd = `${dayEnd.getDate()}/${dayEnd.getMonth()}/${dayEnd.getFullYear()}`;
+                    return schedule;
+                });
+
+                res.render('home', { schedules });
             })
             .catch(next);
     }
 }
-module.exports = new SiteController();
+module.exports = new siteController();

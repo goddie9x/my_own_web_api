@@ -18,12 +18,23 @@
     <div class="app">
         {{>header}}
         <div class="container">
+            <nav aria-label="breadcrumb my-3">
+                <ol class="breadcrumb">
+                    {{#each breadcrumbs}}
+                        <li class="breadcrumb-item"><a href="{{this.breadcrumbUrl}}">{{this.breadcrumbName}}</a></li>
+                    {{/each}}
+                </ol>
+            </nav>
             {{{body}}}
         </div>
         {{>footer}}
     </div>
     <script src="/vendors/js/popper.js"></script>
     <script src="/scripts/main.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+    </script>
 </body>
 
 </html>

@@ -6,11 +6,16 @@ const route = require('./routes');
 const methodOverride = require('method-override');
 const db = require('./config/db');
 const PORT = process.env.PORT || 3000;
+const getBreadcrumbs = require('./app/middlewares/BreadCrumsCreate');
+//create server socket
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 
 db.connect();
 
 //create static direct
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use(
     express.urlencoded({
@@ -72,8 +77,14 @@ app.set('views', path.join(__dirname, 'resourse', 'views'));
 
 app.use(methodOverride('_method'));
 
+app.use(getBreadcrumbs);
+
+
 route(app);
 
-app.listen(PORT, () => {
+io.on('connection', function(socket) {
+    console.log('user log' + socket);
+});
+server.listen(PORT, () => {
     console.log(`Our app is running on port ${ PORT }`);
 });
