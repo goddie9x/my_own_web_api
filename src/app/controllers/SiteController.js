@@ -29,7 +29,7 @@ class siteController {
     }
     search(req, res, next) {
         Schedule.find({
-                name: /req.query.name/
+                name: req.query.name
             })
             .then(schedules => {
                 schedules = multipleMongooseToObjects(schedules);
