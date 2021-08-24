@@ -43,7 +43,7 @@ class siteController {
                     return schedule;
                 });
 
-                res.render('home', { schedules });
+                res.render('sites/search', { schedules });
             })
             .catch(next);
     }
