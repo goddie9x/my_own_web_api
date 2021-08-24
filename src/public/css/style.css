@@ -93,6 +93,8 @@
     width: 99%; } }
 
 @media (max-width: 430px) {
+  root::-webkit-scrollbar {
+    display: none; }
   .table {
     font-size: 12px; }
   .hidden-mb {
