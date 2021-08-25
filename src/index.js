@@ -7,6 +7,7 @@ const methodOverride = require('method-override');
 const db = require('./config/db');
 const PORT = process.env.PORT || 3000;
 const getBreadcrumbs = require('./app/middlewares/BreadCrumsCreate');
+const userLogin = require('./app/middlewares/UserLogin');
 //create server socket
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
@@ -76,7 +77,7 @@ app.set('view engine', 'tam');
 app.set('views', path.join(__dirname, 'resourse', 'views'));
 
 app.use(methodOverride('_method'));
-
+app.use(userLogin);
 app.use(getBreadcrumbs);
 
 

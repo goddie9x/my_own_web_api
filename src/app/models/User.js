@@ -4,11 +4,15 @@ const slug = require('mongoose-slug-generator');
 const mongooseDelete = require('mongoose-delete');
 
 const User = new Schema({
-    name: { type: String, maxLength: 255, required: true },
-    username: { type: String, maxLength: 255, required: true },
-    partword: { type: String, maxLength: 255, required: true },
+    name: { type: String, maxLength: 255 },
+    account: { type: String, maxLength: 255, required: true },
+    password: { type: String, maxLength: 255, required: true },
     img: { type: String, maxLength: 255 },
     slug: { type: String, slug: 'name', unique: true },
+    fullName: { type: String, maxLength: 255 },
+    email: [{ type: String, maxLength: 255 }],
+    phone: [{ type: String, maxLength: 255 }],
+    address: { type: String, maxLength: 255 },
     description: { type: String, maxLength: 600 },
 }, { timestamps: true });
 

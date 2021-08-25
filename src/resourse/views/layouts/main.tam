@@ -21,7 +21,7 @@
             <nav aria-label="breadcrumb my-3">
                 <ol class="breadcrumb">
                     {{#each breadcrumbs}}
-                        <li class="breadcrumb-item"><a href="{{this.breadcrumbUrl}}">{{this.breadcrumbName}}</a></li>
+                    <li class="breadcrumb-item"><a href="{{this.breadcrumbUrl}}">{{this.breadcrumbName}}</a></li>
                     {{/each}}
                 </ol>
             </nav>
@@ -30,9 +30,53 @@
         {{>footer}}
     </div>
     <script src="/vendors/js/popper.js"></script>
+    <script src="/vendors/js/jquery.validate.js"></script>
     <script src="/scripts/main.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
+        $(document).ready(function () {
+
+            $(".form-loggin").validate(
+                {
+                    rulers: {
+                        account: {
+                            required: true,
+                            minlength: 5,
+                        },
+                        password: {
+                            required: true,
+                            minlength: 8,
+                        }
+                    },
+                    messages: {
+                        account: "Tài khoản yêu cầu ít nhất 5 ký tự",
+                        password: "Mật khẩu cũng yêu cầu 5 ký tự nhé"
+                    }
+                }
+            );
+            $(".form-register").validate({
+                rulers: {
+                    account: {
+                        required: true,
+                        minlength: 5,
+                    },
+                    password: {
+                        required: true,
+                        minlength: 5,
+                    },
+                    password_confirm: {
+                        minlength: 5,
+                        equalTo: "#input-password-reg"
+                    }
+                },
+                messages: {
+                    account: "Tài khoản yêu cầu ít nhất 5 ký tự",
+                    password: "Mật khẩu cũng yêu cầu 5 ký tự nhé",
+                    password_confirm:"Nhập lại mật khẩu giúp bạn nhớ lâu hơn"
+                }
+            }
+            );
+        });
         const socket = io();
     </script>
 </body>

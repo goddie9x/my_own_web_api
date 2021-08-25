@@ -1,7 +1,7 @@
 <h2 class="text-center my-5">
     Cập nhật lịch
 </h2>
-<form class="my-5" method="post" action="/schedules/stored/{{this._id}}?_method=patch">
+<form class="my-5 form-modify-schedule" method="post" action="/schedules/stored/{{this._id}}?_method=patch">
     <div class="container">
         <div class="row">
             <div class="form-floating mb-3 col-12 col-sm-6">
@@ -76,4 +76,9 @@
     function removeCurrentElement(element) {
         elementExtendable = $(element).closest('.extendable').remove();
     }
+    $(document).ready(function (){
+        $('.form-modify-schedule').validate({
+            message: "Phần này bắt buộc nhập này"
+        });
+    })
 </script>

@@ -7,6 +7,9 @@
 .canv .flex-wrap {
   flex-wrap: wrap; }
 
+.canv .error {
+  color: red; }
+
 .canv .app {
   position: relative;
   z-index: 4; }
@@ -80,6 +83,12 @@
       .canv .app .container form .link-meet .form-select-cus {
         margin-left: 0;
         margin-right: 0; }
+    .canv .app .container .create-schedule .error,
+    .canv .app .container .form-modify-schedule .error {
+      display: block;
+      background-color: #fff;
+      position: absolute;
+      top: -10px; }
   .canv .app footer {
     background-color: #1c2331; }
     .canv .app footer .top-footer {
