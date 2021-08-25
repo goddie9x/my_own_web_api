@@ -29,7 +29,7 @@ class siteController {
             .catch(next);
     }
     search(req, res, next) {
-        /* Schedule.find({
+        Schedule.find({
                 name: { $regex: '.*' + req.query.name + '.*' }
             })
             .then(schedules => {
@@ -43,10 +43,10 @@ class siteController {
                     schedule.dayEnd = `${dayEnd.getDate()}/${dayEnd.getMonth()}/${dayEnd.getFullYear()}`;
                     return schedule;
                 });
- */
-        res.render('sites/search' /* , { schedules } */ );
-        /* })
-        .catch(next); */
+
+                res.render('sites/search', { schedules });
+            })
+            .catch(next);
     }
 }
 module.exports = new siteController;
