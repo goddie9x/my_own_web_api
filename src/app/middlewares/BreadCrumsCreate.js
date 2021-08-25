@@ -7,7 +7,12 @@ module.exports = function getBreadcrumbs(req, res, next) {
         next();
         return;
     }
+
     const urls = req.originalUrl.split('/');
+
+    if (req.originalUrl.includes('modify')) {
+        urls.pop();
+    }
 
     urls.shift();
 
