@@ -54,8 +54,8 @@
                 {{#each this.linkMeet}}
                 <div class="link-meet form-floating extendable col-6 mb-2">
                     <input type="linkMeet" class="form-select-cus form-control" name="linkMeet" value="{{{this}}}"
-                        id="linkMeet" />
-                    <label class="ms-2" for="linkMeet" class="form-label">Link Meet</label>
+                        id="linkMeet{{@index}}" />
+                    <label class="ms-2" for="linkMeet{{@index}}" class="form-label">Link Meet</label>
                     <span class="btn add-input input-group-text bg-success" onclick="addElementAfter(this)">+</span>
                     <span class="btn remove-input input-group-text bg-danger"
                         onclick="removeCurrentElement(this)">-</span>

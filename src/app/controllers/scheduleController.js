@@ -75,7 +75,24 @@ class ScheduleController {
         let id = req.params.id;
         Schedule.findOne({ '_id': id })
             .then(schedule => {
-                res.render('schedules/modify', mongooseToObject(schedule));
+                schedule = mongooseToObject(schedule);
+
+                let dayStart = new Date(schedule.dayStart);
+                let dayEnd = new Date(schedule.dayEnd);
+
+                let monthStart = dayStart.getMonth();
+                let monthEnd = dayEnd.getMonth();
+                let dateStart = dayStart.getDate();
+                let dateEnd = dayEnd.getDate();
+
+                monthStart = (monthStart < 10) ? (`0${monthStart}`) : (monthStart);
+                monthEnd = (monthEnd < 10) ? (`0${monthEnd}`) : (monthEnd);
+                dateStart = (dateStart < 10) ? (`0${dateStart}`) : (dateStart);
+                dateEnd = (dateEnd < 10) ? (`0${dateEnd}`) : (dateEnd);
+
+                schedule.dayStart = `${dayStart.getFullYear()}-${monthStart}-${dateStart}`;
+                schedule.dayEnd = `${dayEnd.getFullYear()}-${monthEnd}-${dateEnd}`;
+                res.render('schedules/modify', schedule);
             })
             .catch(next);
     }
