@@ -1,6 +1,16 @@
 module.exports = function getBreadcrumbs(req, res, next) {
+    if (req.originalUrl.includes('search')) {
+        res.locals.breadcrumbs = {
+            breadcrumbName: 'search',
+            breadcrumbUrl: 'none',
+        };
+        next();
+        return;
+    }
     const urls = req.originalUrl.split('/');
+
     urls.shift();
+
     res.locals.breadcrumbs = urls.map((url, i) => {
         return {
             breadcrumbName: (url === '' ? 'Home' : url.charAt(0).toUpperCase() + url.slice(1)),
