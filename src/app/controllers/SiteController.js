@@ -19,8 +19,8 @@ class siteController {
                     let dayStart = new Date(schedule.dayStart);
                     let dayEnd = new Date(schedule.dayEnd);
 
-                    schedule.dayStart = `${dayStart.getDate()}/${dayStart.getMonth()}/${dayStart.getFullYear()}`;
-                    schedule.dayEnd = `${dayEnd.getDate()}/${dayEnd.getMonth()}/${dayEnd.getFullYear()}`;
+                    schedule.dayStart = `${dayStart.getDate()}/${dayStart.getMonth()+1}/${dayStart.getFullYear()}`;
+                    schedule.dayEnd = `${dayEnd.getDate()}/${dayEnd.getMonth()+1}/${dayEnd.getFullYear()}`;
                     return schedule;
                 });
 
@@ -39,8 +39,8 @@ class siteController {
                     let dayStart = new Date(schedule.dayStart);
                     let dayEnd = new Date(schedule.dayEnd);
 
-                    schedule.dayStart = `${dayStart.getDate()}/${dayStart.getMonth()}/${dayStart.getFullYear()}`;
-                    schedule.dayEnd = `${dayEnd.getDate()}/${dayEnd.getMonth()}/${dayEnd.getFullYear()}`;
+                    schedule.dayStart = `${dayStart.getDate()}/${dayStart.getMonth()+1}/${dayStart.getFullYear()}`;
+                    schedule.dayEnd = `${dayEnd.getDate()}/${dayEnd.getMonth()+1}/${dayEnd.getFullYear()}`;
                     return schedule;
                 });
 
