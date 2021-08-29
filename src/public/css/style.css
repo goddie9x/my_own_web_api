@@ -58,7 +58,7 @@
       font-weight: 400;
       line-height: 1.5;
       width: 70%;
-      margin-left: calc(var(--bs-gutter-x) * .8); }
+      margin-left: calc(var(--bs-gutter-x) * 0.8); }
     .canv .app .container form .input-group-text {
       color: #fff;
       font-weight: 700;
@@ -83,6 +83,176 @@
       .canv .app .container form .link-meet .form-select-cus {
         margin-left: 0;
         margin-right: 0; }
+    .canv .app .container .chat-view .chat {
+      margin-top: auto;
+      margin-bottom: auto; }
+    .canv .app .container .chat-view .card {
+      height: 500px;
+      border-radius: 15px !important;
+      background-color: rgba(0, 0, 0, 0.4) !important; }
+    .canv .app .container .chat-view .contacts_body {
+      padding: 0.75rem 0 !important;
+      overflow-y: auto;
+      white-space: nowrap; }
+    .canv .app .container .chat-view .msg_card_body {
+      overflow-y: auto; }
+    .canv .app .container .chat-view .card-header {
+      border-radius: 15px 15px 0 0 !important;
+      border-bottom: 0 !important; }
+    .canv .app .container .chat-view .card-footer {
+      border-radius: 0 0 15px 15px !important;
+      border-top: 0 !important; }
+    .canv .app .container .chat-view .container {
+      align-content: center; }
+    .canv .app .container .chat-view .search {
+      border-radius: 15px 0 0 15px !important;
+      background-color: rgba(0, 0, 0, 0.3) !important;
+      border: 0 !important;
+      color: white !important; }
+    .canv .app .container .chat-view .search:focus {
+      box-shadow: none !important;
+      outline: 0px !important; }
+    .canv .app .container .chat-view .type_msg {
+      background-color: rgba(0, 0, 0, 0.3) !important;
+      border: 0 !important;
+      color: white !important;
+      height: 60px !important;
+      overflow-y: auto; }
+    .canv .app .container .chat-view .type_msg:focus {
+      box-shadow: none !important;
+      outline: 0px !important; }
+    .canv .app .container .chat-view .attach_btn {
+      border-radius: 15px 0 0 15px !important;
+      background-color: rgba(0, 0, 0, 0.3) !important;
+      border: 0 !important;
+      color: white !important;
+      cursor: pointer; }
+    .canv .app .container .chat-view .send_btn {
+      border-radius: 0 15px 15px 0 !important;
+      background-color: rgba(0, 0, 0, 0.3) !important;
+      border: 0 !important;
+      color: white !important;
+      cursor: pointer; }
+    .canv .app .container .chat-view .search_btn {
+      border-radius: 0 15px 15px 0 !important;
+      background-color: rgba(0, 0, 0, 0.3) !important;
+      border: 0 !important;
+      color: white !important;
+      cursor: pointer; }
+    .canv .app .container .chat-view .contacts {
+      list-style: none;
+      padding: 0; }
+    .canv .app .container .chat-view .contacts li {
+      width: 100% !important;
+      padding: 5px 10px;
+      margin-bottom: 15px !important; }
+    .canv .app .container .chat-view .active {
+      background-color: rgba(0, 0, 0, 0.3); }
+    .canv .app .container .chat-view .user_img {
+      height: 70px;
+      width: 70px;
+      border: 1.5px solid #f5f6fa; }
+    .canv .app .container .chat-view .user_img_msg {
+      height: 40px;
+      width: 40px;
+      border: 1.5px solid #f5f6fa; }
+    .canv .app .container .chat-view .img_cont {
+      position: relative;
+      height: 70px;
+      width: 70px; }
+    .canv .app .container .chat-view .img_cont_msg {
+      height: 40px;
+      width: 40px; }
+    .canv .app .container .chat-view .online_icon {
+      position: absolute;
+      height: 15px;
+      width: 15px;
+      background-color: #4cd137;
+      border-radius: 50%;
+      bottom: 0.2em;
+      right: 0.4em;
+      border: 1.5px solid white; }
+    .canv .app .container .chat-view .offline {
+      background-color: #c23616 !important; }
+    .canv .app .container .chat-view .user_info {
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-left: 15px; }
+    .canv .app .container .chat-view .user_info span {
+      font-size: 20px;
+      color: white; }
+    .canv .app .container .chat-view .user_info p {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.6); }
+    .canv .app .container .chat-view .video_cam {
+      margin-left: 50px;
+      margin-top: 5px; }
+    .canv .app .container .chat-view .video_cam span {
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      margin-right: 20px; }
+    .canv .app .container .chat-view .msg_cotainer {
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-left: 10px;
+      border-radius: 25px;
+      background-color: #82ccdd;
+      padding: 10px;
+      position: relative; }
+    .canv .app .container .chat-view .msg_cotainer_send {
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-right: 10px;
+      border-radius: 25px;
+      background-color: #78e08f;
+      padding: 10px;
+      position: relative; }
+    .canv .app .container .chat-view .msg_time {
+      position: absolute;
+      left: 0;
+      bottom: -15px;
+      color: rgba(255, 255, 255, 0.5);
+      white-space: nowrap;
+      font-size: 10px; }
+    .canv .app .container .chat-view .msg_time_send {
+      position: absolute;
+      right: 0;
+      bottom: -15px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 10px; }
+    .canv .app .container .chat-view .msg_head {
+      position: relative; }
+    .canv .app .container .chat-view #action_menu_btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      color: white;
+      cursor: pointer;
+      font-size: 20px; }
+    .canv .app .container .chat-view .action_menu {
+      z-index: 1;
+      position: absolute;
+      padding: 15px 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border-radius: 15px;
+      top: 30px;
+      right: 15px;
+      display: none; }
+    .canv .app .container .chat-view .action_menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0; }
+    .canv .app .container .chat-view .action_menu ul li {
+      width: 100%;
+      padding: 10px 15px;
+      margin-bottom: 5px; }
+    .canv .app .container .chat-view .action_menu ul li i {
+      padding-right: 10px; }
+    .canv .app .container .chat-view .action_menu ul li:hover {
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.2); }
     .canv .app .container .create-schedule .error,
     .canv .app .container .form-modify-schedule .error {
       display: block;
@@ -99,7 +269,9 @@
 
 @media (max-width: 575px) {
   .container {
-    width: 99%; } }
+    width: 99%; }
+  .contacts_card {
+    margin-bottom: 15px !important; } }
 
 @media (max-width: 430px) {
   root::-webkit-scrollbar {

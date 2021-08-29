@@ -40,14 +40,9 @@ class userController {
             .then(user => {
                 if (Object.keys(user).length === 0) {
                     res.send(`tài khoản ${account} không tồn tại`);
-                } else {
-                    res.send(user);
-                    req._user.userID = user._id;
-                    req._user.imageUser = user.img;
-                    req._user.nameUser = user.name;
-
-                    res.redirect('users');
                 }
+
+                 res.send('users');
             })
             .catch(next);
     }

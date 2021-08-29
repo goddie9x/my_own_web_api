@@ -48,5 +48,8 @@ class siteController {
             })
             .catch(next);
     }
+    roomChat(req, res, next) {
+        res.render('sites/roomChat');
+    }
 }
 module.exports = new siteController;

@@ -33,6 +33,7 @@
     <script src="/vendors/js/jquery.validate.js"></script>
     <script src="/scripts/main.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+
     <script>
         $(document).ready(function () {
 
@@ -72,12 +73,11 @@
                 messages: {
                     account: "Tài khoản yêu cầu ít nhất 5 ký tự",
                     password: "Mật khẩu cũng yêu cầu 5 ký tự nhé",
-                    password_confirm:"Nhập lại mật khẩu giúp bạn nhớ lâu hơn"
+                    password_confirm: "Nhập lại mật khẩu giúp bạn nhớ lâu hơn"
                 }
             }
             );
         });
-        const socket = io();
     </script>
 </body>
 

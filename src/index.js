@@ -8,6 +8,9 @@ const db = require('./config/db');
 const PORT = process.env.PORT || 3000;
 const getBreadcrumbs = require('./app/middlewares/BreadCrumsCreate');
 const userLogin = require('./app/middlewares/UserLogin');
+const session = require('express-session');
+const passport = require('passport');
+const flash = require('connect-flash');
 //create server socket
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
@@ -45,7 +48,7 @@ app.engine(
                 ]
                 return POD[part];
             },
-            plusOne: function(index) {
+            plusOne: function (index) {
                 return index + 1;
             },
             sum: (a, b) => a + b,
@@ -77,15 +80,24 @@ app.set('view engine', 'tam');
 app.set('views', path.join(__dirname, 'resourse', 'views'));
 
 app.use(methodOverride('_method'));
-app.use(userLogin);
+app.use(session({
+    secret: 'adsa897adsa98bs',
+    resave: false,
+    saveUninitialized: false,
+}));
+app.use(flash());
+app.use(passport.initialize())
+app.use(passport.session());
 app.use(getBreadcrumbs);
-
-
 route(app);
 
-io.on('connection', function(socket) {
-    console.log('user log' + socket);
+io.on('connection', function (socket) {
+    console.log('user loggin');
+    socket.on('on-chat',data=>{
+        console.log(data);
+      io.emit('user-chat',data);
+    });
 });
 server.listen(PORT, () => {
-    console.log(`Our app is running on port ${ PORT }`);
+    console.log(`Our app is running on port ${PORT}`);
 });
