@@ -99,8 +99,8 @@ class ScheduleController {
     delete(req, res, next) {
         let id = req.params.id;
         Schedule.delete({ '_id': id })
-            .then(() => {
-                res.redirect('/schedules/stored');
+            .then((done) => {
+                res.json('done');
             })
             .catch(next);
     }

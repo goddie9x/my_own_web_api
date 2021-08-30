@@ -4,11 +4,11 @@ module.exports = function userLoginMiddleware(req, res, next) {
         imageUser: null,
         nameUser: "Default"
     };
-    if (req._user) {
+    if (req.session.user) {
         res.locals._user = {
-            userID: req._user.userID,
-            imageUser: req._user.imageUser,
-            nameUser: req._user.nameUser
+            userID: req.session.user.userID,
+            imageUser: req.session.user.imageUser,
+            nameUser: req.session.user.nameUser
         };
     }
     next();

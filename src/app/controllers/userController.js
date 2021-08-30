@@ -16,11 +16,11 @@ class userController {
                 if (Object.keys(user).length === 0) {
                     User.create({ account, password })
                         .then((user) => {
-                            req._user.userID = user._id;
-                            req._user.imageUser = user.img;
-                            req._user.nameUser = user.name;
+                            req.session.user.userID = user._id;
+                            req.session.user.imageUser = user.img;
+                            req.session.user.nameUser = user.name;
 
-                            res.render('users/profile', { user });
+                            res.render('users/profile');
                         })
                         .catch(next);
                 } else {
@@ -42,7 +42,8 @@ class userController {
                     res.send(`tài khoản ${account} không tồn tại`);
                 }
 
-                 res.send('users');
+                req.session.user = user;
+                res.redirect(`/profile/${user._id}`);
             })
             .catch(next);
     }
@@ -55,11 +56,11 @@ class userController {
                 if (Object.keys(user).length === 0) {
                     res.send(`tài khoản ${account} không tồn tại`);
                 } else {
-                    req._user.userID = user._id;
-                    req._user.imageUser = user.img;
-                    req._user.nameUser = user.name;
+                    req.local._user.userID = user._id;
+                    req.local._user.imageUser = user.img;
+                    req.local._user.nameUser = user.name;
 
-                    res.render('users/profile', { user });
+                    res.render('users/profile');
                 }
             })
             .catch(function(err) {

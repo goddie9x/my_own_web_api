@@ -2,7 +2,7 @@
   Danh sách thời khoá biểu
 </h2>
 <div class="col-12 my-3">
-    <a href="/schedules/trash" class="trash text-primary col-12">Thùng rác <span class="countVal ">{{deleted}}</span> </a>
+  <a href="/schedules/trash" class="trash text-primary col-12">Thùng rác <span class="countVal">{{deleted}}</span> </a>
 </div>
 <form class="form-container" method="POST" action="/schedules/handleMultiAction">
   <div class="form-check">
@@ -54,11 +54,11 @@
       </thead>
       <br>
       {{#each schedules}}
-      <tr>
+      <tr class="schedule-item">
         <td>
           <input class="check-item" type="checkbox" name="id" value="{{this._id}}">
         </td>
-        <td>{{plusOne @index}}</td>
+        <td class="index">{{plusOne @index}}</td>
         <td class="hidden-mb">{{this.name}}</td>
         <td>{{convetDayOfWeek this.dayOfWeek}}</td>
         <td>{{convetPartOfDay this.partOfDay}}</td>
@@ -68,11 +68,11 @@
           {{#each this.linkMeet}}
           <a href="http://{{this}}" target="_blank">Link {{plusOne @index}}</a>
           {{else}}
-          <a href="http://{{this.linkMeet}}"target="_blank">Link</a>
+          <a href="http://{{this.linkMeet}}" target="_blank">Link</a>
           {{/each}}
         </td>
-        <td class="d-flex justify-content-evenly">
-            <a href="/schedules/modify/{{this._id}}" class="btn bg-primary">Sửa</a>
+        <td class="justify-content-evenly">
+          <a href="/schedules/modify/{{this._id}}" class="btn bg-primary">Sửa</a>
           <div class="btn bg-danger delete" data-bs-toggle="modal" data-bs-target="#alertDelete"
             btn-value="{{this._id}}">Xoá</div>
         </td>
@@ -94,9 +94,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body d-flex justify-content-evenly">
-        <form method="POST">
-          <button class="btn bg-danger">Xoá luôn</button>
-        </form>
+        <button class="btn bg-danger delete">Xoá luôn</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đừng, chỉ là lỡ tay thôi</button>
       </div>
     </div>
@@ -159,8 +157,35 @@
       }
     });
 
-    $('.delete').on('click', function (e) {
-      $('#alertDelete form').attr('action', `stored/${$(this).attr('btn-value')}?_method=delete`);
+    $('.delete').unbind('click').on('click', function (e) {
+      const confirmDeleteBtn = $('#alertDelete .delete');
+
+      confirmDeleteBtn.unbind('click').on('click', function (event) {
+        event.preventDefault();
+        let xmlHttp = new XMLHttpRequest();
+
+        xmlHttp.onreadystatechange = function () {
+          if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+            $(e.target).closest('.schedule-item').remove();
+            increaseCountValTrash();
+            $(event.target).closest('.modal').find('.btn-close').click();
+            reIndexColumns();
+          }
+        }
+        xmlHttp.open("POST",`stored/${$(e.target).attr('btn-value')}?_method=delete`,true);
+
+        xmlHttp.send();
+      });
     });
   });
+  function reIndexColumns() {
+    $('.index').each((index,element)=>{
+      element.innerHTML=index+1;
+    });
+  }
+  function increaseCountValTrash(){
+      let elementCountValTrash=$('.countVal');
+
+      elementCountValTrash.html(parseInt(elementCountValTrash[0].innerHTML,10)+1);
+  }
 </script>

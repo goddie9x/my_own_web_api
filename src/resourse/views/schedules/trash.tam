@@ -55,7 +55,7 @@
       </thead>
       <br>
       {{#each schedulesDeleted}}
-      <tr>
+      <tr class="schedule-item">
         <td>
           <input class="check-item" type="checkbox" name="id" value="{{this._id}}">
         </td>
@@ -72,15 +72,15 @@
           <a href="http://{{this.linkMeet}}"target="_blank">Link</a>
           {{/each}}
         </td>
-        <td class="d-flex justify-content-evenly">
-            <a href="/schedules/restore/{{this._id}}" class="btn bg-primary">Khôi phục</a>
+        <td class="justify-content-evenly">
+            <div restoreId="{{this._id}}" class="btn bg-primary restore-btn">Khôi phục</div>
           <div class="btn bg-danger delete" data-bs-toggle="modal" data-bs-target="#alertDelete"
             btn-value="{{this._id}}">Xoá vĩnh viễn</div>
         </td>
       </tr>
       {{else}}
       <tr>
-        <th colspan="7" rowspan="3" class="text-center" scope="row">Hiện không có thời khoá biểu khả dụng</th>
+        <th colspan="9" rowspan="3" class="text-center" scope="row">Hiện không có thời khoá biểu khả dụng</th>
       </tr>
       {{/each}}
       </tbody>
@@ -95,9 +95,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body d-flex justify-content-evenly">
-        <form method="POST">
-          <button class="btn bg-danger">Xoá luôn</button>
-        </form>
+          <button class="btn bg-danger force-delete">Xoá luôn</button>
         <div type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đừng, chỉ là lỡ tay thôi</div>
       </div>
     </div>
@@ -159,10 +157,40 @@
         $('#action-all-modal .modal-body').html('<h2>Chẳng có việc gì làm ở đây cả</h2>');
       }
     });
-
+//handle restore current schedule onclick href="/schedules/restore/{{this._id}}"
+    $('.restore-btn').unbind('click').on('click', function(e){
+      $.get(`/schedules/restore/${$(e.target).attr('restoreId')}`,function(transport){
+            reIndexColumns();
+            increaseCountValTrash();
+             $(e.target).closest('.schedule-item').remove();
+      });
+    });
   //handle delete current item
     $('.delete').on('click', function (e) {
-      $('#alertDelete form').attr('action', `trash/${$(this).attr('btn-value')}?_method=delete`);
+      $('.force-delete').unbind('click').on('click', function (event){
+       $.post(`trash/${$(e.target).attr('btn-value')}?_method=delete`,function(transport) {
+            reIndexColumns();
+            $(e.target).closest('.schedule-item').remove();
+            $(event.target).closest('.modal').find('.btn-close').click();
+             reduceOneCountValTrash();
+          });
+      });
+      attr('action', `trash/${$(this).attr('btn-value')}?_method=delete`);
     });
   });
+  function reIndexColumns() {
+    $('.index').each((index,element)=>{
+      element.innerHTML=index+1;
+    });
+  }
+  function increaseCountValTrash(){
+      let elementCountValTrash=$('.countVal');
+
+      elementCountValTrash.html(parseInt(elementCountValTrash[0].innerHTML,10)+1);
+  }
+   function reduceOneCountValTrash(){
+      let elementCountValTrash=$('.countVal');
+
+      elementCountValTrash.html(parseInt(elementCountValTrash[0].innerHTML,10)-1);
+  }
 </script>
