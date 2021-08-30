@@ -7,10 +7,10 @@ const methodOverride = require('method-override');
 const db = require('./config/db');
 const PORT = process.env.PORT || 3000;
 const getBreadcrumbs = require('./app/middlewares/BreadCrumsCreate');
-const userLogin = require('./app/middlewares/UserLogin');
 const session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
+const cookieParser = require('cookie-parser');
 //create server socket
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
@@ -88,6 +88,7 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize())
 app.use(passport.session());
+app.use(cookieParser());
 app.use(getBreadcrumbs);
 route(app);
 
