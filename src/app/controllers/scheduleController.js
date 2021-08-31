@@ -85,8 +85,8 @@ class ScheduleController {
                 let dayStart = new Date(schedule.dayStart);
                 let dayEnd = new Date(schedule.dayEnd);
 
-                let monthStart = dayStart.getMonth();
-                let monthEnd = dayEnd.getMonth();
+                let monthStart = dayStart.getMonth() + 1;
+                let monthEnd = dayEnd.getMonth() + 1;
                 let dateStart = dayStart.getDate();
                 let dateEnd = dayEnd.getDate();
 
