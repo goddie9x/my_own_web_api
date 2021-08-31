@@ -1,6 +1,6 @@
 const Schedule = require('../models/Schedule');
 const { multipleMongooseToObjects, mongooseToObject } = require('../../utils/mongoose');
-
+const checkAndAddHttpSlash = require('../../utils/checkAndAddHttpSlash');
 class ScheduleController {
     index(req, res, next) {
             Schedule.find({}).sort({ dayOfWeek: "asc", partOfDay: "asc" })
@@ -36,12 +36,17 @@ class ScheduleController {
                 temp.partOfDay = rawSchedule.partOfDay[currentIndex];
                 temp.dayStart = Date.parse(rawSchedule.dayStart);
                 temp.dayEnd = Date.parse(temp.dayEnd);
+                temp.linkMeet = temp.linkMeet.map(function(link) {
+                    return checkAndAddHttpSlash(link);
+                });
                 schedules.push(temp);
             });
         } else {
             rawSchedule.dayStart = Date.parse(rawSchedule.dayStart);
             rawSchedule.dayEnd = Date.parse(rawSchedule.dayEnd);
-
+            rawSchedule.linkMeet = rawSchedule.linkMeet.map(function(link) {
+                return checkAndAddHttpSlash(link);
+            });
             schedules.push(rawSchedule);
         }
 

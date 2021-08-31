@@ -36,7 +36,6 @@
 
     <script>
         $(document).ready(function () {
-
             $(".form-loggin").validate(
                 {
                     rulers: {
