@@ -1,6 +1,7 @@
 const Schedule = require('../models/Schedule');
 const { multipleMongooseToObjects, mongooseToObject } = require('../../utils/mongoose');
 const checkAndAddHttpSlash = require('../../utils/checkAndAddHttpSlash');
+const { convertDateToDMY, reverseDateForDisplayInForm } = require('../../utils/convertDate');
 class ScheduleController {
     index(req, res, next) {
             Schedule.find({}).sort({ dayOfWeek: "asc", partOfDay: "asc" })
@@ -8,11 +9,8 @@ class ScheduleController {
                     schedules = multipleMongooseToObjects(schedules);
 
                     schedules = schedules.map(function(schedule) {
-                        let dayStart = new Date(schedule.dayStart);
-                        let dayEnd = new Date(schedule.dayEnd);
-
-                        schedule.dayStart = `${dayStart.getDate()}/${dayStart.getMonth()+1}/${dayStart.getFullYear()}`;
-                        schedule.dayEnd = `${dayEnd.getDate()}/${dayEnd.getMonth()+1}/${dayEnd.getFullYear()}`;
+                        schedule.dayStart = convertDateToDMY(schedule.dayStart);
+                        schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
                         return schedule;
                     });
                     res.render('schedules/stored', { schedules });
@@ -65,11 +63,8 @@ class ScheduleController {
                 schedules = multipleMongooseToObjects(schedules);
 
                 schedules = schedules.map(function(schedule) {
-                    let dayStart = new Date(schedule.dayStart);
-                    let dayEnd = new Date(schedule.dayEnd);
-
-                    schedule.dayStart = `${dayStart.getDate()}/${dayStart.getMonth()+1}/${dayStart.getFullYear()}`;
-                    schedule.dayEnd = `${dayEnd.getDate()}/${dayEnd.getMonth()+1}/${dayEnd.getFullYear()}`;
+                    schedule.dayStart = convertDateToDMY(schedule.dayStart);
+                    schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
                     return schedule;
                 });
                 res.render('schedules/manager', { schedules, deleted });
@@ -82,21 +77,8 @@ class ScheduleController {
             .then(schedule => {
                 schedule = mongooseToObject(schedule);
 
-                let dayStart = new Date(schedule.dayStart);
-                let dayEnd = new Date(schedule.dayEnd);
-
-                let monthStart = dayStart.getMonth() + 1;
-                let monthEnd = dayEnd.getMonth() + 1;
-                let dateStart = dayStart.getDate();
-                let dateEnd = dayEnd.getDate();
-
-                monthStart = (monthStart < 10) ? (`0${monthStart}`) : (monthStart);
-                monthEnd = (monthEnd < 10) ? (`0${monthEnd}`) : (monthEnd);
-                dateStart = (dateStart < 10) ? (`0${dateStart}`) : (dateStart);
-                dateEnd = (dateEnd < 10) ? (`0${dateEnd}`) : (dateEnd);
-
-                schedule.dayStart = `${dayStart.getFullYear()}-${monthStart}-${dateStart}`;
-                schedule.dayEnd = `${dayEnd.getFullYear()}-${monthEnd}-${dateEnd}`;
+                schedule.dayStart = reverseDateForDisplayInForm(schedule.dayStart);
+                schedule.dayEnd = reverseDateForDisplayInForm(schedule.dayEnd);
                 res.render('schedules/modify', schedule);
             })
             .catch(next);
@@ -208,11 +190,8 @@ class ScheduleController {
                 schedulesDeleted = multipleMongooseToObjects(schedulesDeleted);
 
                 schedulesDeleted = schedulesDeleted.map(function(schedule) {
-                    let dayStart = new Date(schedule.dayStart);
-                    let dayEnd = new Date(schedule.dayEnd);
-
-                    schedule.dayStart = `${dayStart.getDate()}/${dayStart.getMonth()+1}/${dayStart.getFullYear()}`;
-                    schedule.dayEnd = `${dayEnd.getDate()}/${dayEnd.getMonth()+1}/${dayEnd.getFullYear()}`;
+                    schedule.dayStart = convertDateToDMY(schedule.dayStart);
+                    schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
                     return schedule;
                 });
                 res.render('schedules/trash', { schedulesDeleted, countNotDelete });

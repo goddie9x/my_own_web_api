@@ -1,3 +1,4 @@
 node_modules/
 src/resourse/scss
 nodemon.json
+.env

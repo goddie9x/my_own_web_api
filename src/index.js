@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const path = require('path');
 const handlebars = require('express-handlebars');
 const app = express();
@@ -48,7 +49,7 @@ app.engine(
                 ]
                 return POD[part];
             },
-            plusOne: function (index) {
+            plusOne: function(index) {
                 return index + 1;
             },
             sum: (a, b) => a + b,
@@ -92,11 +93,9 @@ app.use(cookieParser());
 app.use(getBreadcrumbs);
 route(app);
 
-io.on('connection', function (socket) {
-    console.log('user loggin');
-    socket.on('on-chat',data=>{
-        console.log(data);
-      io.emit('user-chat',data);
+io.on('connection', function(socket) {
+    socket.on('on-chat', data => {
+        io.emit('user-chat', data);
     });
 });
 server.listen(PORT, () => {
