@@ -42,7 +42,7 @@ function setCanvasParticle(position = 'relative', zIndex = 20) {
 }
 
 setCanvasParticle('fixed', 3);
-fixedHeader('header');
+fixedHeader('header', 200);
 
 function fixedHeader(elements, breakpoint, classAdd = "fixed-top", elementDepend) {
     //mdByHT

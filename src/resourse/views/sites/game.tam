@@ -1,0 +1,63 @@
+<div class="game-room">
+    <div class="row">
+        <textarea class="chat-area" name="chat-area" placeholder="Nhập nội dung chat rồi ấn enter" rows="2"></textarea>
+        <div class="arrow-btns">
+            <bottom class="arrow arrow-up">&#8594;</bottom>
+            <bottom class="arrow arrow-dow">Gửi</bottom>
+            <bottom class="arrow arrow-left">Gửi</bottom>
+            <bottom class="arrow arrow-right">Gửi</bottom>
+        </div>
+    </div>
+    <bottom class="submit-chat-area">Gửi</bottom>
+</div>
+<script src="./scripts/Character.js"></script>
+<script>
+    window.onload = function () {
+        let user1 = new Character('.game-room', 'test', 1);
+        $(window).keydown(function (event) {
+            switch (event.which) {
+                case 37: // left
+                    {
+                        user1.moveLeft();
+                        break;
+                    }
+                case 38: // up
+                    {
+                        user1.moveUp();
+                        break;
+                    }
+                case 39: // right
+                    {
+                        user1.moveRight();
+                        break;
+                    }
+
+                case 40: // down
+                    {
+                        user1.moveDown();
+                        break;
+                    }
+                default: return; // exit this handler for other keys
+            }
+            event.preventDefault();
+        });
+        $('.chat-area').keydown(
+            function (event) {
+                event.stopPropagation();
+                if (event.keyCode == 13) {
+                    user1.talk(event.target.value);
+                    event.target.value = '';
+                }
+                else {
+                    return;
+                }
+            })
+        $('.submit-chat-area').unbind('click').click(function () {
+            let chatarea = $('.chat-area');
+            let message = chatarea.val();
+
+            user1.talk(message);
+            chatarea.value = '';
+        });
+    }
+</script>
