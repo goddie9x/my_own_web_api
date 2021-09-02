@@ -31,6 +31,9 @@ class siteController {
             res.render('home');
         }
     }
+    game(req, res, next) {
+        res.render('sites/game');
+    }
     search(req, res, next) {
         Schedule.find({
                 name: { $regex: '.*' + req.query.name + '.*' }

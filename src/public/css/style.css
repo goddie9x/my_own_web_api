@@ -259,6 +259,43 @@
       background-color: #fff;
       position: absolute;
       top: -10px; }
+    .canv .app .container .game-room {
+      width: 100%;
+      height: calc(100vh - 115px);
+      margin-bottom: 55px;
+      background-color: #1c2331;
+      position: relative; }
+      .canv .app .container .game-room .character {
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 30px;
+        background-color: red;
+        border-radius: 5px; }
+        .canv .app .container .game-room .character .message {
+          position: absolute;
+          background-color: #f5f6fa;
+          padding: 5px;
+          border-radius: 5px;
+          transform: translateX(calc(-50% + 10px));
+          max-width: 400px; }
+        .canv .app .container .game-room .character .message.bottom {
+          top: 45px; }
+        .canv .app .container .game-room .character .message.top {
+          bottom: 45px; }
+      .canv .app .container .game-room .chat-area {
+        position: absolute;
+        top: 100%;
+        width: 100%; }
+      .canv .app .container .game-room .submit-chat-area {
+        display: none;
+        position: absolute;
+        top: calc(100% + 70px); }
+      .canv .app .container .game-room .arrow-btns {
+        display: none;
+        position: relative; }
+        .canv .app .container .game-room .arrow-btns .arrow {
+          width: 50px; }
   .canv .app footer {
     background-color: #1c2331; }
     .canv .app footer .top-footer {
@@ -268,9 +305,27 @@
   display: none; }
 
 @media (max-width: 575px) {
-  .container {
+  .canv .app .container {
     width: 99%; }
-  .contacts_card {
+    .canv .app .container .game-room {
+      height: 70vh;
+      margin-bottom: 100px; }
+      .canv .app .container .game-room .message {
+        max-width: 200px; }
+      .canv .app .container .game-room .chat-area {
+        width: calc(100% - 130px); }
+      .canv .app .container .game-room .submit-chat-area {
+        display: block;
+        background-color: #f5f6fa;
+        padding: 5px;
+        min-width: 100px;
+        border-radius: 10px; }
+      .canv .app .container .game-room .arrow-btns .arrow {
+        display: block;
+        background-color: #f5f6fa;
+        padding: 5px;
+        text-align: center; }
+  .canv .app .contacts_card {
     margin-bottom: 15px !important; } }
 
 @media (max-width: 430px) {
