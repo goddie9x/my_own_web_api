@@ -275,6 +275,7 @@
         .canv .app .container .game-room .character .message {
           position: absolute;
           background-color: #f5f6fa;
+          max-height: 300px;
           padding: 5px;
           border-radius: 5px;
           transform: translateX(calc(-50% + 10px));
@@ -306,7 +307,7 @@
     .canv .app .container .game-room {
       height: 70vh;
       margin-bottom: 100px; }
-      .canv .app .container .game-room .message {
+      .canv .app .container .game-room .character .message {
         max-width: 200px; }
       .canv .app .container .game-room .action-container .chat-area {
         width: calc(100% - 130px); }

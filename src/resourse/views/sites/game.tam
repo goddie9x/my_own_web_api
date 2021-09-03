@@ -57,6 +57,9 @@
             let chatarea = $('.chat-area');
             let message = chatarea.val();
 
+            //block script or any esle code we do not expect
+            message=message.replace(/\</g,"&lt;");
+            message=message.replace(/\>/g,"&gt;");
             user1.talk(message);
             chatarea.val('');
         });
