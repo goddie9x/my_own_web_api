@@ -283,19 +283,15 @@
           top: 45px; }
         .canv .app .container .game-room .character .message.top {
           bottom: 45px; }
-      .canv .app .container .game-room .chat-area {
+      .canv .app .container .game-room .action-container {
         position: absolute;
         top: 100%;
         width: 100%; }
-      .canv .app .container .game-room .submit-chat-area {
-        display: none;
-        position: absolute;
-        top: calc(100% + 70px); }
-      .canv .app .container .game-room .arrow-btns {
-        display: none;
-        position: relative; }
-        .canv .app .container .game-room .arrow-btns .arrow {
-          width: 50px; }
+        .canv .app .container .game-room .action-container .chat-area {
+          width: 100%; }
+        .canv .app .container .game-room .action-container .arrow-btns {
+          display: none;
+          position: relative; }
   .canv .app footer {
     background-color: #1c2331; }
     .canv .app footer .top-footer {
@@ -312,19 +308,48 @@
       margin-bottom: 100px; }
       .canv .app .container .game-room .message {
         max-width: 200px; }
-      .canv .app .container .game-room .chat-area {
+      .canv .app .container .game-room .action-container .chat-area {
         width: calc(100% - 130px); }
-      .canv .app .container .game-room .submit-chat-area {
+      .canv .app .container .game-room .action-container .arrow-btns {
         display: block;
-        background-color: #f5f6fa;
-        padding: 5px;
-        min-width: 100px;
-        border-radius: 10px; }
-      .canv .app .container .game-room .arrow-btns .arrow {
-        display: block;
-        background-color: #f5f6fa;
-        padding: 5px;
-        text-align: center; }
+        width: 130px; }
+        .canv .app .container .game-room .action-container .arrow-btns .arrow {
+          display: block;
+          background-color: #f5f6fa;
+          padding: 5px;
+          text-align: center;
+          border-radius: 5px;
+          width: 40px;
+          position: absolute; }
+        .canv .app .container .game-room .action-container .arrow-btns .moveUp,
+        .canv .app .container .game-room .action-container .arrow-btns .moveDown {
+          left: 50%;
+          transform: translateX(-30%); }
+        .canv .app .container .game-room .action-container .arrow-btns .moveLeft,
+        .canv .app .container .game-room .action-container .arrow-btns .moveRight {
+          left: 5px;
+          top: 75%;
+          transform: translateY(-30%); }
+        .canv .app .container .game-room .action-container .arrow-btns .moveRight {
+          left: 105px; }
+        .canv .app .container .game-room .action-container .arrow-btns .moveDown {
+          top: 70px; }
+        .canv .app .container .game-room .action-container .arrow-btns .moveUp {
+          top: -5px; }
+        .canv .app .container .game-room .action-container .arrow-btns .submit-chat-area {
+          position: absolute;
+          display: block;
+          background-color: #f5f6fa;
+          padding: 5px;
+          width: 45px;
+          text-align: center;
+          border-radius: 10px;
+          left: 50%;
+          top: 50%;
+          transform: translate(-30%, 15%); }
+        .canv .app .container .game-room .action-container .arrow-btns .arrow:active,
+        .canv .app .container .game-room .action-container .arrow-btns .submit-chat-area:active {
+          box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); }
   .canv .app .contacts_card {
     margin-bottom: 15px !important; } }
 

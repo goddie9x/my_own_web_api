@@ -1,18 +1,19 @@
 <div class="game-room">
-    <div class="row">
+    <div class="row action-container">
         <textarea class="chat-area" name="chat-area" placeholder="Nhập nội dung chat rồi ấn enter" rows="2"></textarea>
         <div class="arrow-btns">
-            <bottom class="arrow arrow-up">&#8594;</bottom>
-            <bottom class="arrow arrow-dow">Gửi</bottom>
-            <bottom class="arrow arrow-left">Gửi</bottom>
-            <bottom class="arrow arrow-right">Gửi</bottom>
+            <bottom class="arrow moveUp">&#8593;</bottom>
+            <bottom class="arrow moveDown">&#8595;</bottom>
+            <bottom class="arrow moveLeft">&#8592;</bottom>
+            <bottom class="arrow moveRight">&#8594;</bottom>
+            <bottom class="submit-chat-area">Gửi</bottom>
         </div>
     </div>
-    <bottom class="submit-chat-area">Gửi</bottom>
 </div>
 <script src="./scripts/Character.js"></script>
 <script>
     window.onload = function () {
+        
         let user1 = new Character('.game-room', 'test', 1);
         $(window).keydown(function (event) {
             switch (event.which) {
@@ -57,7 +58,18 @@
             let message = chatarea.val();
 
             user1.talk(message);
-            chatarea.value = '';
+            chatarea.val('');
+        });
+        $('.arrow').on('touchstart', function (e) {
+            user1[e.target.classList[1]]();
+
+            let holding=setInterval(function () {
+            user1[e.target.classList[1]]();
+           },100);
+           
+           $(e.target).on("touchend",function (e) {
+               clearInterval(holding);
+           });
         });
     }
 </script>
