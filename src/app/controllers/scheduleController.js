@@ -2,20 +2,46 @@ const Schedule = require('../models/Schedule');
 const { multipleMongooseToObjects, mongooseToObject } = require('../../utils/mongoose');
 const checkAndAddHttpSlash = require('../../utils/checkAndAddHttpSlash');
 const { convertDateToDMY, reverseDateForDisplayInForm } = require('../../utils/convertDate');
+const SCHEDULE_PER_PAGE = 8;
+const path = require('path');
 class ScheduleController {
     index(req, res, next) {
-            Schedule.find({}).sort({ dayOfWeek: "asc", partOfDay: "asc" })
-                .then(schedules => {
-                    schedules = multipleMongooseToObjects(schedules);
+            let page = req.query.page;
 
-                    schedules = schedules.map(function(schedule) {
-                        schedule.dayStart = convertDateToDMY(schedule.dayStart);
-                        schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
-                        return schedule;
-                    });
-                    res.render('schedules/stored', { schedules });
-                })
-                .catch(next);
+            if (page) {
+                if (page < 1) {
+                    page = 1;
+                }
+                let numberOfSchedulesPass = (page - 1) * SCHEDULE_PER_PAGE;
+
+                Schedule.find({}).sort({ dayOfWeek: "asc", partOfDay: "asc" })
+                    .skip(numberOfSchedulesPass)
+                    .limit(SCHEDULE_PER_PAGE)
+                    .then(schedules => {
+                        schedules = multipleMongooseToObjects(schedules);
+
+                        schedules = schedules.map(function(schedule) {
+                            schedule.dayStart = convertDateToDMY(schedule.dayStart);
+                            schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
+                            return schedule;
+                        });
+                        res.render('schedules/stored', { schedules });
+                    })
+                    .catch(next);
+            } else {
+                Schedule.find({}).sort({ dayOfWeek: "asc", partOfDay: "asc" })
+                    .then(schedules => {
+                        schedules = multipleMongooseToObjects(schedules);
+
+                        schedules = schedules.map(function(schedule) {
+                            schedule.dayStart = convertDateToDMY(schedule.dayStart);
+                            schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
+                            return schedule;
+                        });
+                        res.render('schedules/stored', { schedules });
+                    })
+                    .catch(next);
+            }
         }
         //create a schedule
     create(req, res, next) {
@@ -55,21 +81,35 @@ class ScheduleController {
             .catch(next);
     }
     manager(req, res, next) {
-        let counterDeletedSchedule = Schedule.countDeleted();
-        let finderSchedule = Schedule.find({}).sort({ dayOfWeek: "asc", partOfDay: "asc" });
+        let page = req.query.page;
+        if (page) {
+            if (page < 1) {
+                page = 1;
+            }
+            let numberOfSchedulesPass = (page - 1) * SCHEDULE_PER_PAGE;
+            let counterSchedule = Schedule.countDocuments();
+            let finderSchedule = Schedule.find({}).sort({ dayOfWeek: "asc", partOfDay: "asc" })
+                .skip(numberOfSchedulesPass)
+                .limit(SCHEDULE_PER_PAGE);
 
-        Promise.all([finderSchedule, counterDeletedSchedule])
-            .then(([schedules, deleted]) => {
-                schedules = multipleMongooseToObjects(schedules);
+            Promise.all([finderSchedule, counterSchedule])
+                .then(([schedules, notDelete]) => {
+                    schedules = multipleMongooseToObjects(schedules).map(function(schedule) {
+                        schedule.dayStart = convertDateToDMY(schedule.dayStart);
+                        schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
+                        return schedule;
+                    });
 
-                schedules = schedules.map(function(schedule) {
-                    schedule.dayStart = convertDateToDMY(schedule.dayStart);
-                    schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
-                    return schedule;
-                });
-                res.render('schedules/manager', { schedules, deleted });
-            })
-            .catch(next);
+                    res.send({ schedules, notDelete });
+                })
+                .catch(next);
+        } else {
+            Schedule.countDeleted()
+                .then(deleted => {
+                    res.render('schedules/manager', { deleted });
+                })
+                .catch(next);
+        }
     }
     modify(req, res, next) {
         let id = req.params.id;
@@ -182,21 +222,48 @@ class ScheduleController {
             .catch(next);
     }
     trash(req, res, next) {
-        let schedulesDeletedFind = Schedule.findDeleted({}).sort({ dayOfWeek: "asc", partOfDay: "asc" });
-        let countScheduleNotDelete = Schedule.countDocuments();
+        let page = req.query.page;
+        if (page) {
+            if (page < 1) {
+                page = 1;
+            }
+            let numberOfSchedulesPass = (page - 1) * SCHEDULE_PER_PAGE;
+            let schedulesDeletedFind = Schedule.findDeleted({})
+                .sort({ dayOfWeek: "asc", partOfDay: "asc" })
+                .skip(numberOfSchedulesPass)
+                .limit(SCHEDULE_PER_PAGE);
+            let countScheduleNotDelete = Schedule.countDocuments();
 
-        Promise.all([schedulesDeletedFind, countScheduleNotDelete])
-            .then(function([schedulesDeleted, countNotDelete]) {
-                schedulesDeleted = multipleMongooseToObjects(schedulesDeleted);
+            Promise.all([schedulesDeletedFind, countScheduleNotDelete])
+                .then(function([schedulesDeleted, countNotDelete]) {
+                    schedulesDeleted = multipleMongooseToObjects(schedulesDeleted);
 
-                schedulesDeleted = schedulesDeleted.map(function(schedule) {
-                    schedule.dayStart = convertDateToDMY(schedule.dayStart);
-                    schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
-                    return schedule;
-                });
-                res.render('schedules/trash', { schedulesDeleted, countNotDelete });
-            })
-            .catch(next);
+                    schedulesDeleted = schedulesDeleted.map(function(schedule) {
+                        schedule.dayStart = convertDateToDMY(schedule.dayStart);
+                        schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
+                        return schedule;
+                    });
+                    res.render('schedules/trash', { schedulesDeleted, countNotDelete });
+                })
+                .catch(next);
+        } else {
+
+            let schedulesDeletedFind = Schedule.findDeleted({}).sort({ dayOfWeek: "asc", partOfDay: "asc" });
+            let countScheduleNotDelete = Schedule.countDocuments();
+
+            Promise.all([schedulesDeletedFind, countScheduleNotDelete])
+                .then(function([schedulesDeleted, countNotDelete]) {
+                    schedulesDeleted = multipleMongooseToObjects(schedulesDeleted);
+
+                    schedulesDeleted = schedulesDeleted.map(function(schedule) {
+                        schedule.dayStart = convertDateToDMY(schedule.dayStart);
+                        schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
+                        return schedule;
+                    });
+                    res.render('schedules/trash', { schedulesDeleted, countNotDelete });
+                })
+                .catch(next);
+        }
     }
     forceDeleteAnItem(req, res, next) {
         let id = req.params.id;

@@ -43,7 +43,7 @@
       align-items: center; }
       .canv .app .container .select-all .action-select {
         max-width: 130px; }
-    .canv .app .container .select-all > * {
+    .canv .app .container .select-all > {
       margin-left: 16px; }
     .canv .app .container table {
       width: 100%;
@@ -51,6 +51,21 @@
       .canv .app .container table td,
       .canv .app .container table th {
         vertical-align: middle; }
+    .canv .app .container .pagination-down .paginationjs-pages ul {
+      display: flex;
+      justify-content: center; }
+      .canv .app .container .pagination-down .paginationjs-pages ul li {
+        list-style-type: none;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        background-color: wheat;
+        font-size: 22px;
+        margin: 2px; }
+        .canv .app .container .pagination-down .paginationjs-pages ul li.active {
+          background-color: red;
+          color: white; }
     .canv .app .container form .form-select-cus {
       padding: 0.375rem 2.25rem 0.375rem 0.75rem;
       -moz-padding-start: calc(0.75rem - 3px);

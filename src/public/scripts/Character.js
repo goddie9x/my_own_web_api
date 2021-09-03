@@ -4,7 +4,7 @@ class Character {
         this.positionX = Math.floor(this.curentContainer.width() / 2);
         this.positionY = 0;
         this.name = characterName;
-        this.characterCount;
+        this.characterCount = characterCount;
         this.curentContainer.append(`<div class="character-${characterCount} character"></div>`);
         this.currentCharacter = $(`.character-${characterCount}`);
         this.maxWidth = this.curentContainer.width();
