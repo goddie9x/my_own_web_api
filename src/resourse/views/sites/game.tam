@@ -55,11 +55,10 @@
             })
         $('.submit-chat-area').unbind('click').click(function () {
             let chatarea = $('.chat-area');
-            let message = chatarea.val();
+            let message = chatarea.val().slice(0,540);
 
             //block script or any esle code we do not expect
-            message=message.replace(/\</g,"&lt;");
-            message=message.replace(/\>/g,"&gt;");
+            message=message.replace(/</g,"&lt;").replace(/>/g,"&gt;");
             user1.talk(message);
             chatarea.val('');
         });

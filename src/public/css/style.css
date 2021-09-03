@@ -276,14 +276,64 @@
           position: absolute;
           background-color: #f5f6fa;
           max-height: 300px;
+          width: max-content;
+          word-wrap: break-word;
           padding: 5px;
           border-radius: 5px;
           transform: translateX(calc(-50% + 10px));
-          max-width: 400px; }
+          max-width: 400px;
+          text-align: center;
+          overflow: hidden; }
         .canv .app .container .game-room .character .message.bottom {
           top: 45px; }
+          .canv .app .container .game-room .character .message.bottom:after {
+            top: -10px;
+            content: "";
+            width: 0;
+            height: 0;
+            position: absolute;
+            right: 5px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid #f5f6fa; }
         .canv .app .container .game-room .character .message.top {
           bottom: 45px; }
+          .canv .app .container .game-room .character .message.top:after {
+            top: -10px;
+            content: "";
+            width: 0;
+            height: 0;
+            position: absolute;
+            right: 5px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid #f5f6fa; }
+        .canv .app .container .game-room .character .message.left {
+          left: 0;
+          transform: unset; }
+          .canv .app .container .game-room .character .message.left:after {
+            top: -10px;
+            content: "";
+            width: 0;
+            height: 0;
+            position: absolute;
+            right: 5px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid #f5f6fa; }
+        .canv .app .container .game-room .character .message.right {
+          right: 0;
+          transform: unset; }
+          .canv .app .container .game-room .character .message.right:after {
+            top: -10px;
+            content: "";
+            width: 0;
+            height: 0;
+            position: absolute;
+            right: 5px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid #f5f6fa; }
       .canv .app .container .game-room .action-container {
         position: absolute;
         top: 100%;
