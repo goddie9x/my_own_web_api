@@ -14,26 +14,13 @@
     </tr>
   </thead>
   <br>
-  {{#each schedules}}
-      <tr>
-        <th class="hidden-mb" scope="row">{{plusOne @index}}</th>
-        <td>{{this.name}}</td>
-         <td>{{convetDayOfWeek this.dayOfWeek}}</td>
-        <td>{{convetPartOfDay this.partOfDay}}</td>
-        <td>{{this.room}}</td>
-        <td>{{this.dayStart}} - {{this.dayEnd}}</td>
-        <td>
-          {{#each this.linkMeet}}
-          <a href="http://{{this}}" target="_blank">Link {{plusOne @index}}</a>
-          {{else}}
-          <a href="http://{{this.linkMeet}}"target="_blank">Link</a>
-          {{/each}}
-        </td>
-      </tr>
-    {{else}}
-        <tr>
-          <th colspan="7" rowspan="3" class="text-center" scope="row">Hiện không có thời khoá biểu khả dụng</th>
-        </tr>
-  {{/each}}
+  <tbody>
   </tbody>
 </table>
+<div class="pagination-down"></div>
+<script src="/vendors/js/pagination.js"></script>
+<script src="/scripts/schedulesRender.js"></script>
+<script>
+  loadPage(1,'/schedules');
+  renderPagination();
+</script>
