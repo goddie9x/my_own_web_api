@@ -11,7 +11,7 @@ const User = new Schema({
     status: { type: Boolean, default: false },
     //0: admin, 1: mod, 2: populer user
     role: { type: Number, default: 2 },
-    img: { type: String, maxLength: 255 },
+    image: { type: String, maxLength: 255 },
     slug: { type: String, slug: 'name', unique: true },
     fullName: { type: String, maxLength: 255 },
     email: [{ type: String, maxLength: 255 }],

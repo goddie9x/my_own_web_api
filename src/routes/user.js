@@ -4,7 +4,7 @@ const userController = require('../app/controllers/userController');
 const viewUser = require('../app/middlewares/viewUser');
 
 router.get('/profile/:id', viewUser, userController.profile);
-router.get('/loggin', userController.loggin);
+router.post('/loggin', userController.loggin);
 router.post('/register', userController.register);
 router.get('/', userController.index);
 

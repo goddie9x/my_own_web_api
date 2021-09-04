@@ -9,22 +9,48 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="/schedules">Lịch học</a>
+            <a class="nav-link " aria-current="page" href="/news">Tin tức</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="/schedules/create">Đăng lịch học</a>
+            <a class="nav-link " aria-current="page" href="/post">Bài viết</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="/schedules/stored">Quản lý lịch học</a>
+            <a class="nav-link " aria-current="page" href="/game">Phòng chat</a>
           </li>
         </ul>
         <form class="d-flex" method="GET" action="/search">
-          <input class="form-control me-2"name="name" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control me-2" name="name" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-        <button type="button" class="ms-4 btn btn-primary" data-bs-toggle="modal" data-bs-target="#loggin">
+        {{#if user}}
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle"id="user-menu"data-bs-toggle="dropdown">
+            <img class="avatar" src="" alt="">
+          </button>
+          <ul class="dropdown-menu user-menu-list" aria-labelledby="user-menu">
+            <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/user/profile">Quản lý tài khoản</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/schedules">Lịch học</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/schedules/create">Đăng lịch học</a>
+          </li>
+             <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/schedules/stored">Quản lý lịch học</a>
+          </li>
+          </li>
+             <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="/user/logout">Đăng xuất</a>
+          </li>
+          </ul>
+        </div>
+        {{else}}
+        <button type="button" class="btn-login ms-4 btn btn-primary" data-bs-toggle="modal" data-bs-target="#loggin">
           Đăng nhập
         </button>
+        {{/if}}
       </div>
     </div>
   </nav>
@@ -38,26 +64,30 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form class="form-loggin" method="get" action="/user">
+          <form class="form-loggin">
             <div class="mb-3">
               <label for="account-log" class="form-label">Tài khoản </label>
-              <input type="account"name="account" class="form-control" id="account-log" aria-describedby="accountHelp" required>
-              <div id="accountHelp" class="form-text">Tôi sẽ không bao giờ chia sẻ tài khoản của bạn đến bất kỳ ai khác</div>
+              <input type="account" name="account" class="form-control account" minlength="5" id="account-log"
+                aria-describedby="accountHelp" required>
+              <div id="accountHelp" class="form-text">Tôi sẽ không bao giờ chia sẻ tài khoản của bạn đến bất kỳ ai khác
+              </div>
             </div>
             <div class="mb-3">
-              <label for="Password-log"class="form-label">Mật khẩu</label>
-              <input type="password" name="password" class="form-control" id="Password-log" required>
+              <label for="Password-log" class="form-label">Mật khẩu</label>
+              <input type="password" name="password" minlength="8" class="form-control password" id="Password-log"
+                required>
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="save-password">
               <label class="form-check-label" for="save-password">Lưu mật khẩu</label>
             </div>
-            <button type="submit" class="btn btn-primary">Đăng nhập</button>
+            <button type="submit" class="btn btn-primary" onclick="onSubmitLogin(event)">Đăng nhập</button>
           </form>
         </div>
         <div class="modal-footer">
           <p>Chưa có tải khoản? Đăng ký ngay --></p>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  data-bs-toggle="modal" data-bs-target="#register">Đăng ký</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal"
+            data-bs-target="#register">Đăng ký</button>
         </div>
       </div>
     </div>
@@ -70,32 +100,49 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body ">
-          <form class="form-register" method="post" action="/user/register">
+          <form class="form-register">
             <div class="mb-3">
-              <label for="account-reg" class="form-label" >Tài khoản </label>
-              <input type="account" name="account" class="form-control" id="account-reg" aria-describedby="accountHelp" required>
-              <div id="accountHelp" class="form-text">Chúng tôi sẽ không bao giờ chia sẻ tài khoản của bạn cho bất kỳ ai khác</div>
+              <label for="account-reg" class="form-label">Tài khoản </label>
+              <input type="account" name="account" class="form-control account" minlength="5" id="account-reg"
+                aria-describedby="accountHelp" required>
+              <div id="accountHelp" class="form-text">Chúng tôi sẽ không bao giờ chia sẻ tài khoản của bạn cho bất kỳ ai
+                khác</div>
             </div>
             <div class="mb-3">
-              <label for="input-password-reg" class="form-label" >Mật khẩu</label>
-              <input type="password" class="form-control" name="password" id="input-password-reg" required>
+              <label for="input-password-reg" class="form-label">Mật khẩu</label>
+              <input type="password" class="form-control password" minlength="8" name="password" id="input-password-reg"
+                required>
             </div>
             <div class="mb-3">
-              <label for="password_confirm"  class="form-label" >Nhập lại mật khẩu</label>
-              <input type="password" class="form-control"name="password_confirm" id="password_confirm" required>
+              <label for="password_confirm" class="form-label">Nhập lại mật khẩu</label>
+              <input type="password" class="form-control" name="password_confirm" id="password_confirm" required>
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="except-term">
               <label class="form-check-label" for="except-term">Đồng ý điều khoản</label>
             </div>
-            <button type="submit" class="btn btn-primary">Đăng ký</button>
+            <button type="submit" class="btn btn-primary" onclick="onSubmitRegester(event)">Đăng ký</button>
           </form>
         </div>
         <div class="modal-footer">
-           <p>Đã có tài khoản rồi? Đăng nhập --></p>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  data-bs-toggle="modal" data-bs-target="#loggin">Đăng nhập</button>
+          <p>Đã có tài khoản rồi? Đăng nhập --></p>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal"
+            data-bs-target="#loggin">Đăng nhập</button>
         </div>
       </div>
     </div>
   </div>
 </header>
+
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 999">
+  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="" class="rounded me-2" alt="...">
+      <strong class="toast-title"></strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      
+    </div>
+  </div>
+</div>

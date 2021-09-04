@@ -12,6 +12,8 @@ const session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
+
 //create server socket
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
@@ -91,6 +93,7 @@ app.use(passport.initialize())
 app.use(passport.session());
 app.use(cookieParser());
 app.use(getBreadcrumbs);
+
 route(app);
 
 io.on('connection', function(socket) {

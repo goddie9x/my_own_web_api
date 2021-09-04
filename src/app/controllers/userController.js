@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const { multipleMongooseToObjects } = require('../../utils/mongoose');
+const jwt = require('jsonwebtoken');
 
 class userController {
     index(req, res, next) {
@@ -9,18 +10,17 @@ class userController {
         let account = req.body.account;
         let password = req.body.password;
 
+        console.log(account, password);
         User.find({
-                account
+                account: account
             })
             .then(user => {
                 if (Object.keys(user).length === 0) {
                     User.create({ account, password })
                         .then((user) => {
-                            req.session.user.userID = user._id;
-                            req.session.user.imageUser = user.img;
-                            req.session.user.nameUser = user.name;
-
-                            res.render('users/profile');
+                            User.updateOne({ _id: user._id }, { status: true });
+                            let token = jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '1h' });
+                            res.send({ token });
                         })
                         .catch(next);
                 } else {
@@ -41,11 +41,10 @@ class userController {
                 if (Object.keys(user).length === 0) {
                     res.send(`tài khoản ${account} không tồn tại`);
                 }
-                return User.updateOne({ _id: user._id }, { status: true });
-            })
-            .then(user => {
-                req.session.user = user;
-                res.redirect(`/profile/${user._id}`);
+
+                User.updateOne({ _id: user._id }, { status: true });
+                let token = jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '1h' });
+                res.send({ token });
             })
             .catch(next);
     }

@@ -18,4 +18,4 @@
   </tbody>
 </table>
 <script src="./scripts/schedulesRender.js"></script>
-<script>loadPage()</script>
+<script>loadPage(1)</script>

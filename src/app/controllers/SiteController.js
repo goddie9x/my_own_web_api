@@ -6,25 +6,22 @@ class siteController {
 
     index(req, res, next) {
         if (req.query.page) {
-
             let today = new Date();
 
             today = Date.parse(today);
-
             Schedule.find({
                     dayStart: { $lt: today },
                     dayEnd: { $gt: today }
                 }).sort({ dayOfWeek: "asc", partOfDay: "asc" })
                 .then(schedules => {
                     schedules = multipleMongooseToObjects(schedules);
+
                     schedules = schedules.map(function(schedule) {
                         schedule.dayStart = convertDateToDMY(schedule.dayStart);
                         schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
-
                         return schedule;
                     });
-
-                    res.send(schedules);
+                    res.send({ schedules });
                 })
                 .catch(next);
         } else {

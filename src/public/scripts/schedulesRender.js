@@ -49,7 +49,7 @@ function onForceDeleteBtnClick(e) {
     });
 }
 
-function loadPage(page, staticUrl = '/schedules/stored', managerType) {
+function loadPage(page, staticUrl = '/', managerType) {
     const DOW = ["Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy", "Chủ Nhật"];
     const POD = ["Sáng", "Chiều", "Tối"];
 
@@ -58,10 +58,10 @@ function loadPage(page, staticUrl = '/schedules/stored', managerType) {
     }
     $.get(`${staticUrl}?page=${page}`)
         .done(({ schedules }) => {
-            console.log(schedules);
             let tableBody = $('.table tbody');
+
             tableBody.html('');
-            if (schedules.length) {
+            if (schedules) {
                 schedules.forEach((schedule, index) => {
                     let tempSchedule = `<tr class="schedule-item">`;
                     if (managerType) {
