@@ -13,11 +13,13 @@ class ScheduleController {
                     page = 1;
                 }
                 let numberOfSchedulesPass = (page - 1) * SCHEDULE_PER_PAGE;
-
-                Schedule.find({}).sort({ dayOfWeek: "asc", partOfDay: "asc" })
+                let counterSchedule = Schedule.countDocuments();
+                let finderSchedule = Schedule.find({}).sort({ dayOfWeek: "asc", partOfDay: "asc" })
                     .skip(numberOfSchedulesPass)
-                    .limit(SCHEDULE_PER_PAGE)
-                    .then(schedules => {
+                    .limit(SCHEDULE_PER_PAGE);
+
+                Promise.all([finderSchedule, counterSchedule])
+                    .then(([schedules, notDelete]) => {
                         schedules = multipleMongooseToObjects(schedules);
 
                         schedules = schedules.map(function(schedule) {
@@ -25,22 +27,11 @@ class ScheduleController {
                             schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
                             return schedule;
                         });
-                        res.render('schedules/stored', { schedules });
+                        res.send({ schedules, notDelete });
                     })
                     .catch(next);
             } else {
-                Schedule.find({}).sort({ dayOfWeek: "asc", partOfDay: "asc" })
-                    .then(schedules => {
-                        schedules = multipleMongooseToObjects(schedules);
-
-                        schedules = schedules.map(function(schedule) {
-                            schedule.dayStart = convertDateToDMY(schedule.dayStart);
-                            schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
-                            return schedule;
-                        });
-                        res.render('schedules/stored', { schedules });
-                    })
-                    .catch(next);
+                res.render('schedules/stored');
             }
         }
         //create a schedule
@@ -232,35 +223,25 @@ class ScheduleController {
                 .sort({ dayOfWeek: "asc", partOfDay: "asc" })
                 .skip(numberOfSchedulesPass)
                 .limit(SCHEDULE_PER_PAGE);
-            let countScheduleNotDelete = Schedule.countDocuments();
+            let countScheduleNotDelete = Schedule.countDeleted();
 
             Promise.all([schedulesDeletedFind, countScheduleNotDelete])
-                .then(function([schedulesDeleted, countNotDelete]) {
-                    schedulesDeleted = multipleMongooseToObjects(schedulesDeleted);
+                .then(function([schedules, deleted]) {
+                    schedules = multipleMongooseToObjects(schedules);
 
-                    schedulesDeleted = schedulesDeleted.map(function(schedule) {
+                    schedules = schedules.map(function(schedule) {
                         schedule.dayStart = convertDateToDMY(schedule.dayStart);
                         schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
                         return schedule;
                     });
-                    res.render('schedules/trash', { schedulesDeleted, countNotDelete });
+                    res.send({ schedules, deleted });
                 })
                 .catch(next);
         } else {
 
-            let schedulesDeletedFind = Schedule.findDeleted({}).sort({ dayOfWeek: "asc", partOfDay: "asc" });
-            let countScheduleNotDelete = Schedule.countDocuments();
-
-            Promise.all([schedulesDeletedFind, countScheduleNotDelete])
-                .then(function([schedulesDeleted, countNotDelete]) {
-                    schedulesDeleted = multipleMongooseToObjects(schedulesDeleted);
-
-                    schedulesDeleted = schedulesDeleted.map(function(schedule) {
-                        schedule.dayStart = convertDateToDMY(schedule.dayStart);
-                        schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
-                        return schedule;
-                    });
-                    res.render('schedules/trash', { schedulesDeleted, countNotDelete });
+            Schedule.countDocuments()
+                .then(function(countNotDelete) {
+                    res.render('schedules/trash', { countNotDelete });
                 })
                 .catch(next);
         }

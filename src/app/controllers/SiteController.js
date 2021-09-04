@@ -5,7 +5,7 @@ const { convertDateToDMY } = require('../../utils/convertDate');
 class siteController {
 
     index(req, res, next) {
-        if (req.query.getBody) {
+        if (req.query.page) {
 
             let today = new Date();
 

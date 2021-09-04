@@ -54,36 +54,7 @@
         </tr>
       </thead>
       <br>
-      {{#each schedulesDeleted}}
-      <tr class="schedule-item">
-        <td>
-          <input class="check-item" type="checkbox" name="id" value="{{this._id}}">
-        </td>
-        <td>{{plusOne @index}}</td>
-        <td>{{this.name}}</td>
-        <td>{{convetDayOfWeek this.dayOfWeek}}</td>
-        <td>{{convetPartOfDay this.partOfDay}}</td>
-        <td>{{this.room}}</td>
-        <td>{{this.dayStart}} - {{this.dayEnd}}</td>
-        <td>
-          {{#each this.linkMeet}}
-          <a href="http://{{this}}" target="_blank">Link {{plusOne @index}}</a>
-          {{else}}
-          <a href="http://{{this.linkMeet}}"target="_blank">Link</a>
-          {{/each}}
-        </td>
-        <td class="justify-content-evenly">
-            <div restoreId="{{this._id}}" class="btn bg-primary restore-btn">Khôi phục</div>
-          <div class="btn bg-danger delete" data-bs-toggle="modal" data-bs-target="#alertDelete"
-            btn-value="{{this._id}}">Xoá vĩnh viễn</div>
-        </td>
-      </tr>
-      {{else}}
-      <tr>
-        <th colspan="9" rowspan="3" class="text-center" scope="row">Hiện không có thời khoá biểu khả dụng</th>
-      </tr>
-      {{/each}}
-      </tbody>
+      <tbody></tbody>
     </table>
 </form>
 
@@ -102,95 +73,9 @@
   </div>
 </div>
 </div>  
+<script src="/vendors/js/pagination.js"></script>
+<script src="/scripts/schedulesRender.js"></script>
 <script>
-  $(document).ready(function () {
-    const checkAll = $('.checkall');
-    const checkItem = $('.check-item');
-    const realActionAll = $('.real-action-all-btn');
-    //handle multiple actions
-    checkAll.on('change', function () {
-      if (this.checked) {
-        checkItem.prop('checked', true);
-      }
-      else {
-        checkItem.prop('checked', false);
-      }
-    });
-    checkItem.each(function (index, element) {
-
-      $(element).on('change', function () {
-        let allCheckHasChecked = true;
-
-        if (!this.checked) {
-          checkAll.prop('checked', false);
-        }
-
-        checkItem.each(function (index2, element2) {
-          if (!element2.checked) {
-            allCheckHasChecked = false;
-          }
-        });
-        if (allCheckHasChecked) {
-          checkAll.prop('checked', true);
-        }
-      });
-    });
-
-    $('.action-all-btn').on('click', function () {
-      $('#action-all-modal .modal-body').html('<h2>Chiến</h2>');
-    })
-
-    realActionAll.on('click', function (e) {
-
-      let countChecked = 0;
-      checkItem.each(function (index, element) {
-        if (element.checked) {
-          countChecked++;
-        }
-      });
-      if (countChecked && $('.action-select').val() != 'Hành động') {
-        $('#action-all-modal .modal-body').html('<h2>Chiến</h2>');
-
-        $('.form-container').submit();
-      }
-      else {
-        $('#action-all-modal .modal-body').html('<h2>Chẳng có việc gì làm ở đây cả</h2>');
-      }
-    });
-//handle restore current schedule onclick href="/schedules/restore/{{this._id}}"
-    $('.restore-btn').unbind('click').on('click', function(e){
-      $.get(`/schedules/restore/${$(e.target).attr('restoreId')}`,function(transport){
-            reIndexColumns();
-            increaseCountValTrash();
-             $(e.target).closest('.schedule-item').remove();
-      });
-    });
-  //handle delete current item
-    $('.delete').on('click', function (e) {
-      $('.force-delete').unbind('click').on('click', function (event){
-       $.post(`trash/${$(e.target).attr('btn-value')}?_method=delete`,function(transport) {
-            reIndexColumns();
-            $(e.target).closest('.schedule-item').remove();
-            $(event.target).closest('.modal').find('.btn-close').click();
-             reduceOneCountValTrash();
-          });
-      });
-      attr('action', `trash/${$(this).attr('btn-value')}?_method=delete`);
-    });
-  });
-  function reIndexColumns() {
-    $('.index').each((index,element)=>{
-      element.innerHTML=index+1;
-    });
-  }
-  function increaseCountValTrash(){
-      let elementCountValTrash=$('.countVal');
-
-      elementCountValTrash.html(parseInt(elementCountValTrash[0].innerHTML,10)+1);
-  }
-   function reduceOneCountValTrash(){
-      let elementCountValTrash=$('.countVal');
-
-      elementCountValTrash.html(parseInt(elementCountValTrash[0].innerHTML,10)-1);
-  }
+  loadPage(1,'/schedules/trash','trash');
+  renderPagination('/schedules/trash','trash','deleted','schedulesDeleted');
 </script>
