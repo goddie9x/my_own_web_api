@@ -1,6 +1,7 @@
 const Schedule = require('../models/Schedule');
 const { multipleMongooseToObjects } = require('../../utils/mongoose');
 const { convertDateToDMY } = require('../../utils/convertDate');
+const checkAndAddHttpSlash = require('../../utils/checkAndAddHttpSlash');
 
 class siteController {
 
@@ -15,6 +16,11 @@ class siteController {
                 }).sort({ dayOfWeek: "asc", partOfDay: "asc" })
                 .then(schedules => {
                     schedules = multipleMongooseToObjects(schedules);
+                    schedules.forEach(schedule => {
+                        schedule.linkMeet = schedule.linkMeet.map(function(link) {
+                            return checkAndAddHttpSlash(link);
+                        });
+                    })
 
                     schedules = schedules.map(function(schedule) {
                         schedule.dayStart = convertDateToDMY(schedule.dayStart);

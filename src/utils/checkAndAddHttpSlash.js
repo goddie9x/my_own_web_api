@@ -1,6 +1,6 @@
 module.exports = function checkAndAddHttpSlash(url) {
-    if (!url.contains('http')) {
-        url = 'http://' + url;
+    if (!url.includes('http')) {
+        newUrl = 'http://' + url;
     }
-    return url;
+    return newUrl;
 }
