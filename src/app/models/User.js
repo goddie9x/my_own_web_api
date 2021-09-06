@@ -12,7 +12,6 @@ const User = new Schema({
     //0: admin, 1: mod, 2: populer user
     role: { type: Number, default: 2 },
     image: { type: String, maxLength: 255 },
-    slug: { type: String, slug: 'name', unique: true },
     fullName: { type: String, maxLength: 255 },
     email: [{ type: String, maxLength: 255 }],
     phone: [{ type: String, maxLength: 255 }],
@@ -20,7 +19,6 @@ const User = new Schema({
     description: { type: String, maxLength: 600 },
 }, { timestamps: true });
 
-mongoose.plugin(slug);
 User.method.encryptPassword = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null);
 }

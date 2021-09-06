@@ -24,24 +24,28 @@
         </form>
         <div class="ms-2 dropdown user_menu">
           <button class="btn btn-secondary dropdown-toggle"id="user-menu"data-bs-toggle="dropdown">
+            {{#if user.image}}
             <img class="avatar" src="" alt="">
+            {{else}}
+            <i class="fal fa-user"></i>
+            {{/if}}
           </button>
           <ul class="dropdown-menu user-menu-list" aria-labelledby="user-menu">
             <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="/user/profile">Quản lý tài khoản</a>
+            <div class="nav-link user_profile">Quản lý tài khoản</div>
           </li>
             <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="/schedules">Lịch học</a>
+            <a class="nav-link view_schedule" aria-current="page" href="/schedules">Lịch học</a>
           </li>
             <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="/schedules/create">Đăng lịch học</a>
+            <a class="nav-link create_schedule" aria-current="page" href="/schedules/create">Đăng lịch học</a>
           </li>
              <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="/schedules/stored">Quản lý lịch học</a>
+            <a class="nav-link schedule_manager" aria-current="page" href="/schedules/stored">Quản lý lịch học</a>
           </li>
           </li>
              <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="/user/logout">Đăng xuất</a>
+              <div class="nav-link loggout_btn"onclick="logout()">Đăng xuất</div>
           </li>
           </ul>
         </div>

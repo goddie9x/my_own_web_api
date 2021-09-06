@@ -36,11 +36,12 @@ function onSubmitLogin(event) {
                         document.cookie = `tokenUID=${data.token};max-age=86400`;
                         formLogin.closest('.modal-content').find('.btn-close').click();
                         showToast('Đăng nhâp thành công', 'chào mừng bạn đến với ngôi nhà chung của chúng ta');
-                        getUserInfo();
+                        location.reload();
                     })
-                    .catch(error => {
-                        showToast('Đăng nhâp không thành công', 'vui lòng thử lại');
-                    })
+
+                .catch(error => {
+                    showToast('Đăng nhâp không thành công', 'vui lòng thử lại');
+                })
             }
         }
     });
@@ -86,7 +87,10 @@ function onSubmitRegester(event) {
                         document.cookie = `tokenUID=${data.token};max-age=86400`;
                         formRegester.closest('.modal-content').find('.btn-close').click();
                         showToast('Đăng ký thành công', 'giờ đây bạn có thể khám phá nhiều tính năng hơn');
-                        getUserInfo();
+                        location.reload();
+                    })
+                    .then(user => {
+                        console.log(user);
                     })
                     .catch(error => {
                         showToast('Đăng ký không thành công', 'vui lòng thử lại');
@@ -94,6 +98,11 @@ function onSubmitRegester(event) {
             }
         }
     });
+}
+
+function logout() {
+    document.cookie = `tokenUID=null`;
+    location.reload();
 }
 
 function showUserManagerHeader() {
@@ -114,18 +123,25 @@ function showToast(title, message) {
     setTimeout(function() {
         toast.toggleClass('hide', 'show');
         return;
-    }, 7000);
+    }, 10000);
 }
 
-function getUserInfo() {
+const getUserInfo = new Promise(function(resolve, reject) {
     $.get('/user/info')
         .then(function(data) {
             if (data != 'không có thông tin đăng nhâp') {
                 showUserManagerHeader();
+                resolve(data);
             }
-        });
-}
+        })
+        .catch(function(error) {
+            reject(error);
+        })
+});
 
 $(document).ready(function() {
-    getUserInfo();
+    getUserInfo
+        .then(function(data) {
+            console.log(data);
+        })
 });

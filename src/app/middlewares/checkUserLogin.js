@@ -1,27 +1,31 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
-module.exports = function userLoginMiddleware(req, res, next) {
+module.exports = function checkUserLogin(req, res, next) {
 
     let temp = req.cookies.tokenUID;
-    let userID;
+    let userId;
 
     if (temp) {
         try {
-            userID = jwt.verify(temp, process.env.JWT);
+            userId = jwt.verify(temp, process.env.JWT);
         } catch (err) {
-            res.send(err);
+            res.status(500).json({ message: 'Phiên đăng nhập hết hạn, bạn cần đăng nhập lại' });
         }
-        User.findOne({ _id: userID })
+        User.findById(userId._id)
             .then(function(user) {
-                let { password, ...data } = user;
-                res.locals.user = data;
-                next();
+                if (user) {
+                    let { password, ...data } = user;
+                    req.data = data;
+                    next();
+                } else {
+                    res.status(404).json({ message: 'Không tìm thấy tài khoản' });
+                }
             })
             .catch(function(err) {
-                res.send(err);
+                res.status(404).json({ message: 'Không tìm thấy tài khoản' });
             })
     } else {
-        res.send('không có thông tin đăng nhâp');
+        res.status(500).json({ message: 'Không có thông tin đăng nhâp' });
     }
 }

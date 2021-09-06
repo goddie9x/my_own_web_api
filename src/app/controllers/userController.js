@@ -2,14 +2,13 @@ const User = require('../models/User');
 const { multipleMongooseToObjects } = require('../../utils/mongoose');
 const jwt = require('jsonwebtoken');
 
-class userController {
+class UserController {
     index(req, res, next) {
         res.render('users/profile');
     }
     register(req, res, next) {
         let account = req.body.account;
         let password = req.body.password;
-
         User.find({
                 account: account
             })
@@ -17,13 +16,12 @@ class userController {
                 if (Object.keys(user).length === 0) {
                     User.create({ account, password })
                         .then((user) => {
-                            User.updateOne({ _id: user._id }, { status: true });
                             let token = jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '1h' });
                             res.send({ token });
                         })
                         .catch(next);
                 } else {
-                    res.send(`tài khoản ${account} đã tồn tại`);
+                    res.status(404).redirect('/404');
                 }
             })
             .catch(next);
@@ -38,7 +36,7 @@ class userController {
             })
             .then(user => {
                 if (Object.keys(user).length === 0) {
-                    res.send(`tài khoản ${account} không tồn tại`);
+                    res.status(404).redirect('/404');
                 }
 
                 User.updateOne({ _id: user[0]._id }, { status: true });
@@ -51,10 +49,10 @@ class userController {
     }
     profile(req, res, next) {
         let accountID = req.params.id;
-        if (req.section.user && accountID == req.section.user._id) {
-            req.local._user.userID = req.section.user._id;
-            req.local._user.imageUser = req.section.user.img;
-            req.local._user.nameUser = req.section.user.name;
+        if (req.data.user && accountID == req.data.user._id) {
+            req.local._user.userID = req.data.user._id;
+            req.local._user.imageUser = req.data.user.img;
+            req.local._user.nameUser = req.data.user.name;
 
             res.render('users/profile');
         } else {
@@ -64,7 +62,7 @@ class userController {
                 })
                 .then(user => {
                     if (Object.keys(user).length === 0) {
-                        res.send(`tài khoản ${account} không tồn tại`);
+                        res.status(404).redirect('/404');
                     } else {
                         req.local._user.userID = user._id;
                         req.local._user.imageUser = user.img;
@@ -74,14 +72,35 @@ class userController {
                     }
                 })
                 .catch(function(err) {
-                    res.send('cant find this account');
+                    res.status(404).redirect('/404');
                     next();
                 });
         }
     }
-    checkLogin(req, res, next) {
-        res.send(res.locals.user);
+    userInfo(req, res, next) {
+        let user = req.data.user;
+        res.send(user);
+    }
+    bannedUser(req, res, next) {
+        User.findDeleted({})
+            .then((users) => {
+                users = multipleMongooseToObjects(users);
+                res.send(users);
+            })
+            .catch((err) => {
+                res.status(500).redirect('/500');
+            })
+    }
+    manager(req, res, next) {
+        User.find({})
+            .then((users) => {
+                users = multipleMongooseToObjects(users);
+                res.send(users);
+            })
+            .catch((err) => {
+                res.status(500).redirect('/500');
+            })
     }
 }
 
-module.exports = new userController;
+module.exports = new UserController;

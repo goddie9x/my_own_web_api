@@ -13,10 +13,18 @@
 .canv .app {
   position: relative;
   z-index: 4; }
+  .canv .app .toast:not(.showing):not(.show) {
+    opacity: 1; }
   .canv .app header .modal.fade {
     background-color: rgba(0, 0, 0, 0.5); }
     .canv .app header .modal.fade .modal-footer {
       justify-content: flex-start; }
+  .canv .app header .nav-item {
+    text-align: center;
+    min-width: 100px; }
+    .canv .app header .nav-item .loggout_btn,
+    .canv .app header .nav-item .user_profile {
+      cursor: pointer; }
   .canv .app header .user_menu {
     display: none; }
   .canv .app header .user_menu.active {
@@ -399,6 +407,7 @@
         display: block;
         width: 130px; }
         .canv .app .container .game-room .action-container .arrow-btns .arrow {
+          cursor: pointer;
           display: block;
           background-color: #f5f6fa;
           padding: 5px;

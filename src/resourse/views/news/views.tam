@@ -1,0 +1,1486 @@
+<main id="content">
+    <div class="container">
+        <div class="row">
+            <!--top section-->
+            <div class="top-section col-12 mt-05">
+                <!--Big Grid style 8-->
+                <div class="row featured-8 mb-5">
+                    <div class="col-12">
+                        <div class="px-2 px-md-3">
+                            <div class="row">
+                                <!--one-->
+                                <div class="col-lg-3">
+                                    <div class="row newsbox-start">
+                                        <!--news box-->
+                                        <article class="col-6 col-lg-12">
+                                            <div class="card card-full text-white overflow zoom">
+                                                <!--thumbnail-->
+                                                <div class="height-ratio image-wrapper">
+                                                    <a href="#">
+                                                        <img width="282" height="240"
+                                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1236701-282x240.jpeg"
+                                                            class="img-fluid lazy wp-post-image loaded"
+                                                            alt="Here’s All The Fashion News You Missed This Week"
+                                                            loading="lazy"
+                                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1236701-282x240.jpeg"
+                                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1236701-282x240.jpeg 282w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1236701-400x340.jpeg 400w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1236701-568x484.jpeg 568w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1236701-750x639.jpeg 750w"
+                                                            sizes="(max-width: 282px) 100vw, 282px"
+                                                            data-was-processed="true"> </a>
+                                                </div>
+                                                <div class="position-absolute px-3 pb-3 pt-0 b-0 w-100 bg-shadow">
+                                                    <!--category-->
+                                                    <a href="#"
+                                                        class="p-1 badge bg-primary text-white">Trend</a>
+                                                    <!-- post title -->
+                                                    <h3 class="h5 h3-sm h5-md text-light my-1">
+                                                        <a class="text-white"
+                                                            href="#">Here’s
+                                                            All The Fashion News You Missed This Week</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <!--news box-->
+                                        <article class="col-6 col-lg-12">
+                                            <div class="card card-full text-white overflow zoom">
+                                                <!--thumbnail-->
+                                                <div class="height-ratio image-wrapper">
+                                                    <a
+                                                        href="#">
+                                                        <img width="282" height="240"
+                                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1168742-282x240.jpeg"
+                                                            class="img-fluid lazy wp-post-image loaded"
+                                                            alt="Stylish Shower Shoes For the Gym, the Dorm and Beyond"
+                                                            loading="lazy"
+                                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1168742-282x240.jpeg"
+                                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1168742-282x240.jpeg 282w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1168742-400x340.jpeg 400w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1168742-568x484.jpeg 568w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1168742-750x639.jpeg 750w"
+                                                            sizes="(max-width: 282px) 100vw, 282px"
+                                                            data-was-processed="true"> </a>
+                                                </div>
+                                                <div class="position-absolute px-3 pb-3 pt-0 b-0 w-100 bg-shadow">
+                                                    <!--category-->
+                                                    <a href="#"
+                                                        class="p-1 badge bg-primary text-white">Travel</a> <a
+                                                        href="#"
+                                                        class="p-1 badge bg-primary text-white">Trend</a>
+                                                    <!-- post title -->
+                                                    <h3 class="h5 h3-sm h5-md text-light my-1">
+                                                        <a class="text-white"
+                                                            href="#">Stylish
+                                                            Shower Shoes For the Gym, the Dorm and Beyond</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+
+                                <!--two-->
+                                <div class="col-lg-6">
+                                    <div class="row newsbox-center">
+                                        <!--news box-->
+                                        <article class="col-12">
+                                            <div class="card card-full text-white overflow zoom">
+                                                <!--thumbnail-->
+                                                <div class="height-ratio image-wrapper">
+                                                    <a
+                                                        href="#">
+                                                        <img width="568" height="484"
+                                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1795769-568x484.jpeg"
+                                                            class="img-fluid lazy wp-post-image loaded"
+                                                            alt="Roots is Opening a Shawn Mendes Pop-Up in Toronto Today"
+                                                            loading="lazy"
+                                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1795769-568x484.jpeg"
+                                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1795769-568x484.jpeg 568w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1795769-282x240.jpeg 282w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1795769-400x340.jpeg 400w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1795769-750x639.jpeg 750w"
+                                                            sizes="(max-width: 568px) 100vw, 568px"
+                                                            data-was-processed="true"> </a>
+                                                </div>
+                                                <div class="position-absolute p-3 b-0 w-100 bg-lg-shadow">
+                                                    <!-- post title -->
+                                                    <h2
+                                                        class="h3 h2-sm h1-md display-4-lg fw-bold heading-letter-spacing text-white">
+                                                        <a class="text-white"
+                                                            href="#">Roots
+                                                            is Opening a Shawn Mendes Pop-Up in Toronto Today</a>
+                                                    </h2>
+                                                    <!-- author and date -->
+                                                    <div class="news-meta mb-2">
+                                                        <span class="news-author white">by <span class="fw-bold"><a
+                                                                    href="#"
+                                                                    title="Posts by ari budin" rel="author">ari
+                                                                    budin</a></span></span>
+                                                        <time class="news-date"
+                                                            datetime="2019-09-11T06:04:14+00:00">September 11,
+                                                            2019</time>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <!--end news box-->
+                                    </div>
+                                </div>
+
+                                <!--three-->
+                                <div class="col-lg-3">
+                                    <div class="row newsbox-end">
+                                        <!--news box-->
+                                        <article class="col-6 col-lg-12">
+                                            <div class="card card-full text-white overflow zoom">
+                                                <!--thumbnail-->
+                                                <div class="height-ratio image-wrapper">
+                                                    <a
+                                                        href="#">
+                                                        <img width="282" height="240"
+                                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-282x240.jpeg"
+                                                            class="img-fluid lazy wp-post-image loaded"
+                                                            alt="The Best Street Style Looks from New York Fashion Week"
+                                                            loading="lazy"
+                                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-282x240.jpeg"
+                                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-282x240.jpeg 282w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-400x340.jpeg 400w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-568x484.jpeg 568w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-750x639.jpeg 750w"
+                                                            sizes="(max-width: 282px) 100vw, 282px"
+                                                            data-was-processed="true"> </a>
+                                                </div>
+                                                <div class="position-absolute px-3 pb-3 pt-0 b-0 w-100 bg-shadow">
+                                                    <!--category-->
+                                                    <a href="#"
+                                                        class="p-1 badge bg-primary text-white">Fashion</a> <a
+                                                        href="#"
+                                                        class="p-1 badge bg-primary text-white">Music</a>
+                                                    <!-- post title -->
+                                                    <h3 class="h5 h3-sm h5-md text-light my-1">
+                                                        <a class="text-white"
+                                                            href="#">The
+                                                            Best Street Style Looks from New York Fashion Week</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <!--news box-->
+                                        <article class="col-6 col-lg-12">
+                                            <div class="card card-full text-white overflow zoom">
+                                                <!--thumbnail-->
+                                                <div class="height-ratio image-wrapper">
+                                                    <a
+                                                        href="#">
+                                                        <img width="282" height="240"
+                                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2118049-282x240.jpeg"
+                                                            class="img-fluid lazy wp-post-image loaded"
+                                                            alt="Dior Celebrates its Iconic Red Lipstick with New Rouge Dior Collection"
+                                                            loading="lazy"
+                                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2118049-282x240.jpeg"
+                                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2118049-282x240.jpeg 282w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2118049-400x340.jpeg 400w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2118049-568x484.jpeg 568w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2118049-750x639.jpeg 750w"
+                                                            sizes="(max-width: 282px) 100vw, 282px"
+                                                            data-was-processed="true"> </a>
+                                                </div>
+                                                <div class="position-absolute px-3 pb-3 pt-0 b-0 w-100 bg-shadow">
+                                                    <!--category-->
+                                                    <a href="#"
+                                                        class="p-1 badge bg-primary text-white">Fashion</a> <a
+                                                        href="#"
+                                                        class="p-1 badge bg-primary text-white">Music</a>
+                                                    <!-- post title -->
+                                                    <h3 class="h5 h3-sm h5-md text-light my-1">
+                                                        <a class="text-white"
+                                                            href="#">Dior
+                                                            Celebrates its Iconic Red Lipstick with New Rouge Dior
+                                                            Collection</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                                <!--end three-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--content 1-->
+            <div class="col-md-8">
+                <div class="block-area">
+                    <div class="block-title-4">
+                        <h4 class="h5 title-arrow"><span>Hobby</span></h4>
+                    </div>
+                    <!--Block style 1-->
+                    <div class="big-post">
+                        <article class="card card-full hover-a mb-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <!-- thumbnail -->
+                                    <div class="ratio_360-202 image-wrapper">
+                                        <a
+                                            href="#">
+                                            <img width="360" height="202"
+                                                src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-360x202.jpeg"
+                                                class="img-fluid lazy wp-post-image loaded"
+                                                alt="What Went Down at Last Night’s Grand Opening of the New Store"
+                                                loading="lazy"
+                                                data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-360x202.jpeg"
+                                                srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-360x202.jpeg 360w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-372x208.jpeg 372w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-251x141.jpeg 251w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-230x129.jpeg 230w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-203x114.jpeg 203w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-165x92.jpeg 165w"
+                                                sizes="(max-width: 360px) 100vw, 360px" data-was-processed="true">
+                                            <!-- post type -->
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="card-body pt-3 pt-lg-0">
+                                        <!--title-->
+                                        <h2 class="card-title h1-sm h3-lg">
+                                            <a
+                                                href="#">What
+                                                Went Down at Last Night’s Grand Opening of the New Store</a>
+                                        </h2>
+                                        <div class="mb-2 text-muted small">
+                                            <!--author-->
+                                            <span class="fw-bold d-none d-sm-inline me-1">
+                                                <a href="#"
+                                                    title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                            <!--date-->
+                                            <time class="news-date" datetime="2019-09-14T20:02:43+00:00">September 14,
+                                                2019</time>
+                                            <!--comments-->
+                                            <span title="0 Comment" class="float-end">
+                                                <span class="icon-comments"></span> 0 </span>
+                                        </div>
+                                        <!--description-->
+                                        <p>This study examines the classroom talk about models and modelling of two
+                                            secondary science teachers implementing a model-based inquiry instructional
+                                            unit. The goal was...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!--small post start-->
+                    <div class="small-post">
+                        <div class="row">
+                            <!-- post list -->
+                            <article class="col-lg-6">
+                                <div class="card card-full hover-a mb-4">
+                                    <div class="row">
+                                        <!--thumbnail-->
+                                        <div class="col-3 col-md-4 pe-2 pe-md-0">
+                                            <div class="ratio_180-123 image-wrapper">
+                                                <a
+                                                    href="#">
+                                                    <img width="115" height="80"
+                                                        src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-674268-115x80.jpeg"
+                                                        class="img-fluid lazy wp-post-image loaded"
+                                                        alt="The ‘Rainbow Eyes’ Trend is Helping us to Feel Like Summer"
+                                                        loading="lazy"
+                                                        data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-674268-115x80.jpeg"
+                                                        srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-674268-115x80.jpeg 115w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-674268-180x123.jpeg 180w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-674268-99x68.jpeg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-674268-110x77.jpeg 110w"
+                                                        sizes="(max-width: 115px) 100vw, 115px"
+                                                        data-was-processed="true"> <!-- post type -->
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-9 col-md-8">
+                                            <div class="card-body pt-0">
+                                                <h3 class="card-title h6 h5-sm h6-lg">
+                                                    <a
+                                                        href="#">The
+                                                        ‘Rainbow Eyes’ Trend is Helping us to Feel Like Summer</a>
+                                                </h3>
+                                                <!--date-->
+                                                <div class="small text-muted">
+                                                    <time class="news-date"
+                                                        datetime="2019-09-11T06:11:40+00:00">September 11, 2019</time>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <!-- post list -->
+                            <article class="col-lg-6">
+                                <div class="card card-full hover-a mb-4">
+                                    <div class="row">
+                                        <!--thumbnail-->
+                                        <div class="col-3 col-md-4 pe-2 pe-md-0">
+                                            <div class="ratio_180-123 image-wrapper">
+                                                <a
+                                                    href="#">
+                                                    <img width="115" height="80"
+                                                        src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2169093-115x80.jpg"
+                                                        class="img-fluid lazy wp-post-image loaded"
+                                                        alt="Sold Over 1 Million Lipsticks in the First Month of Launch"
+                                                        loading="lazy"
+                                                        data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2169093-115x80.jpg"
+                                                        srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2169093-115x80.jpg 115w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2169093-180x123.jpg 180w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2169093-99x68.jpg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2169093-110x77.jpg 110w"
+                                                        sizes="(max-width: 115px) 100vw, 115px"
+                                                        data-was-processed="true"> <!-- post type -->
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-9 col-md-8">
+                                            <div class="card-body pt-0">
+                                                <h3 class="card-title h6 h5-sm h6-lg">
+                                                    <a
+                                                        href="#">Sold
+                                                        Over 1 Million Lipsticks in the First Month of Launch</a>
+                                                </h3>
+                                                <!--date-->
+                                                <div class="small text-muted">
+                                                    <time class="news-date"
+                                                        datetime="2019-09-11T05:57:05+00:00">September 11, 2019</time>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <!-- post list -->
+                            <article class="col-lg-6">
+                                <div class="card card-full hover-a mb-4">
+                                    <div class="row">
+                                        <!--thumbnail-->
+                                        <div class="col-3 col-md-4 pe-2 pe-md-0">
+                                            <div class="ratio_180-123 image-wrapper">
+                                                <a
+                                                    href="#">
+                                                    <img width="115" height="80"
+                                                        src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2074130-115x80.jpeg"
+                                                        class="img-fluid lazy wp-post-image loaded"
+                                                        alt="The Best Red Carpet Looks From the Opening Weekend"
+                                                        loading="lazy"
+                                                        data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2074130-115x80.jpeg"
+                                                        srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2074130-115x80.jpeg 115w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2074130-180x123.jpeg 180w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2074130-99x68.jpeg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2074130-110x77.jpeg 110w"
+                                                        sizes="(max-width: 115px) 100vw, 115px"
+                                                        data-was-processed="true"> <!-- post type -->
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-9 col-md-8">
+                                            <div class="card-body pt-0">
+                                                <h3 class="card-title h6 h5-sm h6-lg">
+                                                    <a
+                                                        href="#">The
+                                                        Best Red Carpet Looks From the Opening Weekend</a>
+                                                </h3>
+                                                <!--date-->
+                                                <div class="small text-muted">
+                                                    <time class="news-date"
+                                                        datetime="2019-09-11T05:51:34+00:00">September 11, 2019</time>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <!-- post list -->
+                            <article class="col-lg-6">
+                                <div class="card card-full hover-a mb-4">
+                                    <div class="row">
+                                        <!--thumbnail-->
+                                        <div class="col-3 col-md-4 pe-2 pe-md-0">
+                                            <div class="ratio_180-123 image-wrapper">
+                                                <a
+                                                    href="#">
+                                                    <img width="115" height="80"
+                                                        src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2409681-115x80.jpeg"
+                                                        class="img-fluid lazy wp-post-image loaded"
+                                                        alt="Obsession With the Feather Fashion Trend About Freedom?"
+                                                        loading="lazy"
+                                                        data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2409681-115x80.jpeg"
+                                                        srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2409681-115x80.jpeg 115w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2409681-180x123.jpeg 180w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2409681-99x68.jpeg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2409681-110x77.jpeg 110w"
+                                                        sizes="(max-width: 115px) 100vw, 115px"
+                                                        data-was-processed="true"> <!-- post type -->
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-9 col-md-8">
+                                            <div class="card-body pt-0">
+                                                <h3 class="card-title h6 h5-sm h6-lg">
+                                                    <a
+                                                        href="#">Obsession
+                                                        With the Feather Fashion Trend About Freedom?</a>
+                                                </h3>
+                                                <!--date-->
+                                                <div class="small text-muted">
+                                                    <time class="news-date"
+                                                        datetime="2019-09-11T05:36:10+00:00">September 11, 2019</time>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!--Block style 3-->
+
+
+                </div>
+                <div class="block-area">
+                    <div class="block-title-4">
+                        <h4 class="h5 title-arrow"><span>Fashion</span></h4>
+                    </div>
+                    <!--Block style 1-->
+                    <div class="row">
+                        <article class="col-6 col-lg-4">
+                            <div class="card card-full hover-a mb-4">
+                                <!--thumbnail-->
+                                <div class="ratio_230-129 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="230" height="129"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2865898-230x129.jpeg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="Clothing Line for Smart Works Will Launch Next Week" loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2865898-230x129.jpeg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2865898-230x129.jpeg 230w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2865898-372x208.jpeg 372w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2865898-360x202.jpeg 360w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2865898-251x141.jpeg 251w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2865898-203x114.jpeg 203w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2865898-165x92.jpeg 165w"
+                                            sizes="(max-width: 230px) 100vw, 230px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-text mb-2 text-muted small">
+                                        <!--author-->
+                                        <span class="fw-bold d-none d-sm-inline me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-11T06:02:09+00:00">September 11,
+                                            2019</time>
+                                        <!--comments-->
+                                        <span title="0 Comment" class="float-end">
+                                            <span class="icon-comments"></span> 0 </span>
+                                    </div>
+                                    <!--title-->
+                                    <h2 class="card-title h5 h4-sm h6-md h5-lg"><a
+                                            href="#">Clothing
+                                            Line for Smart Works Will Launch Next Week</a></h2>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="col-6 col-lg-4">
+                            <div class="card card-full hover-a mb-4">
+                                <!--thumbnail-->
+                                <div class="ratio_230-129 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="230" height="129"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-230x129.jpeg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="The Best Street Style Looks from New York Fashion Week" loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-230x129.jpeg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-230x129.jpeg 230w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-372x208.jpeg 372w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-360x202.jpeg 360w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-251x141.jpeg 251w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-203x114.jpeg 203w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-165x92.jpeg 165w"
+                                            sizes="(max-width: 230px) 100vw, 230px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-text mb-2 text-muted small">
+                                        <!--author-->
+                                        <span class="fw-bold d-none d-sm-inline me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-11T05:47:27+00:00">September 11,
+                                            2019</time>
+                                        <!--comments-->
+                                        <span title="0 Comment" class="float-end">
+                                            <span class="icon-comments"></span> 0 </span>
+                                    </div>
+                                    <!--title-->
+                                    <h2 class="card-title h5 h4-sm h6-md h5-lg"><a
+                                            href="#">The
+                                            Best Street Style Looks from New York Fashion Week</a></h2>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="col-6 col-lg-4">
+                            <div class="card card-full hover-a mb-4">
+                                <!--thumbnail-->
+                                <div class="ratio_230-129 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="230" height="129"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2118049-230x129.jpeg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="Dior Celebrates its Iconic Red Lipstick with New Rouge Dior Collection"
+                                            loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2118049-230x129.jpeg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2118049-230x129.jpeg 230w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2118049-372x208.jpeg 372w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2118049-360x202.jpeg 360w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2118049-251x141.jpeg 251w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2118049-203x114.jpeg 203w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2118049-165x92.jpeg 165w"
+                                            sizes="(max-width: 230px) 100vw, 230px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-text mb-2 text-muted small">
+                                        <!--author-->
+                                        <span class="fw-bold d-none d-sm-inline me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-11T05:43:26+00:00">September 11,
+                                            2019</time>
+                                        <!--comments-->
+                                        <span title="0 Comment" class="float-end">
+                                            <span class="icon-comments"></span> 0 </span>
+                                    </div>
+                                    <!--title-->
+                                    <h2 class="card-title h5 h4-sm h6-md h5-lg"><a
+                                            href="#">Dior
+                                            Celebrates its Iconic Red Lipstick with New Rouge Dior Collection</a></h2>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="col-6 col-lg-4">
+                            <div class="card card-full hover-a mb-4">
+                                <!--thumbnail-->
+                                <div class="ratio_230-129 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="230" height="129"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2480524-230x129.jpeg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="One Plus Size Writer on What Lizzo Means to Her" loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2480524-230x129.jpeg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2480524-230x129.jpeg 230w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2480524-372x208.jpeg 372w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2480524-360x202.jpeg 360w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2480524-251x141.jpeg 251w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2480524-203x114.jpeg 203w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2480524-165x92.jpeg 165w"
+                                            sizes="(max-width: 230px) 100vw, 230px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-text mb-2 text-muted small">
+                                        <!--author-->
+                                        <span class="fw-bold d-none d-sm-inline me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-11T05:26:19+00:00">September 11,
+                                            2019</time>
+                                        <!--comments-->
+                                        <span title="0 Comment" class="float-end">
+                                            <span class="icon-comments"></span> 0 </span>
+                                    </div>
+                                    <!--title-->
+                                    <h2 class="card-title h5 h4-sm h6-md h5-lg"><a
+                                            href="#">One
+                                            Plus Size Writer on What Lizzo Means to Her</a></h2>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="col-6 col-lg-4">
+                            <div class="card card-full hover-a mb-4">
+                                <!--thumbnail-->
+                                <div class="ratio_230-129 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="230" height="129"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/photo-1471119017026-179f1bb0a70e-230x129.jpg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="Meet Krow, the World’s First  Male Supermodel" loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/photo-1471119017026-179f1bb0a70e-230x129.jpg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/photo-1471119017026-179f1bb0a70e-230x129.jpg 230w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/photo-1471119017026-179f1bb0a70e-372x208.jpg 372w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/photo-1471119017026-179f1bb0a70e-360x202.jpg 360w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/photo-1471119017026-179f1bb0a70e-251x141.jpg 251w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/photo-1471119017026-179f1bb0a70e-203x114.jpg 203w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/photo-1471119017026-179f1bb0a70e-165x92.jpg 165w"
+                                            sizes="(max-width: 230px) 100vw, 230px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-text mb-2 text-muted small">
+                                        <!--author-->
+                                        <span class="fw-bold d-none d-sm-inline me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-11T05:22:36+00:00">September 11,
+                                            2019</time>
+                                        <!--comments-->
+                                        <span title="0 Comment" class="float-end">
+                                            <span class="icon-comments"></span> 0 </span>
+                                    </div>
+                                    <!--title-->
+                                    <h2 class="card-title h5 h4-sm h6-md h5-lg"><a
+                                            href="#">Meet
+                                            Krow, the World’s First Male Supermodel</a></h2>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="col-6 col-lg-4">
+                            <div class="card card-full hover-a mb-4">
+                                <!--thumbnail-->
+                                <div class="ratio_230-129 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="230" height="129"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-704950-230x129.jpg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="Everything You Need to Know About Apple’s New iPhones" loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-704950-230x129.jpg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-704950-230x129.jpg 230w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-704950-372x208.jpg 372w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-704950-360x202.jpg 360w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-704950-251x141.jpg 251w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-704950-203x114.jpg 203w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-704950-165x92.jpg 165w"
+                                            sizes="(max-width: 230px) 100vw, 230px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-text mb-2 text-muted small">
+                                        <!--author-->
+                                        <span class="fw-bold d-none d-sm-inline me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-11T04:17:10+00:00">September 11,
+                                            2019</time>
+                                        <!--comments-->
+                                        <span title="0 Comment" class="float-end">
+                                            <span class="icon-comments"></span> 0 </span>
+                                    </div>
+                                    <!--title-->
+                                    <h2 class="card-title h5 h4-sm h6-md h5-lg"><a
+                                            href="#">Everything
+                                            You Need to Know About Apple’s New iPhones</a></h2>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!--Block style 6-->
+
+
+                </div>
+                <div class="block-area">
+                    <div class="block-title-4">
+                        <h4 class="h5 title-arrow"><span>Latest Post</span></h4>
+                    </div>
+                    <!--output-->
+
+                    <article class="card card-full hover-a mb-module">
+                        <div class="row">
+                            <!--thumbnail-->
+                            <div class="col-3 pe-2 pe-md-0">
+                                <!--thumbnail-->
+                                <div class="ratio_180-123 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="180" height="123"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-180x123.jpeg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="What Went Down at Last Night’s Grand Opening of the New Store"
+                                            loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-180x123.jpeg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-180x123.jpeg 180w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-99x68.jpeg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-115x80.jpeg 115w"
+                                            sizes="(max-width: 180px) 100vw, 180px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body pt-0">
+                                    <!--title-->
+                                    <h2 class="card-title h5 h4-sm h3-lg">
+                                        <a
+                                            href="#">What
+                                            Went Down at Last Night’s Grand Opening of the New Store</a>
+                                    </h2>
+                                    <!--content text-->
+                                    <p class="card-text mb-2 d-none d-md-block">This study examines the classroom talk
+                                        about models and modelling of two secondary science teachers implementing a
+                                        model-based inquiry instructional unit. The goal...</p>
+                                    <div class="card-text text-muted small">
+                                        <!--author-->
+                                        <span class="fw-bold d-none d-sm-inline me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-14T20:02:43+00:00">September 14,
+                                            2019</time>
+                                        <!--comments-->
+                                        <span title="5 comment" class="ms-1">
+                                            <span class="icon-comments"></span> 0 Comment </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card card-full hover-a mb-module">
+                        <div class="row">
+                            <!--thumbnail-->
+                            <div class="col-3 pe-2 pe-md-0">
+                                <!--thumbnail-->
+                                <div class="ratio_180-123 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="180" height="123"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1272392-180x123.jpeg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="What Went Down at Last Night’s Grand Opening of the New Store"
+                                            loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1272392-180x123.jpeg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1272392-180x123.jpeg 180w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1272392-99x68.jpeg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1272392-115x80.jpeg 115w"
+                                            sizes="(max-width: 180px) 100vw, 180px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body pt-0">
+                                    <!--title-->
+                                    <h2 class="card-title h5 h4-sm h3-lg">
+                                        <a
+                                            href="#">What
+                                            Went Down at Last Night’s Grand Opening of the New Store</a>
+                                    </h2>
+                                    <!--content text-->
+                                    <p class="card-text mb-2 d-none d-md-block">Lorem Ipsum is simply dummy text of the
+                                        printing and typesetting industry. Lorem Ipsum has been the industry’s standard
+                                        dummy text ever since...</p>
+                                    <div class="card-text text-muted small">
+                                        <!--author-->
+                                        <span class="fw-bold d-none d-sm-inline me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-11T06:21:18+00:00">September 11,
+                                            2019</time>
+                                        <!--comments-->
+                                        <span title="5 comment" class="ms-1">
+                                            <span class="icon-comments"></span> 0 Comment </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card card-full hover-a mb-module">
+                        <div class="row">
+                            <!--thumbnail-->
+                            <div class="col-3 pe-2 pe-md-0">
+                                <!--thumbnail-->
+                                <div class="ratio_180-123 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="180" height="123"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1236701-180x123.jpeg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="Here’s All The Fashion News You Missed This Week" loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1236701-180x123.jpeg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1236701-180x123.jpeg 180w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1236701-99x68.jpeg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1236701-115x80.jpeg 115w"
+                                            sizes="(max-width: 180px) 100vw, 180px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body pt-0">
+                                    <!--title-->
+                                    <h2 class="card-title h5 h4-sm h3-lg">
+                                        <a
+                                            href="#">Here’s
+                                            All The Fashion News You Missed This Week</a>
+                                    </h2>
+                                    <!--content text-->
+                                    <p class="card-text mb-2 d-none d-md-block">This study examines the classroom talk
+                                        about models and modelling of two secondary science teachers implementing a
+                                        model-based inquiry instructional unit. The goal...</p>
+                                    <div class="card-text text-muted small">
+                                        <!--author-->
+                                        <span class="fw-bold d-none d-sm-inline me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-11T06:15:54+00:00">September 11,
+                                            2019</time>
+                                        <!--comments-->
+                                        <span title="5 comment" class="ms-1">
+                                            <span class="icon-comments"></span> 0 Comment </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card card-full hover-a mb-module">
+                        <div class="row">
+                            <!--thumbnail-->
+                            <div class="col-3 pe-2 pe-md-0">
+                                <!--thumbnail-->
+                                <div class="ratio_180-123 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="180" height="123"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1168742-180x123.jpeg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="Stylish Shower Shoes For the Gym, the Dorm and Beyond" loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1168742-180x123.jpeg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1168742-180x123.jpeg 180w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1168742-99x68.jpeg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1168742-115x80.jpeg 115w"
+                                            sizes="(max-width: 180px) 100vw, 180px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body pt-0">
+                                    <!--title-->
+                                    <h2 class="card-title h5 h4-sm h3-lg">
+                                        <a
+                                            href="#">Stylish
+                                            Shower Shoes For the Gym, the Dorm and Beyond</a>
+                                    </h2>
+                                    <!--content text-->
+                                    <p class="card-text mb-2 d-none d-md-block">Even the all-powerful Pointing has no
+                                        control about the blind texts it is an almost unorthographic life One day
+                                        however a small line....</p>
+                                    <div class="card-text text-muted small">
+                                        <!--author-->
+                                        <span class="fw-bold d-none d-sm-inline me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-11T06:14:15+00:00">September 11,
+                                            2019</time>
+                                        <!--comments-->
+                                        <span title="5 comment" class="ms-1">
+                                            <span class="icon-comments"></span> 0 Comment </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card card-full hover-a mb-module">
+                        <div class="row">
+                            <!--thumbnail-->
+                            <div class="col-3 pe-2 pe-md-0">
+                                <!--thumbnail-->
+                                <div class="ratio_180-123 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="180" height="123"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-674268-180x123.jpeg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="The ‘Rainbow Eyes’ Trend is Helping us to Feel Like Summer"
+                                            loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-674268-180x123.jpeg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-674268-180x123.jpeg 180w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-674268-99x68.jpeg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-674268-115x80.jpeg 115w"
+                                            sizes="(max-width: 180px) 100vw, 180px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body pt-0">
+                                    <!--title-->
+                                    <h2 class="card-title h5 h4-sm h3-lg">
+                                        <a
+                                            href="#">The
+                                            ‘Rainbow Eyes’ Trend is Helping us to Feel Like Summer</a>
+                                    </h2>
+                                    <!--content text-->
+                                    <p class="card-text mb-2 d-none d-md-block">Lorem Ipsum is simply dummy text of the
+                                        printing and typesetting industry. Lorem Ipsum has been the industry’s standard
+                                        dummy text ever since...</p>
+                                    <div class="card-text text-muted small">
+                                        <!--author-->
+                                        <span class="fw-bold d-none d-sm-inline me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-11T06:11:40+00:00">September 11,
+                                            2019</time>
+                                        <!--comments-->
+                                        <span title="5 comment" class="ms-1">
+                                            <span class="icon-comments"></span> 0 Comment </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card card-full hover-a mb-module">
+                        <div class="row">
+                            <!--thumbnail-->
+                            <div class="col-3 pe-2 pe-md-0">
+                                <!--thumbnail-->
+                                <div class="ratio_180-123 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="180" height="123"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1795769-180x123.jpeg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="Roots is Opening a Shawn Mendes Pop-Up in Toronto Today" loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1795769-180x123.jpeg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1795769-180x123.jpeg 180w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1795769-99x68.jpeg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1795769-115x80.jpeg 115w"
+                                            sizes="(max-width: 180px) 100vw, 180px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body pt-0">
+                                    <!--title-->
+                                    <h2 class="card-title h5 h4-sm h3-lg">
+                                        <a
+                                            href="#">Roots
+                                            is Opening a Shawn Mendes Pop-Up in Toronto Today</a>
+                                    </h2>
+                                    <!--content text-->
+                                    <p class="card-text mb-2 d-none d-md-block">This study examines the classroom talk
+                                        about models and modelling of two secondary science teachers implementing a
+                                        model-based inquiry instructional unit. The goal...</p>
+                                    <div class="card-text text-muted small">
+                                        <!--author-->
+                                        <span class="fw-bold d-none d-sm-inline me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-11T06:04:14+00:00">September 11,
+                                            2019</time>
+                                        <!--comments-->
+                                        <span title="5 comment" class="ms-1">
+                                            <span class="icon-comments"></span> 0 Comment </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card card-full hover-a mb-module">
+                        <div class="row">
+                            <!--thumbnail-->
+                            <div class="col-3 pe-2 pe-md-0">
+                                <!--thumbnail-->
+                                <div class="ratio_180-123 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="180" height="123"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2865898-180x123.jpeg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="Clothing Line for Smart Works Will Launch Next Week" loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2865898-180x123.jpeg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2865898-180x123.jpeg 180w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2865898-99x68.jpeg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2865898-115x80.jpeg 115w"
+                                            sizes="(max-width: 180px) 100vw, 180px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body pt-0">
+                                    <!--title-->
+                                    <h2 class="card-title h5 h4-sm h3-lg">
+                                        <a
+                                            href="#">Clothing
+                                            Line for Smart Works Will Launch Next Week</a>
+                                    </h2>
+                                    <!--content text-->
+                                    <p class="card-text mb-2 d-none d-md-block">Even the all-powerful Pointing has no
+                                        control about the blind texts it is an almost unorthographic life One day
+                                        however a small line....</p>
+                                    <div class="card-text text-muted small">
+                                        <!--author-->
+                                        <span class="fw-bold d-none d-sm-inline me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-11T06:02:09+00:00">September 11,
+                                            2019</time>
+                                        <!--comments-->
+                                        <span title="5 comment" class="ms-1">
+                                            <span class="icon-comments"></span> 0 Comment </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card card-full hover-a mb-module">
+                        <div class="row">
+                            <!--thumbnail-->
+                            <div class="col-3 pe-2 pe-md-0">
+                                <!--thumbnail-->
+                                <div class="ratio_180-123 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="180" height="123"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2169093-180x123.jpg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="Sold Over 1 Million Lipsticks in the First Month of Launch"
+                                            loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2169093-180x123.jpg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2169093-180x123.jpg 180w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2169093-99x68.jpg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2169093-115x80.jpg 115w"
+                                            sizes="(max-width: 180px) 100vw, 180px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body pt-0">
+                                    <!--title-->
+                                    <h2 class="card-title h5 h4-sm h3-lg">
+                                        <a
+                                            href="#">Sold
+                                            Over 1 Million Lipsticks in the First Month of Launch</a>
+                                    </h2>
+                                    <!--content text-->
+                                    <p class="card-text mb-2 d-none d-md-block">Lorem Ipsum is simply dummy text of the
+                                        printing and typesetting industry. Lorem Ipsum has been the industry’s standard
+                                        dummy text ever since...</p>
+                                    <div class="card-text text-muted small">
+                                        <!--author-->
+                                        <span class="fw-bold d-none d-sm-inline me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-11T05:57:05+00:00">September 11,
+                                            2019</time>
+                                        <!--comments-->
+                                        <span title="5 comment" class="ms-1">
+                                            <span class="icon-comments"></span> 0 Comment </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card card-full hover-a mb-module">
+                        <div class="row">
+                            <!--thumbnail-->
+                            <div class="col-3 pe-2 pe-md-0">
+                                <!--thumbnail-->
+                                <div class="ratio_180-123 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="180" height="123"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2074130-180x123.jpeg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="The Best Red Carpet Looks From the Opening Weekend" loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2074130-180x123.jpeg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2074130-180x123.jpeg 180w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2074130-99x68.jpeg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2074130-115x80.jpeg 115w"
+                                            sizes="(max-width: 180px) 100vw, 180px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body pt-0">
+                                    <!--title-->
+                                    <h2 class="card-title h5 h4-sm h3-lg">
+                                        <a
+                                            href="#">The
+                                            Best Red Carpet Looks From the Opening Weekend</a>
+                                    </h2>
+                                    <!--content text-->
+                                    <p class="card-text mb-2 d-none d-md-block">This study examines the classroom talk
+                                        about models and modelling of two secondary science teachers implementing a
+                                        model-based inquiry instructional unit. The goal...</p>
+                                    <div class="card-text text-muted small">
+                                        <!--author-->
+                                        <span class="fw-bold d-none d-sm-inline me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-11T05:51:34+00:00">September 11,
+                                            2019</time>
+                                        <!--comments-->
+                                        <span title="5 comment" class="ms-1">
+                                            <span class="icon-comments"></span> 0 Comment </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card card-full hover-a mb-module">
+                        <div class="row">
+                            <!--thumbnail-->
+                            <div class="col-3 pe-2 pe-md-0">
+                                <!--thumbnail-->
+                                <div class="ratio_180-123 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="180" height="123"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-180x123.jpeg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="The Best Street Style Looks from New York Fashion Week" loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-180x123.jpeg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-180x123.jpeg 180w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-99x68.jpeg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1931370-115x80.jpeg 115w"
+                                            sizes="(max-width: 180px) 100vw, 180px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body pt-0">
+                                    <!--title-->
+                                    <h2 class="card-title h5 h4-sm h3-lg">
+                                        <a
+                                            href="#">The
+                                            Best Street Style Looks from New York Fashion Week</a>
+                                    </h2>
+                                    <!--content text-->
+                                    <p class="card-text mb-2 d-none d-md-block">Even the all-powerful Pointing has no
+                                        control about the blind texts it is an almost unorthographic life One day
+                                        however a small line....</p>
+                                    <div class="card-text text-muted small">
+                                        <!--author-->
+                                        <span class="fw-bold d-none d-sm-inline me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a> </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-11T05:47:27+00:00">September 11,
+                                            2019</time>
+                                        <!--comments-->
+                                        <span title="5 comment" class="ms-1">
+                                            <span class="icon-comments"></span> 0 Comment </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="clearfix my-4">
+                    <nav class="float-start" aria-label="Posts navigation">
+                        <ul class="pagination">
+                            <li class="page-item active">
+                                <span aria-current="page" class="page-link current">1</span>
+                            </li>
+                            <li class="page-item ">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item ">
+                                <a class="next page-link" href="#">»</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <span class="py-2 float-end"></span>
+                </div>
+            </div>
+            <!--left sidebar check-->
+
+            <!--right sidebar check-->
+
+
+            <aside class="col-md-4 widget-area end-sidebar-lg" id="right-sidebar" style="position: relative;">
+
+                <div class="" style="position: static; left: auto; width: 340px;">
+                    <aside id="bootnews_social-1" class="widget widget_categories widget_categories_custom">
+                        <div class="block-title-4">
+                            <h4 class="h5 title-arrow"><span>Social Network</span></h4>
+                        </div>
+                        <ul class="list-unstyled side-link">
+                            <li class="hover-facebook">
+                                <!--facebook-->
+                                <a class="d-block float-start h5 mb-3 w-50" rel="noopener" href="https://facebook.com"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem"
+                                        fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                                        <path
+                                            d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z">
+                                        </path>
+                                    </svg>
+                                    <span class="ms-2">Facebook</span>
+                                </a>
+                            </li>
+                            <li class="hover-twitter">
+                                <!--twitter-->
+                                <a class="d-block float-start h5 mb-3 w-50" rel="noopener" href="https://twitter.com"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem"
+                                        fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                                        <path
+                                            d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z">
+                                        </path>
+                                    </svg>
+                                    <span class="ms-2">Twitter</span>
+                                </a>
+                            </li>
+                            <li class="hover-vimeo">
+                                <!--vimeo-->
+                                <a class="d-block float-start h5 mb-3 w-50" rel="noopener" href="https://vimeo.com"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem"
+                                        fill="currentColor" viewBox="0 0 512 512">
+                                        <path
+                                            d="M476.9,114c-5-23.39-17.51-38.78-40.61-46.27s-64.92-4.5-94.12,16.79c-26.79,19.51-46.26,54.42-54,78.28a4,4,0,0,0,5.13,5c10.77-3.8,21.72-7.1,34-6.45,15,.8,24.51,12,24.91,25.29.3,9.79-.2,18.69-3.6,27.68C337.87,243,321,270.78,301.06,295.07a72.49,72.49,0,0,1-10,9.89c-10.21,8.29-18.81,6.1-25.41-5.2-5.4-9.29-9-18.88-12.2-29.08-12.4-39.67-16.81-80.84-23.81-121.52-3.3-19.48-7-39.77-18-56.86-11.6-17.79-28.61-24.58-50-22-14.7,1.8-36.91,17.49-47.81,26.39,0,0-56,46.87-81.82,71.35l21.2,27s17.91-12.49,27.51-18.29c5.7-3.39,12.4-4.09,17.2.2,4.51,3.9,9.61,9,12.31,14.1,5.7,10.69,11.2,21.88,14.7,33.37,13.2,44.27,25.51,88.64,37.81,133.22,6.3,22.78,13.9,44.17,28,63.55,19.31,26.59,39.61,32.68,70.92,21.49,25.41-9.09,46.61-26.18,66-43.87,33.11-30.18,59.12-65.36,85.52-101.14C433.59,270,450.49,242,464.59,210.72,478.5,179.74,484,147.26,476.9,114Z">
+                                        </path>
+                                    </svg>
+                                    <span class="ms-2">Vimeo</span>
+                                </a>
+                            </li>
+                            <li class="hover-instagram">
+                                <!--instagram-->
+                                <a class="d-block float-start h5 mb-3 w-50" rel="noopener" href="https://instagram.com"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem"
+                                        fill="currentColor" viewBox="0 0 512 512">
+                                        <path
+                                            d="M349.33,69.33a93.62,93.62,0,0,1,93.34,93.34V349.33a93.62,93.62,0,0,1-93.34,93.34H162.67a93.62,93.62,0,0,1-93.34-93.34V162.67a93.62,93.62,0,0,1,93.34-93.34H349.33m0-37.33H162.67C90.8,32,32,90.8,32,162.67V349.33C32,421.2,90.8,480,162.67,480H349.33C421.2,480,480,421.2,480,349.33V162.67C480,90.8,421.2,32,349.33,32Z">
+                                        </path>
+                                        <path d="M377.33,162.67a28,28,0,1,1,28-28A27.94,27.94,0,0,1,377.33,162.67Z">
+                                        </path>
+                                        <path
+                                            d="M256,181.33A74.67,74.67,0,1,1,181.33,256,74.75,74.75,0,0,1,256,181.33M256,144A112,112,0,1,0,368,256,112,112,0,0,0,256,144Z">
+                                        </path>
+                                    </svg>
+                                    <span class="ms-2">Instagram</span>
+                                </a>
+                            </li>
+                            <li class="hover-youtube">
+                                <!--youtube-->
+                                <a class="d-block float-start h5 mb-3 w-50" rel="noopener" href="https://youtube.com"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem"
+                                        fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.122C.002 7.343.01 6.6.064 5.78l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z">
+                                        </path>
+                                    </svg>
+                                    <span class="ms-2">Youtube</span>
+                                </a>
+                            </li>
+                            <li class="hover-linkedin">
+                                <!--linkedin-->
+                                <a class="d-block float-start h5 mb-3 w-50" rel="noopener" href="https://linkedin.com"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem"
+                                        fill="currentColor" viewBox="0 0 512 512">
+                                        <path
+                                            d="M444.17,32H70.28C49.85,32,32,46.7,32,66.89V441.61C32,461.91,49.85,480,70.28,480H444.06C464.6,480,480,461.79,480,441.61V66.89C480.12,46.7,464.6,32,444.17,32ZM170.87,405.43H106.69V205.88h64.18ZM141,175.54h-.46c-20.54,0-33.84-15.29-33.84-34.43,0-19.49,13.65-34.42,34.65-34.42s33.85,14.82,34.31,34.42C175.65,160.25,162.35,175.54,141,175.54ZM405.43,405.43H341.25V296.32c0-26.14-9.34-44-32.56-44-17.74,0-28.24,12-32.91,23.69-1.75,4.2-2.22,9.92-2.22,15.76V405.43H209.38V205.88h64.18v27.77c9.34-13.3,23.93-32.44,57.88-32.44,42.13,0,74,27.77,74,87.64Z">
+                                        </path>
+                                    </svg>
+                                    <span class="ms-2">Linkedin</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="gap-05"></div>
+                        <!-- end social content -->
+                    </aside>
+                    <aside id="categories_custom-1" class="widget widget_categories widget_categories_custom">
+                        <div class="block-title-4">
+                            <h4 class="h5 title-arrow"><span>Category</span></h4>
+                        </div>
+                        <!--category menu start-->
+                        <ul class="list-unstyled sidebar-link dark before-caret-dark custom-category">
+                            <li class="cat-item cat-item-3"><a
+                                    href="#"><span
+                                        class="cat-name">Hobby</span> <span
+                                        class="badge float-right badge-light rounded-0">(5)</span></a>
+                            </li>
+                            <li class="cat-item cat-item-4"><a
+                                    href="#"><span
+                                        class="cat-name">Lifestyle</span> <span
+                                        class="badge float-right badge-light rounded-0">(3)</span></a>
+                            </li>
+                            <li class="cat-item cat-item-6"><a
+                                    href="#"><span
+                                        class="cat-name">Travel</span> <span
+                                        class="badge float-right badge-light rounded-0">(4)</span></a>
+                            </li>
+                            <li class="cat-item cat-item-7"><a
+                                    href="#"><span
+                                        class="cat-name">Trend</span> <span
+                                        class="badge float-right badge-light rounded-0">(5)</span></a>
+                            </li>
+                        </ul>
+                    </aside>
+                    <aside id="bootnews_custompost-2" class="widget widget_categories widget_categories_custom">
+                        <div class="block-title-4">
+                            <h4 class="h5 title-arrow"><span>Editor picks</span></h4>
+                        </div>
+                        <!--style 4-->
+                        <ul class="post-number list-unstyled border-bottom-last-0 rounded mb-5">
+                            <li class="hover-a">
+                                <a class="h5 h6-md h5-lg"
+                                    href="#">Stylish
+                                    Shower Shoes For the Gym, the Dorm and Beyond</a>
+                            </li>
+                            <li class="hover-a">
+                                <a class="h5 h6-md h5-lg"
+                                    href="#">Roots
+                                    is Opening a Shawn Mendes Pop-Up in Toronto Today</a>
+                            </li>
+                            <li class="hover-a">
+                                <a class="h5 h6-md h5-lg"
+                                    href="#">Sold
+                                    Over 1 Million Lipsticks in the First Month of Launch</a>
+                            </li>
+                            <li class="hover-a">
+                                <a class="h5 h6-md h5-lg"
+                                    href="#">The
+                                    Best Red Carpet Looks From the Opening Weekend</a>
+                            </li>
+                        </ul>
+                    </aside>
+                    <aside id="bootnews_latestside-2" class="widget widget_categories widget_categories_custom">
+                        <div class="block-title-4">
+                            <h4 class="h5 title-arrow"><span>Latest Post</span></h4>
+                        </div>
+                        <!--output-->
+                        <div class="big-post">
+                            <article class="card card-full hover-a mb-4">
+                                <!--thumbnail-->
+                                <div class="ratio_360-202 image-wrapper">
+                                    <a
+                                        href="#">
+                                        <img width="360" height="202"
+                                            src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-360x202.jpeg"
+                                            class="img-fluid lazy wp-post-image loaded"
+                                            alt="What Went Down at Last Night’s Grand Opening of the New Store"
+                                            loading="lazy"
+                                            data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-360x202.jpeg"
+                                            srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-360x202.jpeg 360w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-372x208.jpeg 372w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-251x141.jpeg 251w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-230x129.jpeg 230w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-203x114.jpeg 203w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-2726478-165x92.jpeg 165w"
+                                            sizes="(max-width: 360px) 100vw, 360px" data-was-processed="true">
+                                        <!-- post type -->
+                                    </a>
+                                </div>
+
+                                <div class="card-body">
+                                    <!--title-->
+                                    <h2 class="card-title h1-sm h3-md">
+                                        <a
+                                            href="#">What
+                                            Went Down at Last Night’s Grand Opening of the New Store</a>
+                                    </h2>
+                                    <div class="card-text text-muted small mb-2">
+                                        <!--author-->
+                                        <span class="d-none d-sm-inline fw-bold me-1">
+                                            <a href="#"
+                                                title="Posts by ari budin" rel="author">ari budin</a>
+                                        </span>
+                                        <!--date-->
+                                        <time class="news-date" datetime="2019-09-14T20:02:43+00:00">September 14,
+                                            2019</time>
+                                    </div>
+                                    <!--description-->
+                                    <p class="card-text">This study examines the classroom talk about models and
+                                        modelling of two secondary science teachers implementing a model-based inquiry
+                                        instructional unit....</p>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="small-post">
+                            <!--post list-->
+                            <article class="card card-full hover-a mb-4">
+                                <div class="row">
+                                    <div class="col-3 col-md-4 pe-2 pe-md-0">
+                                        <!--thumbnail-->
+                                        <div class="ratio_110-77 image-wrapper">
+                                            <a
+                                                href="#">
+                                                <img width="110" height="77"
+                                                    src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1272392-110x77.jpeg"
+                                                    class="img-fluid lazy wp-post-image loaded"
+                                                    alt="What Went Down at Last Night’s Grand Opening of the New Store"
+                                                    loading="lazy"
+                                                    data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1272392-110x77.jpeg"
+                                                    srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1272392-110x77.jpeg 110w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1272392-99x68.jpeg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1272392-115x80.jpeg 115w"
+                                                    sizes="(max-width: 110px) 100vw, 110px" data-was-processed="true">
+                                                <!-- post type -->
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-9 col-md-8">
+                                        <div class="card-body pt-0">
+                                            <!--title-->
+                                            <h3 class="card-title h6 h5-sm h6-md">
+                                                <a
+                                                    href="#">What
+                                                    Went Down at Last Night’s Grand Opening of the New Store</a>
+                                            </h3>
+                                            <!--date-->
+                                            <div class="card-text small text-muted">
+                                                <time class="news-date" datetime="2019-09-11T06:21:18+00:00">September
+                                                    11, 2019</time>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <!--End post list-->
+                            <!--post list-->
+                            <article class="card card-full hover-a mb-4">
+                                <div class="row">
+                                    <div class="col-3 col-md-4 pe-2 pe-md-0">
+                                        <!--thumbnail-->
+                                        <div class="ratio_110-77 image-wrapper">
+                                            <a
+                                                href="#">
+                                                <img width="110" height="77"
+                                                    src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1236701-110x77.jpeg"
+                                                    class="img-fluid lazy wp-post-image loaded"
+                                                    alt="Here’s All The Fashion News You Missed This Week"
+                                                    loading="lazy"
+                                                    data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1236701-110x77.jpeg"
+                                                    srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1236701-110x77.jpeg 110w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1236701-99x68.jpeg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1236701-115x80.jpeg 115w"
+                                                    sizes="(max-width: 110px) 100vw, 110px" data-was-processed="true">
+                                                <!-- post type -->
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-9 col-md-8">
+                                        <div class="card-body pt-0">
+                                            <!--title-->
+                                            <h3 class="card-title h6 h5-sm h6-md">
+                                                <a
+                                                    href="#">Here’s
+                                                    All The Fashion News You Missed This Week</a>
+                                            </h3>
+                                            <!--date-->
+                                            <div class="card-text small text-muted">
+                                                <time class="news-date" datetime="2019-09-11T06:15:54+00:00">September
+                                                    11, 2019</time>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <!--End post list-->
+                            <!--post list-->
+                            <article class="card card-full hover-a mb-4">
+                                <div class="row">
+                                    <div class="col-3 col-md-4 pe-2 pe-md-0">
+                                        <!--thumbnail-->
+                                        <div class="ratio_110-77 image-wrapper">
+                                            <a
+                                                href="#">
+                                                <img width="110" height="77"
+                                                    src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1168742-110x77.jpeg"
+                                                    class="img-fluid lazy wp-post-image loaded"
+                                                    alt="Stylish Shower Shoes For the Gym, the Dorm and Beyond"
+                                                    loading="lazy"
+                                                    data-src="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1168742-110x77.jpeg"
+                                                    srcset="https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1168742-110x77.jpeg 110w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1168742-99x68.jpeg 99w, https://demo.bootstrap.news/dark/wp-content/uploads/2019/09/pexels-photo-1168742-115x80.jpeg 115w"
+                                                    sizes="(max-width: 110px) 100vw, 110px" data-was-processed="true">
+                                                <!-- post type -->
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-9 col-md-8">
+                                        <div class="card-body pt-0">
+                                            <!--title-->
+                                            <h3 class="card-title h6 h5-sm h6-md">
+                                                <a
+                                                    href="#">Stylish
+                                                    Shower Shoes For the Gym, the Dorm and Beyond</a>
+                                            </h3>
+                                            <!--date-->
+                                            <div class="card-text small text-muted">
+                                                <time class="news-date" datetime="2019-09-11T06:14:15+00:00">September
+                                                    11, 2019</time>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <!--End post list-->
+                        </div>
+                        <div class="gap-0"></div>
+                    </aside>
+                </div>
+            </aside>
+
+
+            <!--left sidebar check-->
+
+            <!--right sidebar check-->
+
+
+
+
+
+        </div>
+    </div>
+</main>

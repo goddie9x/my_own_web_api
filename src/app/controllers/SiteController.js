@@ -57,5 +57,17 @@ class siteController {
     roomChat(req, res, next) {
         res.render('sites/roomChat');
     }
+    notFound(req, res, next) {
+        res.render('sites/notFound');
+    }
+    errorServer(req, res, next) {
+        res.render('sites/errorServer');
+    }
+    notPermission(req, res, next) {
+        res.render('sites/notPermission');
+    }
+    logginAccess(req, res, next) {
+        res.render('sites/logginAccess');
+    }
 }
 module.exports = new siteController;
