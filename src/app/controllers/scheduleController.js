@@ -25,6 +25,9 @@ class ScheduleController {
                         schedules = schedules.map(function(schedule) {
                             schedule.dayStart = convertDateToDMY(schedule.dayStart);
                             schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
+                            schedule.linkMeet = schedule.linkMeet.map(function(link) {
+                                return checkAndAddHttpSlash(link);
+                            });
                             return schedule;
                         });
                         res.send({ schedules, notDelete });
@@ -88,6 +91,9 @@ class ScheduleController {
                     schedules = multipleMongooseToObjects(schedules).map(function(schedule) {
                         schedule.dayStart = convertDateToDMY(schedule.dayStart);
                         schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
+                        schedule.linkMeet = schedule.linkMeet.map(function(link) {
+                            return checkAndAddHttpSlash(link);
+                        });
                         return schedule;
                     });
 
@@ -110,6 +116,9 @@ class ScheduleController {
 
                 schedule.dayStart = reverseDateForDisplayInForm(schedule.dayStart);
                 schedule.dayEnd = reverseDateForDisplayInForm(schedule.dayEnd);
+                schedule.linkMeet = schedule.linkMeet.map(function(link) {
+                    return checkAndAddHttpSlash(link);
+                });
                 res.render('schedules/modify', schedule);
             })
             .catch(next);
@@ -131,14 +140,18 @@ class ScheduleController {
             dayOfWeek = [...dayOfWeek];
             let schedules = [];
             let scheduleNeedUpdate;
-
+            //because maybe user create many dayOfWeek, then we create multiple schedules for it
             dayOfWeek.forEach((day, currentIndex) => {
                 let temp = {...rawSchedule };
 
+                temp.linkMeet = temp.linkMeet.map(function(link) {
+                    return checkAndAddHttpSlash(link);
+                });
                 temp.dayOfWeek = day;
                 temp.partOfDay = rawSchedule.partOfDay[currentIndex];
                 temp.dayStart = Date.parse(temp.dayStart);
                 temp.dayEnd = Date.parse(temp.dayEnd);
+                //we can updateOne for first element
                 if (currentIndex == 0) {
                     scheduleNeedUpdate = {...temp };
                 } else {
@@ -232,6 +245,9 @@ class ScheduleController {
                     schedules = schedules.map(function(schedule) {
                         schedule.dayStart = convertDateToDMY(schedule.dayStart);
                         schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
+                        schedule.linkMeet = schedule.linkMeet.map(function(link) {
+                            return checkAndAddHttpSlash(link);
+                        });
                         return schedule;
                     });
                     res.send({ schedules, deleted });
