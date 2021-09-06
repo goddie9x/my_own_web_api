@@ -22,8 +22,7 @@
           <input class="form-control me-2" name="name" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-        {{#if user}}
-        <div class="dropdown">
+        <div class="ms-2 dropdown user_menu">
           <button class="btn btn-secondary dropdown-toggle"id="user-menu"data-bs-toggle="dropdown">
             <img class="avatar" src="" alt="">
           </button>
@@ -46,11 +45,9 @@
           </li>
           </ul>
         </div>
-        {{else}}
-        <button type="button" class="btn-login ms-4 btn btn-primary" data-bs-toggle="modal" data-bs-target="#loggin">
+        <button type="button" class="btn-login ms-4 btn btn-primary login_btn" data-bs-toggle="modal" data-bs-target="#loggin">
           Đăng nhập
         </button>
-        {{/if}}
       </div>
     </div>
   </nav>
@@ -142,7 +139,6 @@
       <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">
-      
     </div>
   </div>
 </div>

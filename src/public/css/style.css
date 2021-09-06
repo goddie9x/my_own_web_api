@@ -17,6 +17,16 @@
     background-color: rgba(0, 0, 0, 0.5); }
     .canv .app header .modal.fade .modal-footer {
       justify-content: flex-start; }
+  .canv .app header .user_menu {
+    display: none; }
+  .canv .app header .user_menu.active {
+    display: block; }
+    .canv .app header .user_menu.active .user-menu-list {
+      min-width: 250px;
+      left: unset;
+      right: 0; }
+  .canv .app header .login_btn.active {
+    display: none; }
   .canv .app .container {
     padding: 20px 0; }
     .canv .app .container h2 {

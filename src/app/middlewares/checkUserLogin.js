@@ -5,6 +5,7 @@ module.exports = function userLoginMiddleware(req, res, next) {
 
     let temp = req.cookies.tokenUID;
     let userID;
+
     if (temp) {
         try {
             userID = jwt.verify(temp, process.env.JWT);
@@ -12,15 +13,15 @@ module.exports = function userLoginMiddleware(req, res, next) {
             res.send(err);
         }
         User.findOne({ _id: userID })
-            .then(function(data) {
+            .then(function(user) {
+                let { password, ...data } = user;
                 res.locals.user = data;
-
                 next();
             })
             .catch(function(err) {
-                res.redirect('/');
+                res.send(err);
             })
     } else {
-        res.redirect('/');
+        res.send('không có thông tin đăng nhâp');
     }
 }

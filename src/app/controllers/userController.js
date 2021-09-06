@@ -10,7 +10,6 @@ class userController {
         let account = req.body.account;
         let password = req.body.password;
 
-        console.log(account, password);
         User.find({
                 account: account
             })
@@ -42,9 +41,11 @@ class userController {
                     res.send(`tài khoản ${account} không tồn tại`);
                 }
 
-                User.updateOne({ _id: user._id }, { status: true });
-                let token = jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '1h' });
-                res.send({ token });
+                User.updateOne({ _id: user[0]._id }, { status: true });
+                jwt.sign({ _id: user[0]._id }, process.env.JWT, { expiresIn: '1h' },
+                    function(err, token) {
+                        res.send({ token });
+                    });
             })
             .catch(next);
     }
@@ -77,6 +78,9 @@ class userController {
                     next();
                 });
         }
+    }
+    checkLogin(req, res, next) {
+        res.send(res.locals.user);
     }
 }
 

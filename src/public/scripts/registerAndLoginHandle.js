@@ -36,6 +36,7 @@ function onSubmitLogin(event) {
                         document.cookie = `tokenUID=${data.token};max-age=86400`;
                         formLogin.closest('.modal-content').find('.btn-close').click();
                         showToast('Đăng nhâp thành công', 'chào mừng bạn đến với ngôi nhà chung của chúng ta');
+                        getUserInfo();
                     })
                     .catch(error => {
                         showToast('Đăng nhâp không thành công', 'vui lòng thử lại');
@@ -73,7 +74,6 @@ function onSubmitRegester(event) {
         },
         success: function() {
             clickedCount++;
-            console.log(clickedCount);
             if (clickedCount % 3 == 1) {
                 let account = formRegester.find('.account').val();
                 let password = formRegester.find('.password').val();
@@ -86,14 +86,19 @@ function onSubmitRegester(event) {
                         document.cookie = `tokenUID=${data.token};max-age=86400`;
                         formRegester.closest('.modal-content').find('.btn-close').click();
                         showToast('Đăng ký thành công', 'giờ đây bạn có thể khám phá nhiều tính năng hơn');
+                        getUserInfo();
                     })
                     .catch(error => {
                         showToast('Đăng ký không thành công', 'vui lòng thử lại');
-
                     })
             }
         }
     });
+}
+
+function showUserManagerHeader() {
+    $('.login_btn').toggleClass('active');
+    $('.user_menu').toggleClass('active');
 }
 
 function showToast(title, message) {
@@ -111,3 +116,14 @@ function showToast(title, message) {
         return;
     }, 7000);
 }
+
+function getUserInfo() {
+    $.get('/user/info')
+        .then(function(data) {
+            showUserManagerHeader();
+        });
+}
+
+$(document).ready(function() {
+    getUserInfo();
+});
