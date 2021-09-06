@@ -120,7 +120,9 @@ function showToast(title, message) {
 function getUserInfo() {
     $.get('/user/info')
         .then(function(data) {
-            showUserManagerHeader();
+            if (data != 'không có thông tin đăng nhâp') {
+                showUserManagerHeader();
+            }
         });
 }
 
