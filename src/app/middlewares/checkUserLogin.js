@@ -15,7 +15,7 @@ module.exports = function checkUserLogin(req, res, next) {
         User.findById(userId._id)
             .then(function(user) {
                 if (user) {
-                    let { password, ...data } = user;
+                    let { password, ...data } = user._doc;
                     req.data = data;
                     next();
                 } else {
