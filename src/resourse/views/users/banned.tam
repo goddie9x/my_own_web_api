@@ -1,0 +1,81 @@
+<h2 class="text-center">
+  Danh sách thời khoá biểu
+</h2>
+<div class="col-12 my-3">
+    <a href="/schedules/stored" class="manager-back text-primary col-12">Về trang quản lý <span class="countVal ">{{countNotDelete}}</span> </a>
+</div>
+{{!-- form for multiple select --}}
+<form class="form-container" method="POST" action="/schedules/handleMultiAction">
+  <div class="form-check">
+    <div class="d-flex select-all">
+      <input class="checkall" type="checkbox" value="" id="checkall">
+      <label class="form-check-label" for="checkall">
+        Chọn tất cả
+      </label>
+      <select class="form-select action-select " aria-label="select action" name="method">
+        <option selected>Hành động</option>
+        <option value="restore">Khôi phục</option>
+        <option value="forceDelete">Xoá</option>
+      </select>
+      <div class="btn bg-danger action-all-btn" data-bs-toggle="modal" data-bs-target="#action-all-modal">Phang luôn
+      </div>
+{{!-- modal for multiple actions --}}
+      <div class="modal fade" id="action-all-modal" tabindex="-1" aria-labelledby="action-all-modalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="action-all-modalLabel">Thực thi hành động?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary real-action-all-btn">Chiến thôi</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cũng là lỡ tay thôi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table class="table table-dark ">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">STT</th>
+          <th scope="col">Tên</th>
+          <th scope="col">Thứ</th>
+          <th scope="col">Buoi</th>
+          <th scope="col">Phòng</th>
+          <th scope="col">Hạn sử dụng</th>
+          <th scope="col">Link</th>
+          <th scope="col">Quản lý</th>
+        </tr>
+      </thead>
+      <br>
+      <tbody></tbody>
+    </table>
+</form>
+
+<div class="modal fade" id="alertDelete" tabindex="-1" aria-labelledby="alertDeleteLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Bạn có thực sự muốn xoá vĩnh viễn môn này? bạn sẽ không thể khôi phục lại đâu.</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex justify-content-evenly">
+          <button class="btn bg-danger force-delete">Xoá luôn</button>
+        <div type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đừng, chỉ là lỡ tay thôi</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>  
+<script src="/vendors/js/pagination.js"></script>
+<script src="/scripts/schedulesRender.js"></script>
+<script>
+  loadPage(1,'/schedules/trash','trash');
+  renderPagination('/schedules/trash','trash','deleted','schedulesDeleted');
+</script>

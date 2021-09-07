@@ -90,3 +90,25 @@ function fixedHeader(elements, breakpoint, classAdd = "fixed-top", elementDepend
         console.error('first argument must be exiting');
     }
 }
+const getUserInfo = new Promise(function(resolve, reject) {
+    $.get('/user/info')
+        .then(function(data) {
+            if (data != 'không có thông tin đăng nhâp') {
+                showUserManagerHeader();
+                console.log(data);
+                resolve(data);
+            }
+        })
+        .catch(function(error) {
+            reject(error);
+        })
+});
+
+$(document).ready(function() {
+    getUserInfo
+        .then(function(data) {
+            if (data) {
+                $('.user_profile').attr('href', `/user/profile/${data._id}`);
+            }
+        })
+});

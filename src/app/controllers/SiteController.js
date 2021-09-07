@@ -3,7 +3,7 @@ const { multipleMongooseToObjects } = require('../../utils/mongoose');
 const { convertDateToDMY } = require('../../utils/convertDate');
 const checkAndAddHttpSlash = require('../../utils/checkAndAddHttpSlash');
 
-class siteController {
+class SiteController {
 
     index(req, res, next) {
         if (req.query.page) {
@@ -70,4 +70,4 @@ class siteController {
         res.render('sites/logginAccess');
     }
 }
-module.exports = new siteController;
+module.exports = new SiteController;

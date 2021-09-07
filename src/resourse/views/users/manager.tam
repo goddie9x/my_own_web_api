@@ -1,0 +1,26 @@
+<h2 class="text-center">
+  Danh sách thời khoá biểu
+</h2>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col" class="hidden-mb">STT</th>
+      <th scope="col">Tên</th>
+      <th scope="col">Thứ</th>
+      <th scope="col">Buoi</th>
+      <th scope="col">Phòng</th>
+      <th scope="col">Hạn sử dụng</th>
+      <th scope="col" class="text-center">Link</th>
+    </tr>
+  </thead>
+  <br>
+  <tbody>
+  </tbody>
+</table>
+<div class="pagination-down"></div>
+<script src="/vendors/js/pagination.js"></script>
+<script src="/scripts/schedulesRender.js"></script>
+<script>
+  loadPage(1,'/schedules');
+  renderPagination();
+</script>

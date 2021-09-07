@@ -49,36 +49,32 @@ class UserController {
     }
     profile(req, res, next) {
         let accountID = req.params.id;
-        if (req.data.user && accountID == req.data.user._id) {
-            req.local._user.userID = req.data.user._id;
-            req.local._user.imageUser = req.data.user.img;
-            req.local._user.nameUser = req.data.user.name;
 
-            res.render('users/profile');
-        } else {
+        User.findById(accountID)
+            .then(user => {
+                let { password, ...userInfo } = user;
 
-            User.find({
-                    _id: accountID
-                })
-                .then(user => {
-                    if (Object.keys(user).length === 0) {
-                        res.status(404).redirect('/404');
-                    } else {
-                        req.local._user.userID = user._id;
-                        req.local._user.imageUser = user.img;
-                        req.local._user.nameUser = user.name;
-
-                        res.render('users/profile');
+                if (req.cookies.tokenUID) {
+                    let temp = req.cookies.tokenUID;
+                    let userId;
+                    try {
+                        userId = jwt.verify(temp, process.env.JWT);
+                    } catch (err) {
+                        res.status(500).json({ message: 'Phiên đăng nhập hết hạn, bạn cần đăng nhập lại' });
                     }
-                })
-                .catch(function(err) {
-                    res.status(404).redirect('/404');
-                    next();
-                });
-        }
+                    if (userId == user._id) {
+                        res.render('users/profile', { userInfo });
+                    }
+                }
+                res.render('users/profile', userInfo);
+            })
+            .catch(function(err) {
+                res.status(404).redirect('/404');
+                next();
+            });
     }
     userInfo(req, res, next) {
-        let user = req.data.user;
+        let user = req.data;
         res.send(user);
     }
     bannedUser(req, res, next) {

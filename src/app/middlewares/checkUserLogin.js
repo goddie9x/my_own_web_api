@@ -12,11 +12,12 @@ module.exports = function checkUserLogin(req, res, next) {
         } catch (err) {
             res.status(500).json({ message: 'Phiên đăng nhập hết hạn, bạn cần đăng nhập lại' });
         }
-        User.findById(userId._id)
+        User.findById(userId)
             .then(function(user) {
                 if (user) {
                     let { password, ...data } = user._doc;
                     req.data = data;
+                    res.locals.user = data;
                     next();
                 } else {
                     res.status(404).json({ message: 'Không tìm thấy tài khoản' });

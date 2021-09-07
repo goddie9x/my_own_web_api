@@ -125,23 +125,3 @@ function showToast(title, message) {
         return;
     }, 10000);
 }
-
-const getUserInfo = new Promise(function(resolve, reject) {
-    $.get('/user/info')
-        .then(function(data) {
-            if (data != 'không có thông tin đăng nhâp') {
-                showUserManagerHeader();
-                resolve(data);
-            }
-        })
-        .catch(function(error) {
-            reject(error);
-        })
-});
-
-$(document).ready(function() {
-    getUserInfo
-        .then(function(data) {
-            console.log(data);
-        })
-});
