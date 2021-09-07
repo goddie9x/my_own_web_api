@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const siteController = require('../app/controllers/siteController');
+const siteController = require('../app/controllers/SiteController');
 
 router.get('/notPermission', siteController.notPermission);
 router.get('/404', siteController.notFound);
