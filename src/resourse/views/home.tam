@@ -9,7 +9,7 @@
       <th scope="col">Thứ</th>
       <th scope="col">Buoi</th>
       <th scope="col">Phòng</th>
-      <th scope="col">Hạn sử dụng</th>
+      <th scope="col"  class="hidden-mb">Hạn sử dụng</th>
       <th scope="col" class="text-center">Link</th>
     </tr>
   </thead>

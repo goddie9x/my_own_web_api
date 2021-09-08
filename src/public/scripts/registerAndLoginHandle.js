@@ -2,7 +2,7 @@
 var clickedCount = 0;
 
 function onSubmitLogin(event) {
-    const formLogin = $(event.target).closest('.form-loggin');
+    const formLogin = $(event.target).closest('.form-login');
 
     formLogin.submit(function(e) {
         e.preventDefault();
@@ -27,16 +27,19 @@ function onSubmitLogin(event) {
             if (clickedCount % 2 == 1) {
                 let account = formLogin.find('.account').val();
                 let password = formLogin.find('.password').val();
-
-                $.post('/user/loggin', {
+                $.post('/user/login', {
                         account: account,
                         password: password,
                     })
                     .then(function(data) {
-                        document.cookie = `tokenUID=${data.token};max-age=86400`;
-                        formLogin.closest('.modal-content').find('.btn-close').click();
-                        showToast('Đăng nhâp thành công', 'chào mừng bạn đến với ngôi nhà chung của chúng ta');
-                        location.reload();
+                        if (data) {
+                            document.cookie = `tokenUser=${data.token};max-age=86400`;
+                            formLogin.closest('.modal-content').find('.btn-close').click();
+                            showToast('Đăng nhâp thành công', 'chào mừng bạn đến với ngôi nhà chung của chúng ta');
+                            location.reload();
+                        } else {
+                            showToast('Đăng nhâp không thành công', 'vui lòng thử lại');
+                        }
                     })
 
                 .catch(error => {
@@ -84,13 +87,14 @@ function onSubmitRegester(event) {
                         password: password,
                     })
                     .then(function(data) {
-                        document.cookie = `tokenUID=${data.token};max-age=86400`;
-                        formRegester.closest('.modal-content').find('.btn-close').click();
-                        showToast('Đăng ký thành công', 'giờ đây bạn có thể khám phá nhiều tính năng hơn');
-                        location.reload();
-                    })
-                    .then(user => {
-                        console.log(user);
+                        if (data.token) {
+                            document.cookie = `tokenUser=${data.token};max-age=86400`;
+                            formRegester.closest('.modal-content').find('.btn-close').click();
+                            showToast('Đăng ký thành công', 'giờ đây bạn có thể khám phá nhiều tính năng hơn');
+                            location.reload();
+                        } else {
+                            showToast('Đăng ký không thành công', 'vui lòng thử lại');
+                        }
                     })
                     .catch(error => {
                         showToast('Đăng ký không thành công', 'vui lòng thử lại');
@@ -101,13 +105,18 @@ function onSubmitRegester(event) {
 }
 
 function logout() {
-    document.cookie = `tokenUID=null`;
+    document.cookie = `tokenUser=; expires = Thu, 01 Jan 1970 00:00:00 GMT`;
     location.reload();
 }
 
 function showUserManagerHeader() {
-    $('.login_btn').toggleClass('active');
-    $('.user_menu').toggleClass('active');
+    $('.login_btn').addClass('active');
+    $('.user_menu').addClass('active');
+}
+
+function hideUserManagerHeader() {
+    $('.login_btn').removeClass('active');
+    $('.user_menu').removeClass('active');
 }
 
 function showToast(title, message) {
@@ -125,3 +134,25 @@ function showToast(title, message) {
         return;
     }, 10000);
 }
+
+const getUserInfo = new Promise(function(resolve, reject) {
+    $.get('/user/info')
+        .then(function(data) {
+            if (data != 'không có thông tin đăng nhâp') {
+                showUserManagerHeader();
+                resolve(data);
+            }
+        })
+        .catch(function(error) {
+            reject(error);
+        })
+});
+
+$(document).ready(function() {
+    getUserInfo
+        .then(function(data) {
+            if (data) {
+                $('.user_profile').attr('href', `/user/profile/${data._id}`);
+            }
+        })
+});

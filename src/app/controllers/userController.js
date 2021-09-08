@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const { multipleMongooseToObjects } = require('../../utils/mongoose');
 const jwt = require('jsonwebtoken');
-
+const ITEM_PER_PAGE = 8;
 class UserController {
     index(req, res, next) {
         res.render('users/profile');
@@ -26,26 +26,27 @@ class UserController {
             })
             .catch(next);
     }
-    loggin(req, res, next) {
+    login(req, res, next) {
         let account = req.body.account;
         let password = req.body.password;
-
-        User.find({
+        User.findOne({
                 account,
                 password
             })
             .then(user => {
-                if (Object.keys(user).length === 0) {
-                    res.status(404).redirect('/404');
+                if (user._id) {
+                    User.updateOne({ _id: user._id }, { status: true });
+                    jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '1h' },
+                        function(err, token) {
+                            res.send({ token });
+                        });
+                } else {
+                    res.status(500).json({ message: 'error' });
                 }
-
-                User.updateOne({ _id: user[0]._id }, { status: true });
-                jwt.sign({ _id: user[0]._id }, process.env.JWT, { expiresIn: '1h' },
-                    function(err, token) {
-                        res.send({ token });
-                    });
             })
-            .catch(next);
+            .catch(err => {
+                res.status(500).json({ error: err });
+            });
     }
     profile(req, res, next) {
         let accountID = req.params.id;
@@ -60,7 +61,7 @@ class UserController {
                     try {
                         userId = jwt.verify(temp, process.env.JWT);
                     } catch (err) {
-                        res.status(500).json({ message: 'Phiên đăng nhập hết hạn, bạn cần đăng nhập lại' });
+                        res.status(500).redirect('/loginSessionExpired');
                     }
                     if (userId == user._id) {
                         res.render('users/profile', { userInfo });
@@ -77,7 +78,7 @@ class UserController {
         let user = req.data;
         res.send(user);
     }
-    bannedUser(req, res, next) {
+    bannedUsers(req, res, next) {
         User.findDeleted({})
             .then((users) => {
                 users = multipleMongooseToObjects(users);
@@ -88,13 +89,27 @@ class UserController {
             })
     }
     manager(req, res, next) {
-        User.find({})
-            .then((users) => {
-                users = multipleMongooseToObjects(users);
-                res.send(users);
-            })
-            .catch((err) => {
-                res.status(500).redirect('/500');
+        let page = req.query.page;
+        if (page) {
+            if (page < 1) {
+                page = 1;
+            }
+            let pageSkip = (page - 1) * ITEM_PER_PAGE;
+
+            let findUser = User.find({})
+                .skip(pageSkip)
+                .limit(ITEM_PER_PAGE)
+                .then((users) => {
+                    users = multipleMongooseToObjects(users);
+                    res.send({ users });
+                })
+                .catch((err) => {
+                    res.status(500).redirect('/500');
+                })
+        }
+        User.countDeleted({})
+            .then(countUserBanned => {
+                res.render('users/manager', { countUserBanned });
             })
     }
 }

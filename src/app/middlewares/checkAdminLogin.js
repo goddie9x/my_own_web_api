@@ -1,5 +1,5 @@
 module.exports = function checkAdminLoginMiddleware(req, res, next) {
-    let user = req.data.user;
+    let user = req.data;
     if (user.role == 0) {
         next();
     } else {

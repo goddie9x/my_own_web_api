@@ -20,9 +20,9 @@ function onDeleteBtnClick(e) {
     const confirmDeleteBtn = $('#alertDelete .delete');
     confirmDeleteBtn.unbind('click').on('click', function(event) {
         event.preventDefault();
-        $.post(`stored/${$(e.target).attr('btn-value')}?_method=delete`)
+        $.post(`user/${$(e.target).attr('btn-value')}?_method=delete`)
             .done(function() {
-                $(e.target).closest('.schedule-item').remove();
+                $(e.target).closest('.user-item').remove();
                 increaseCountVal();
                 $(event.target).closest('.modal').find('.btn-close').click();
                 reIndexColumns();
@@ -31,18 +31,18 @@ function onDeleteBtnClick(e) {
 }
 
 function onRestoreBtnClick(e) {
-    $.get(`/schedules/restore/${$(e.target).attr('restoreId')}`, function(transport) {
+    $.get(`/user/restore/${$(e.target).attr('restoreId')}`, function(transport) {
         reIndexColumns();
         increaseCountVal();
-        $(e.target).closest('.schedule-item').remove();
+        $(e.target).closest('.user-item').remove();
     });
 }
 
 function onForceDeleteBtnClick(e) {
     $('.force-delete').unbind('click').on('click', function(event) {
-        $.post(`trash/${$(e.target).attr('btn-value')}?_method=delete`, function(transport) {
+        $.post(`user/banned/${$(e.target).attr('btn-value')}?_method=delete`, function(transport) {
             reIndexColumns();
-            $(e.target).closest('.schedule-item').remove();
+            $(e.target).closest('.user-item').remove();
             $(event.target).closest('.modal').find('.btn-close').click();
             decreaseCountVal();
         });
@@ -50,60 +50,55 @@ function onForceDeleteBtnClick(e) {
 }
 
 function loadPage(page, staticUrl = '/', managerType) {
-    const DOW = ["Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy", "Chủ Nhật"];
-    const POD = ["Sáng", "Chiều", "Tối"];
+    const GENDER = ["Không rõ", "Nam", "Nữ"];
 
     if (page < 1) {
         page = 1;
     }
     $.get(`${staticUrl}?page=${page}`)
-        .done(({ schedules }) => {
+        .done(({ users }) => {
             let tableBody = $('.table tbody');
 
             tableBody.html('');
-            if (schedules) {
-                schedules.forEach((schedule, index) => {
-                    let tempSchedule = `<tr class="schedule-item">`;
+            if (users) {
+                users.forEach((user, index) => {
+                    let tempuser = `<tr class="user-item">`;
                     if (managerType) {
-                        tempSchedule += `<td>
-                            <input class="check-item" type="checkbox" name="id" value="${schedule._id}">
+                        tempuser += `<td>
+                            <input class="check-item" type="checkbox" name="id" value="${user._id}">
                         </td>`
                     }
 
-                    tempSchedule += `<td class="index hidden-mb">${index + 1}</td>
-                        <td>${schedule.name}</td>
-                        <td>${DOW[schedule.dayOfWeek]}</td>
-                        <td>${POD[schedule.partOfDay]}</td>
-                        <td>${schedule.room}</td>
-                        <td class="hidden-mb">${schedule.dayStart} - ${schedule.dayEnd}</td>
-                        <td>`;
-                    schedule.linkMeet.forEach((link, index2) => {
-                        tempSchedule += `<a href="${link}" target="_blank">Link ${index2 + 1}</a>`;
-                    });
+                    tempuser += `<td class="index">${index + 1}</td>
+                        <td class="hidden-mb">${user.account}</td>
+                        <td>${user.name}</td>
+                        <td>${user.dateOfBirth}</td>
+                        <td>${user.gender}</td>
+                        <td>Số bài đăng</td>
+                        <td>Số tin đăng</td>`;
                     if (managerType) {
-                        if (managerType == 'stored') {
-                            tempSchedule += `
-                            </td>
+                        if (managerType == 'manager') {
+                            tempuser += `
                             <td class="justify-content-evenly">
-                              <a href="/schedules/modify/${schedule._id}" class="btn bg-primary">Sửa</a>
+                              <a href="/users/modify/${user._id}" class="btn bg-primary">Sửa</a>
                               <div class="btn bg-danger delete" data-bs-toggle="modal" data-bs-target="#alertDelete"
-                                btn-value="${schedule._id}" onclick="onDeleteBtnClick(event)">Xoá</div>
+                                btn-value="${user._id}" onclick="onDeleteBtnClick(event)">Ban</div>
                             </td>
                           </tr>`;
                         }
-                        if (managerType == 'trash') {
-                            tempSchedule += `
+                        if (managerType == 'banned') {
+                            tempuser += `
                             </td>
                             <td class="justify-content-evenly">
-                                <div restoreId="${schedule._id}" class="btn bg-primary restore-btn" onclick="onRestoreBtnClick(event)">Khôi phục</div>
-                                <div class="btn bg-danger delete" data-bs-toggle="modal" data-bs-target="#alertDelete" btn-value="${schedule._id} onclick=" onForceDeleteBtnClick(event)">Xoá vĩnh viễn</div>
+                                <div restoreId="${user._id}" class="btn bg-primary restore-btn" onclick="onRestoreBtnClick(event)">Gỡ ban</div>
+                                <div class="btn bg-danger delete" data-bs-toggle="modal" data-bs-target="#alertDelete" btn-value="${user._id} onclick=" onForceDeleteBtnClick(event)">Xoá vĩnh viễn</div>
                             </td>
                           </tr>`;
                         }
                     } else {
-                        tempSchedule += '</td></tr>';
+                        tempuser += '</td></tr>';
                     }
-                    tableBody.append(tempSchedule);
+                    tableBody.append(tempuser);
                 });
             } else {
                 tableBody.html(`
@@ -118,7 +113,7 @@ function loadPage(page, staticUrl = '/', managerType) {
         });
 }
 
-function renderPagination(urlMain = '/schedules', managerType, typeTotalCount = 'notDelete', locator = 'schedules', mainPagination = '.pagination-down', pageSize = 8) {
+function renderPagination(urlMain = '/user/manager', managerType, typeTotalCount = 'notDelete', locator = 'user', mainPagination = '.pagination-down', pageSize = 8) {
     $(mainPagination).pagination({
         dataSource: '?page=1',
         locator: locator,

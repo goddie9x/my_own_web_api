@@ -8,7 +8,8 @@ const checkAdminLogin = require('../app/middlewares/checkAdminLogin');
 router.get('/profile/:id', viewUser, userController.profile);
 router.get('/info', checkUserLogin, userController.userInfo);
 router.get('/manager', checkUserLogin, checkAdminLogin, userController.manager);
-router.post('/loggin', userController.loggin);
+router.get('/banned', checkUserLogin, checkAdminLogin, userController.bannedUsers);
+router.post('/login', userController.login);
 router.post('/register', userController.register);
 router.get('/', userController.index);
 

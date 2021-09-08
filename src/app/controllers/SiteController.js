@@ -61,13 +61,16 @@ class SiteController {
         res.render('sites/notFound');
     }
     errorServer(req, res, next) {
-        res.render('sites/errorServer');
+        res.render('sites/severError');
     }
     notPermission(req, res, next) {
         res.render('sites/notPermission');
     }
-    logginAccess(req, res, next) {
-        res.render('sites/logginAccess');
+    loginAccess(req, res, next) {
+        res.render('sites/loginAccess');
+    }
+    loginSessionExpired(req, res, next) {
+        res.render('sites/loginSessionExpired');
     }
 }
 module.exports = new SiteController;

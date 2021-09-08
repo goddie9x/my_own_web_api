@@ -10,6 +10,9 @@
 .canv .error {
   color: red; }
 
+.canv .form-check {
+  padding-left: 0; }
+
 .canv .app {
   position: relative;
   z-index: 4; }
@@ -394,6 +397,8 @@
   display: none; }
 
 @media (max-width: 575px) {
+  .canv .app .hidden-mb {
+    display: none; }
   .canv .app .container {
     width: 99%; }
     .canv .app .container .game-room {
@@ -451,9 +456,7 @@
   root::-webkit-scrollbar {
     display: none; }
   .table {
-    font-size: 12px; }
-  .hidden-mb {
-    display: none; } }
+    font-size: 12px; } }
 
 @media (max-width: 350px) {
   .table {

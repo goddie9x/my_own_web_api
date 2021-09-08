@@ -35,6 +35,9 @@
               <a class="nav-link user_profile" href="/user/profile/{{user._id}}">Quản lý tài khoản</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link user_manager" href="/user/manager">Quản lý người dùng</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link view_schedule" aria-current="page" href="/schedules">Lịch học</a>
             </li>
             <li class="nav-item">
@@ -50,7 +53,7 @@
           </ul>
         </div>
         <button type="button" class="btn-login ms-4 btn btn-primary login_btn" data-bs-toggle="modal"
-          data-bs-target="#loggin">
+          data-bs-target="#login">
           Đăng nhập
         </button>
       </div>
@@ -58,15 +61,15 @@
   </nav>
 
   <!-- Modal -->
-  <div class="modal fade" id="loggin" tabindex="-1" aria-labelledby="logginLabel" aria-hidden="true">
+  <div class="modal fade" id="login" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content  bg-dark text-light">
         <div class="modal-header">
-          <h5 class="modal-title" id="logginLabel">Đăng nhập để có nhiều tính năng hơn</h5>
+          <h5 class="modal-title" id="loginLabel">Đăng nhập để có nhiều tính năng hơn</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form class="form-loggin">
+          <form class="form-login">
             <div class="mb-3">
               <label for="account-log" class="form-label">Tài khoản </label>
               <input type="account" name="account" class="form-control account" minlength="5" id="account-log"
@@ -79,7 +82,7 @@
               <input type="password" name="password" minlength="8" class="form-control password" id="Password-log"
                 required>
             </div>
-            <div class="mb-3 form-check">
+            <div class="mb-3">
               <input type="checkbox" class="form-check-input" id="save-password">
               <label class="form-check-label" for="save-password">Lưu mật khẩu</label>
             </div>
@@ -119,7 +122,7 @@
               <label for="password_confirm" class="form-label">Nhập lại mật khẩu</label>
               <input type="password" class="form-control" name="password_confirm" id="password_confirm" required>
             </div>
-            <div class="mb-3 form-check">
+            <div class="mb-3">
               <input type="checkbox" class="form-check-input" id="except-term">
               <label class="form-check-label" for="except-term">Đồng ý điều khoản</label>
             </div>
@@ -129,7 +132,7 @@
         <div class="modal-footer">
           <p>Đã có tài khoản rồi? Đăng nhập --></p>
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal"
-            data-bs-target="#loggin">Đăng nhập</button>
+            data-bs-target="#login">Đăng nhập</button>
         </div>
       </div>
     </div>

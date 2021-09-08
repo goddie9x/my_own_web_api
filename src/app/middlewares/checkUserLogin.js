@@ -2,31 +2,24 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
 module.exports = function checkUserLogin(req, res, next) {
-
-    let temp = req.cookies.tokenUID;
-    let userId;
-
-    if (temp) {
-        try {
-            userId = jwt.verify(temp, process.env.JWT);
-        } catch (err) {
-            res.status(500).json({ message: 'Phiên đăng nhập hết hạn, bạn cần đăng nhập lại' });
-        }
+    try {
+        let temp = req.cookies.tokenUser;
+        let userId = jwt.verify(temp, process.env.JWT);
         User.findById(userId)
-            .then(function(user) {
+            .then((user) => {
                 if (user) {
                     let { password, ...data } = user._doc;
                     req.data = data;
                     res.locals.user = data;
                     next();
                 } else {
-                    res.status(404).json({ message: 'Không tìm thấy tài khoản' });
+                    res.status(404).json('/404');
                 }
             })
-            .catch(function(err) {
-                res.status(404).json({ message: 'Không tìm thấy tài khoản' });
-            })
-    } else {
-        res.status(500).json({ message: 'Không có thông tin đăng nhâp' });
+            .catch(err => {
+                res.status(500).json('/500');
+            });
+    } catch {
+        res.status(500).json('/500');
     }
 }

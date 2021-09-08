@@ -47,7 +47,7 @@
           <th scope="col">Thứ</th>
           <th scope="col">Buoi</th>
           <th scope="col">Phòng</th>
-          <th scope="col">Hạn sử dụng</th>
+          <th scope="col" class="hidden-mb">Hạn sử dụng</th>
           <th scope="col">Link</th>
           <th scope="col">Quản lý</th>
         </tr>

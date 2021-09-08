@@ -8,6 +8,9 @@ const User = new Schema({
     name: { type: String, maxLength: 255 },
     account: { type: String, maxLength: 255, required: true, unique: true },
     password: { type: String, maxLength: 255, required: true },
+    //0: unknow, 1. Man, 2. female
+    gender: { type: Number },
+    dateOfBirth: { type: Date },
     status: { type: Boolean, default: false },
     //0: admin, 1: mod, 2: populer user
     role: { type: Number, default: 2 },
