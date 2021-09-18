@@ -138,7 +138,8 @@ function showToast(title, message) {
 const getUserInfo = new Promise(function(resolve, reject) {
     $.get('/user/info')
         .then(function(data) {
-            if (data != 'không có thông tin đăng nhâp') {
+            console.log(data);
+            if (data && data != 'không có thông tin đăng nhâp') {
                 showUserManagerHeader();
                 resolve(data);
             }
