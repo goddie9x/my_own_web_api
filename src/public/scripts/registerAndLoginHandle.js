@@ -139,7 +139,7 @@ const getUserInfo = new Promise(function(resolve, reject) {
     $.get('/user/info')
         .then(function(data) {
             console.log(data);
-            if (data && data != 'không có thông tin đăng nhâp') {
+            if (data) {
                 showUserManagerHeader();
                 resolve(data);
             }
