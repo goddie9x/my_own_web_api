@@ -78,4 +78,5 @@
 <script>
   loadPage(1,'/schedules/trash','trash');
   renderPagination('/schedules/trash','trash','deleted','schedulesDeleted');
+  getUserInfo();
 </script>

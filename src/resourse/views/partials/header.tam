@@ -22,10 +22,11 @@
           <input class="form-control me-2" name="name" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
+        {{#if _user}}
         <div class="ms-2 dropdown user_menu">
           <button class="btn btn-secondary dropdown-toggle" id="user-menu" data-bs-toggle="dropdown">
-            {{#if user.image}}
-            <img class="avatar" src="" alt="">
+            {{#if _user.image}}
+            <img class="avatar" src="" alt="user avatar">
             {{else}}
             <i class="fal fa-user"></i>
             {{/if}}
@@ -52,10 +53,12 @@
             </li>
           </ul>
         </div>
+        {{else}}
         <button type="button" class="btn-login ms-4 btn btn-primary login_btn" data-bs-toggle="modal"
           data-bs-target="#login">
           Đăng nhập
         </button>
+        {{/if}}
       </div>
     </div>
   </nav>

@@ -109,16 +109,6 @@ function logout() {
     location.reload();
 }
 
-function showUserManagerHeader() {
-    $('.login_btn').addClass('active');
-    $('.user_menu').addClass('active');
-}
-
-function hideUserManagerHeader() {
-    $('.login_btn').removeClass('active');
-    $('.user_menu').removeClass('active');
-}
-
 function showToast(title, message) {
     let toast = $('#liveToast');
 
@@ -135,24 +125,13 @@ function showToast(title, message) {
     }, 10000);
 }
 
-const getUserInfo = new Promise(function(resolve, reject) {
-    $.get('/user/info')
-        .then(function(data) {
-            if (data) {
-                showUserManagerHeader();
-                resolve(data);
-            }
-        })
-        .catch(function(error) {
-            reject(error);
-        })
-});
-
-$(document).ready(function() {
-    getUserInfo
-        .then(function(data) {
-            if (data) {
-                $('.user_profile').attr('href', `/user/profile/${data._id}`);
-            }
-        })
-});
+function getUserInfo() {
+    return new Promise(function(resolve, reject) {
+        $.get('/user/info')
+            .then(function(data) {
+                if (data) {
+                    resolve(data);
+                }
+            })
+    });
+}
