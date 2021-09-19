@@ -138,7 +138,6 @@ function showToast(title, message) {
 const getUserInfo = new Promise(function(resolve, reject) {
     $.get('/user/info')
         .then(function(data) {
-            console.log(data);
             if (data) {
                 showUserManagerHeader();
                 resolve(data);
