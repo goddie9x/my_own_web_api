@@ -14,6 +14,7 @@ const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const getInfoUser = require('./app/middlewares/getInfoUser');
+const cors = require('cors');
 
 //create server socket
 const server = require('http').createServer(app);
@@ -90,6 +91,7 @@ app.use(session({
     saveUninitialized: false,
 }));
 app.use(flash());
+app.use(cors());
 app.use(passport.initialize())
 app.use(passport.session());
 app.use(cookieParser());

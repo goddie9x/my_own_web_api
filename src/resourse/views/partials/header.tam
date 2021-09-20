@@ -33,7 +33,7 @@
           </button>
           <ul class="dropdown-menu user-menu-list bg-dark" aria-labelledby="user-menu">
             <li class="nav-item">
-              <a class="nav-link user_profile" href="/user/profile/{{user._id}}">Quản lý tài khoản</a>
+              <a class="nav-link user_profile" href="/user/profile/{{ _user._id}}">Quản lý tài khoản</a>
             </li>
             <li class="nav-item">
               <a class="nav-link user_manager" href="/user/manager">Quản lý người dùng</a>

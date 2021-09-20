@@ -50,6 +50,7 @@ class UserController {
     }
     profile(req, res, next) {
         let accountID = req.params.id;
+        console.log(res.data);
 
         User.findById(accountID)
             .then(user => {
@@ -66,6 +67,7 @@ class UserController {
                     if (userId == user._id) {
                         res.render('users/profile', { userInfo });
                     }
+                    res.render('users/profile', userInfo);
                 }
                 res.render('users/profile', userInfo);
             })
