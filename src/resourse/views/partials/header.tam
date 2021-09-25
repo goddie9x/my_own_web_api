@@ -17,6 +17,9 @@
           <li class="nav-item">
             <a class="nav-link " aria-current="page" href="/game">Phòng chat</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/dir">Tạo link rút gọn</a>
+          </li>
         </ul>
         <form class="d-flex" method="GET" action="/search">
           <input class="form-control me-2" name="name" type="search" placeholder="Search" aria-label="Search">

@@ -1,0 +1,36 @@
+<form class="create-short-link">
+    <h2 class="text-center text-uppercase">Tạo link rút gọn</h2>
+    <div class="mb-3 create-link">
+        <label for="createLink" class="form-label text-white">Nhập link rút gọn</label>
+        <input type="text" class="form-control" id="createLink" aria-describedby="urlHelp">
+        <div id="urlHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <button type="submit" class="btn btn-primary create-link-btn">Tạo</button>
+</form>
+
+<script>
+    $('.create-link-btn').on('click', function (e) {
+        e.preventDefault();
+
+        let urlNeedCreate = $('#createLink').val();
+        if (urlNeedCreate) {
+            $.post('/dir',
+                {
+                    url: urlNeedCreate,
+                }
+            )
+                .done(function (data) {
+                    $('.link-generated').remove();
+                    $('#urlHelp').removeClass('text-danger').text();
+                    $('.create-link').after(
+                        `<div class="mb-3 link-generated">
+                        <label for="createLink" class="form-label text-white">Nhập link rút gọn</label>
+                        <input type="text" class="form-control" id="link-shorted" aria-describedby="urlHelp" value="${data}">
+                    </div>`
+                    );
+                })
+        }else{
+            $('#urlHelp').addClass('text-danger').text('Ủa không nhập url vào thì lấy gì rút gọn :v');
+        }
+    });
+</script>

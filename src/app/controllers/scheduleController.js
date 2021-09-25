@@ -1,4 +1,5 @@
 const Schedule = require('../models/Schedule');
+
 const { multipleMongooseToObjects, mongooseToObject } = require('../../utils/mongoose');
 const checkAndAddHttpSlash = require('../../utils/checkAndAddHttpSlash');
 const { convertDateToDMY, reverseDateForDisplayInForm } = require('../../utils/convertDate');
@@ -12,6 +13,7 @@ class ScheduleController {
                 if (page < 1) {
                     page = 1;
                 }
+
                 let numberOfSchedulesPass = (page - 1) * SCHEDULE_PER_PAGE;
                 let counterSchedule = Schedule.countDocuments();
                 let finderSchedule = Schedule.find({}).sort({ dayOfWeek: "asc", partOfDay: "asc" })

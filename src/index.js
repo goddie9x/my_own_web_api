@@ -5,7 +5,7 @@ const handlebars = require('express-handlebars');
 const app = express();
 const route = require('./routes');
 const methodOverride = require('method-override');
-const db = require('./config/db');
+/* const db = require('./config/db'); */
 const PORT = process.env.PORT || 3000;
 const getBreadcrumbs = require('./app/middlewares/BreadCrumsCreate');
 const session = require('express-session');
@@ -20,7 +20,7 @@ const cors = require('cors');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
-db.connect();
+/* db.connect(); */
 
 //create static direct
 app.use(express.static(path.join(__dirname, 'public')));

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('../../config/db/index');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
 const slug = require('mongoose-slug-generator');
