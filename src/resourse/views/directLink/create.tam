@@ -25,11 +25,14 @@
                     $('.create-link').after(
                         `<div class="mb-3 link-generated">
                         <label for="createLink" class="form-label text-white">Nhập link rút gọn</label>
-                        <input type="text" class="form-control" id="link-shorted" aria-describedby="urlHelp" value="${data}">
+                        <input type="text" class="form-control" id="link-shorted" aria-describedby="urlHelp" value="${window.location.href}/${data}">
                     </div>`
                     );
                 })
-        }else{
+                .fail(function () {
+                    alert("Bạn phải nhập đúng link cần rút gọn đừng nhập linh tinh");
+                })
+        } else {
             $('#urlHelp').addClass('text-danger').text('Ủa không nhập url vào thì lấy gì rút gọn :v');
         }
     });

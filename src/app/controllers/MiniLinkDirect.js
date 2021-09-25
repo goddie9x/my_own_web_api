@@ -1,5 +1,6 @@
 const Link = require('../models/Link');
-
+const validUrl = require('valid-url');
+const shortid = require('shortid')
 class MiniLinkDirect {
     index(req, res, next) {
         res.render('directLink/create');
@@ -9,7 +10,7 @@ class MiniLinkDirect {
 
         Link.findOne({ shortUrl })
             .then(urlData => {
-                res.send(urlData);
+                res.redirect(urlData.longUrl);
             })
             .catch(err => {
                 res.redirect('/404');
@@ -18,13 +19,21 @@ class MiniLinkDirect {
     create(req, res, next) {
         let url = req.body.url;
 
-
+        if (!validUrl.isUri(url)) {
+            return res.status(401).json('Invalid base URL')
+        }
+        // if valid, we create the url code
+        let shortUrl = shortid.generate();
         Link.create({
-            url: url,
-            shortUrl: url
-        })
-
-        res.send(url);
+                longUrl: url,
+                shortUrl: shortUrl
+            })
+            .then(data => {
+                res.send(shortUrl);
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 }
 

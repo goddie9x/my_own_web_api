@@ -1,5 +1,4 @@
 const Schedule = require('../models/Schedule');
-
 const { multipleMongooseToObjects, mongooseToObject } = require('../../utils/mongoose');
 const checkAndAddHttpSlash = require('../../utils/checkAndAddHttpSlash');
 const { convertDateToDMY, reverseDateForDisplayInForm } = require('../../utils/convertDate');

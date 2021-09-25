@@ -1,9 +1,15 @@
-const mongoose = require('../../config/db/urlsDb');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const slug = require('mongoose-slug-generator');
 
-const Link = new Schema({
-    url: { type: String, required: true, unique: true },
-    shortUrl: { type: String, required: true, unique: true },
-}, { timestamps: true });
+// instantiate a mongoose schema
+const URLSchema = new mongoose.Schema({
+    longUrl: { type: String, required: true },
+    shortUrl: { type: String, unique: true },
+    date: {
+        type: String,
+        default: Date.now
+    }
+})
 
-module.exports = mongoose.model('Link', Link);
+// create a model from schema and export it
+module.exports = mongoose.model('Url', URLSchema)
