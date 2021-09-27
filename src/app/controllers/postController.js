@@ -9,7 +9,6 @@ class PostController {
     }
     store(req, res, next) {
         //if user has uploaded avatar of post
-        console.log(req.file)
         if (req.file) {
             // folder upload
             const imagePath = path.join(__dirname, '/public/images');
