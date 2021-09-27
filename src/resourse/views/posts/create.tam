@@ -3,7 +3,7 @@
         <div class="row">
             <h1 class="text-center text-white">Tạo bài đăng</h1>
             <div class="col-md-8 col-12 text-white">
-                
+
                 <div class="form-group my-3">
                     <label for="title" class="mb-2">Tiêu đề <span class="require">*</span></label>
                     <input type="text" class="form-control" name="title" />
@@ -33,8 +33,8 @@
             </div>
             <div class="col-md-4 col-12 text-white">
                 <div class="form-group my-3">
-                    <label for="avatarUrl" class="mb-2">Chọn ảnh đại diện</label>
-                    <img src="" class="image-preview w-100" alt="image preview my-2">
+                    <label for="avatarUrl" class="mb-2 d-block">Chọn ảnh đại diện</label>
+                    <img src="" class="image-preview w-100  my-2" alt="image preview">
                     <input type="file" id="avatarUrl" name="avatarUrl" class="input-group input-image my-3" />
                 </div>
                 <div class="form-group my-3 row ">
@@ -60,12 +60,14 @@
 <script src="/ckeditor/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('description', {
+        height:100,
         extraPlugins: 'filebrowser',
         filebrowserBrowseUrl: '/images',//upload  location
         filebrowserUploadMethod: 'form',
         filebrowserUploadUrl: '/upload'//route,
     });
     CKEDITOR.replace('content', {
+        height:200,
         extraPlugins: 'filebrowser',
         filebrowserBrowseUrl: '/images',//upload  location
         filebrowserUploadMethod: 'form',
@@ -89,4 +91,5 @@
     $(".input-image").change(function () {
         readURL(this);
     });
+   
 </script>

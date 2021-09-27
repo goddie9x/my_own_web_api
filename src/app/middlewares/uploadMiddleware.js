@@ -1,4 +1,4 @@
-const multer = require('multer');
+/* const multer = require('multer');
 
 const upload = multer({
     limits: {
@@ -6,4 +6,4 @@ const upload = multer({
     }
 });
 
-module.exports = upload
+module.exports = upload */

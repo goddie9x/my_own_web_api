@@ -12,13 +12,13 @@ module.exports = function checkUserLogin(req, res, next) {
                     req.data = data;
                     next();
                 } else {
-                    res.status(404).json('/404');
+                    res.status(404).redirect('/loginSessionExpired');
                 }
             })
             .catch(err => {
-                res.status(500).json('/500');
+                res.status(500).redirect('/loginSessionExpired');
             });
     } catch {
-        res.status(500).json('/500');
+        res.status(500).redirect('/loginSessionExpired');
     }
 }
