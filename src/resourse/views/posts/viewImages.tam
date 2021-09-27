@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        {{#each images}}
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                <img class="w-100" src="/images/{{this}}" alt="image uploaded" onclick="returnFileUrl(event)">
+            </div>
+        {{/each}}
+    </div>
+</div>
+<script>
+    function getUrlParam( paramName ) {
+            let reParam = new RegExp( '(?:[\?&]|&)' + paramName + '=([^&]+)', 'i' );
+            let match = window.location.search.match( reParam );
+
+            return ( match && match.length > 1 ) ? match[1] : null;
+        }
+        // Simulate user action of selecting a file to be returned to CKEditor.
+        function returnFileUrl(event) {
+
+            let funcNum = getUrlParam( 'CKEditorFuncNum' );
+            let fileUrl = event.target.getAttribute('src');
+            window.opener.CKEDITOR.tools.callFunction( funcNum, fileUrl );
+            window.close();
+        }
+</script>

@@ -10,7 +10,8 @@ class MiniLinkDirect {
 
         Link.findOne({ shortUrl })
             .then(urlData => {
-                res.redirect(urlData.longUrl);
+                let longUrl = urlData.longUrl;
+                res.render('directLink/waiting', { longUrl });
             })
             .catch(err => {
                 res.redirect('/404');

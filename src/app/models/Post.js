@@ -1,11 +1,15 @@
-const mongoose = require('../../config/db/index');
+const mongoose = require('../../config/db');
 const Schema = mongoose.Schema;
 const slug = require('mongoose-slug-generator');
 const mongooseDelete = require('mongoose-delete');
 
 const Post = new Schema({
+    authorId: [Schema.Types.ObjectId],
     name: { type: String, maxLength: 255, required: true },
+    type: Number,
+    avatarUrl: String,
     description: { type: String, maxLength: 600 },
+    content: { type: String },
     slug: { type: String, slug: 'name', unique: true },
 }, { timestamps: true });
 

@@ -1,4 +1,5 @@
-<div class="lds-roller">
+<div class="direct-link  text-center my-5">
+<div class="lds-roller" data-url="{{longUrl}}">
     <div></div>
     <div></div>
     <div></div>
@@ -8,6 +9,7 @@
     <div></div>
     <div></div>
 </div>
+</div>
 <script>
-    $.get('')
+    window.location.href = document.querySelector('.lds-roller').getAttribute('data-url');
 </script>

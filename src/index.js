@@ -12,7 +12,6 @@ const session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
-const jwt = require('jsonwebtoken');
 const getInfoUser = require('./app/middlewares/getInfoUser');
 const cors = require('cors');
 

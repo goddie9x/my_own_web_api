@@ -3,8 +3,8 @@ const slug = require('mongoose-slug-generator');
 
 // instantiate a mongoose schema
 const URLSchema = new mongoose.Schema({
-    longUrl: { type: String, required: true },
-    shortUrl: { type: String, unique: true },
+    longUrl: { type: String, required: true, unique: true },
+    shortUrl: { type: String, unique: true, required: true },
     date: {
         type: String,
         default: Date.now

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/* const mongoose = require('mongoose');
 
 async function connectShortUrl(url, callback) {
     try {
@@ -13,4 +13,4 @@ async function connectShortUrl(url, callback) {
 }
 connectShortUrl();
 
-module.exports = mongoose;
+module.exports = mongoose; */

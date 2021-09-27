@@ -8,18 +8,37 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="/news">Tin tức</a>
+          <li class="nav-item position-relative">
+            <a class="nav-link " aria-current="page" href="/posts/news">Tin tức</a>
+            {{#if _user}}
+            <ul class="list-group ">
+              <li class="list-group-item  bg-dark"><a href="/posts/create"> Đăng tin</a></li>
+              <li class="list-group-item  bg-dark"><a href=""> Tin đã đăng</a></li>
+              <li class="list-group-item  bg-dark"><a href=""> Báo cáo tin tức</a></li>
+            </ul>
+            {{/if}}
           </li>
-          <li class="nav-item">
+          <li class="nav-item position-relative">
             <a class="nav-link " aria-current="page" href="/posts">Bài viết</a>
+            {{#if _user}}
+            <ul class="list-group  ">
+              <li class="list-group-item  bg-dark"><a href="/posts/create"> Đăng bài</a></li>
+              <li class="list-group-item  bg-dark"><a href=""> Tin đã đăng</a></li>
+              <li class="list-group-item  bg-dark"><a href=""> Báo cáo tin tức</a></li>
+            </ul>
+            {{/if}}
           </li>
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="/game">Phòng chat</a>
-          </li>
+          {{#if _user}}
+
+          {{/if}}
           <li class="nav-item">
             <a class="nav-link " aria-current="page" href="/dir">Tạo link rút gọn</a>
           </li>
+          {{#if _user}}
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/game">Phòng chat</a>
+          </li>
+          {{/if}}
         </ul>
         <form class="d-flex" method="GET" action="/search">
           <input class="form-control me-2" name="name" type="search" placeholder="Search" aria-label="Search">

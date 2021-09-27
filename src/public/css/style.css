@@ -21,7 +21,7 @@
   .canv .lds-roller div {
     animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     transform-origin: 40px 40px; }
-    .canv .lds-roller div :after {
+    .canv .lds-roller div:after {
       content: " ";
       display: block;
       position: absolute;
@@ -30,44 +30,44 @@
       border-radius: 50%;
       background: #fff;
       margin: -4px 0 0 -4px; }
-      .canv .lds-roller div :after :nth-child(1) {
+      .canv .lds-roller div:after:nth-child(1) {
         animation-delay: -0.036s; }
-        .canv .lds-roller div :after :nth-child(1) :after {
+        .canv .lds-roller div:after:nth-child(1):after {
           top: 63px;
           left: 63px; }
-      .canv .lds-roller div :after :nth-child(2) {
+      .canv .lds-roller div:after:nth-child(2) {
         animation-delay: -0.072s; }
-        .canv .lds-roller div :after :nth-child(2) :after {
+        .canv .lds-roller div:after:nth-child(2):after {
           top: 68px;
           left: 56px; }
-      .canv .lds-roller div :after :nth-child(3) {
+      .canv .lds-roller div:after:nth-child(3) {
         animation-delay: -0.108s; }
-        .canv .lds-roller div :after :nth-child(3) :after {
+        .canv .lds-roller div:after:nth-child(3):after {
           top: 71px;
           left: 48px; }
-      .canv .lds-roller div :after :nth-child(4) {
+      .canv .lds-roller div:after:nth-child(4) {
         animation-delay: -0.144s; }
-        .canv .lds-roller div :after :nth-child(4) :after {
+        .canv .lds-roller div:after:nth-child(4):after {
           top: 72px;
           left: 40px; }
-      .canv .lds-roller div :after :nth-child(5) {
+      .canv .lds-roller div:after:nth-child(5) {
         animation-delay: -0.18s; }
-        .canv .lds-roller div :after :nth-child(5) :after {
+        .canv .lds-roller div:after:nth-child(5):after {
           top: 71px;
           left: 32px; }
-      .canv .lds-roller div :after :nth-child(6) {
+      .canv .lds-roller div:after:nth-child(6) {
         animation-delay: -0.216s; }
-        .canv .lds-roller div :after :nth-child(6) :after {
+        .canv .lds-roller div:after:nth-child(6):after {
           top: 68px;
           left: 24px; }
-      .canv .lds-roller div :after :nth-child(7) {
+      .canv .lds-roller div:after:nth-child(7) {
         animation-delay: -0.252s; }
-        .canv .lds-roller div :after :nth-child(7) :after {
+        .canv .lds-roller div:after:nth-child(7):after {
           top: 63px;
           left: 17px; }
-      .canv .lds-roller div :after :nth-child(8) {
+      .canv .lds-roller div:after:nth-child(8) {
         animation-delay: -0.288s; }
-        .canv .lds-roller div :after :nth-child(8) :after {
+        .canv .lds-roller div:after:nth-child(8):after {
           top: 56px;
           left: 12px; }
 
@@ -92,6 +92,22 @@
     .canv .app header .nav-item .loggout_btn,
     .canv .app header .nav-item .user_profile {
       cursor: pointer; }
+    .canv .app header .nav-item.position-relative::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 52px;
+      height: 50px;
+      width: 100%;
+      left: 0; }
+    .canv .app header .nav-item.position-relative .list-group {
+      display: none;
+      position: absolute;
+      top: 52px;
+      width: max-content;
+      z-index: 99999; }
+    .canv .app header .nav-item.position-relative:hover .list-group {
+      display: block; }
   .canv .app header .user_menu .user-menu-list {
     min-width: 250px;
     left: unset;
