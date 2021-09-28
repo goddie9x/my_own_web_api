@@ -23,7 +23,6 @@ class PostController {
                 return data
             })
             .then(data => {
-                console.log(data);
                 res.render('posts/viewPost', data);
             })
             .catch(err => {
@@ -44,7 +43,7 @@ class PostController {
 
         Post.create(post)
             .then(data => {
-                res.redirect('/posts');
+                res.redirect(`/posts/${postInfo.slug}`);
             })
             .catch(err => {
                 res.redirect('/500')
