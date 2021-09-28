@@ -11,7 +11,7 @@ router.get('/loginSessionExpired', siteController.loginSessionExpired);
 router.get('/404', siteController.notFound);
 router.get('/500', siteController.errorServer);
 router.post('/upload', multipartyMiddleware, siteController.upImage);
-router.post('/cloudinary-upload', checkUserLogin, fileUploader.single('file'), siteController.cloudinary);
+router.post('/cloudinary-upload', fileUploader.single('file'), siteController.cloudinary);
 router.get('/images', siteController.images);
 router.get('/search', siteController.search);
 router.get('/game', siteController.game);

@@ -98,7 +98,7 @@ class UserController {
             }
             let pageSkip = (page - 1) * ITEM_PER_PAGE;
 
-            let findUser = User.find({})
+            User.find({})
                 .skip(pageSkip)
                 .limit(ITEM_PER_PAGE)
                 .then((users) => {

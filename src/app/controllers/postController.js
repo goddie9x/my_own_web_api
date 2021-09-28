@@ -1,6 +1,7 @@
 const path = require('path');
-const multiparty = require('multiparty');
-
+const fs = require('fs');
+const Post = require('../models/Post');
+const User = require('../models/User');
 class PostController {
     index(req, res, next) {
         res.render('posts/views');
@@ -8,38 +9,62 @@ class PostController {
     create(req, res, next) {
         res.render('posts/create');
     }
-    store(req, res, next) {
-        //if user has uploaded avatar of post
-        if (req.body.avatarUrl) {
-            // folder upload
-            let form = new multiparty.Form();
-            form.parse(req, function(err, fields, files) {
-                let img = files.image[0];
-                let name = fields.name || img.originalFilename;
-                const imagePath = path.join(__dirname, '/public/images');
+    viewPost(req, res, next) {
+        let slug = req.params.slug;
 
-                fs.rename(img.path, path, function(err) {
-                    if (err) { return next(err); };
-                    Photo.create({
-                        name: name,
-                        path: imagePath
-                    }, function(err) {
-                        if (err) { return next(err); };
-                        res.redirect('/');
-                    });
+        Post.findOne({ slug })
+            .then(async function(data) {
+                let authorId = data.authorId;
+                let author = await User.findOne({ _id: authorId })
+
+                data = Object.assign(data, {
+                    author: author.name,
+                })
+                return data
+            })
+            .then(data => {
+                console.log(data);
+                res.render('posts/viewPost', data);
+            })
+            .catch(err => {
+                res.redirect('/404');
+            })
+    }
+    store(req, res, next) {
+        let idUserCreatedPost = req.data._id;
+        let postInfo = req.body;
+        let avatarUrl = postInfo.avatarUrl;
+        let post = Object.assign(postInfo, {
+            authorId: idUserCreatedPost,
+        });
+        if (avatarUrl) {
+            avatarUrl = '/images/' + avatarUrl;
+            post.avatarUrl = avatarUrl;
+        }
+
+        Post.create(post)
+            .then(data => {
+                res.redirect('/posts');
+            })
+            .catch(err => {
+                res.redirect('/500')
+            });
+    }
+    storeAvatar(req, res, next) {
+        try {
+            fs.readFile(req.files.file.path, function(err, data) {
+                var newPath = path.join(__dirname, '../../public/images/' + req.files.file.name);
+                fs.writeFile(newPath, data, function(err) {
+                    if (err) console.log({ err: err });
+                    else {
+                        let fileName = req.files.file.name;
+                        let url = '/images/' + fileName;
+                        res.status(201).send(url);
+                    }
                 });
             });
-            // call class Resize
-            const fileUpload = new Resize(imagePath);
-            const filename = fileUpload.save(req.file.buffer);
-            console.log(filename);
-        } else {
-            let idUserCreatedPost = req.data._id;
-            let postInfo = req.body;
-            let post = Object.assign(postInfo, {
-                authorId: idUserCreatedPost
-            });
-            res.status(201).send(post);
+        } catch (error) {
+            console.log(error.message);
         }
     }
 }

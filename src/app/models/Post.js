@@ -5,12 +5,12 @@ const mongooseDelete = require('mongoose-delete');
 
 const Post = new Schema({
     authorId: [Schema.Types.ObjectId],
-    name: { type: String, maxLength: 255, required: true },
+    title: { type: String, maxLength: 255, required: true },
     type: Number,
     avatarUrl: String,
     description: { type: String, maxLength: 600 },
     content: { type: String },
-    slug: { type: String, slug: 'name', unique: true },
+    slug: { type: String, slug: 'title', unique: true },
 }, { timestamps: true });
 
 //add plugin

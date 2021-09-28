@@ -1,474 +1,469 @@
-.canv .btn {
+.canv {
   color: #fff; }
-
-.canv a {
-  text-decoration: none; }
-
-.canv .flex-wrap {
-  flex-wrap: wrap; }
-
-.canv .error {
-  color: red; }
-
-.canv .form-check {
-  padding-left: 0; }
-
-.canv .lds-roller {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px; }
-  .canv .lds-roller div {
-    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    transform-origin: 40px 40px; }
-    .canv .lds-roller div:after {
-      content: " ";
-      display: block;
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #fff;
-      margin: -4px 0 0 -4px; }
-      .canv .lds-roller div:after:nth-child(1) {
-        animation-delay: -0.036s; }
-        .canv .lds-roller div:after:nth-child(1):after {
-          top: 63px;
-          left: 63px; }
-      .canv .lds-roller div:after:nth-child(2) {
-        animation-delay: -0.072s; }
-        .canv .lds-roller div:after:nth-child(2):after {
-          top: 68px;
-          left: 56px; }
-      .canv .lds-roller div:after:nth-child(3) {
-        animation-delay: -0.108s; }
-        .canv .lds-roller div:after:nth-child(3):after {
-          top: 71px;
-          left: 48px; }
-      .canv .lds-roller div:after:nth-child(4) {
-        animation-delay: -0.144s; }
-        .canv .lds-roller div:after:nth-child(4):after {
-          top: 72px;
-          left: 40px; }
-      .canv .lds-roller div:after:nth-child(5) {
-        animation-delay: -0.18s; }
-        .canv .lds-roller div:after:nth-child(5):after {
-          top: 71px;
-          left: 32px; }
-      .canv .lds-roller div:after:nth-child(6) {
-        animation-delay: -0.216s; }
-        .canv .lds-roller div:after:nth-child(6):after {
-          top: 68px;
-          left: 24px; }
-      .canv .lds-roller div:after:nth-child(7) {
-        animation-delay: -0.252s; }
-        .canv .lds-roller div:after:nth-child(7):after {
-          top: 63px;
-          left: 17px; }
-      .canv .lds-roller div:after:nth-child(8) {
-        animation-delay: -0.288s; }
-        .canv .lds-roller div:after:nth-child(8):after {
-          top: 56px;
-          left: 12px; }
+  .canv .btn {
+    color: #fff; }
+  .canv a {
+    text-decoration: none; }
+  .canv .flex-wrap {
+    flex-wrap: wrap; }
+  .canv .error {
+    color: red; }
+  .canv .form-check {
+    padding-left: 0; }
+  .canv .lds-roller {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px; }
+    .canv .lds-roller div {
+      animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      transform-origin: 40px 40px; }
+      .canv .lds-roller div:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #fff;
+        margin: -4px 0 0 -4px; }
+        .canv .lds-roller div:after:nth-child(1) {
+          animation-delay: -0.036s; }
+          .canv .lds-roller div:after:nth-child(1):after {
+            top: 63px;
+            left: 63px; }
+        .canv .lds-roller div:after:nth-child(2) {
+          animation-delay: -0.072s; }
+          .canv .lds-roller div:after:nth-child(2):after {
+            top: 68px;
+            left: 56px; }
+        .canv .lds-roller div:after:nth-child(3) {
+          animation-delay: -0.108s; }
+          .canv .lds-roller div:after:nth-child(3):after {
+            top: 71px;
+            left: 48px; }
+        .canv .lds-roller div:after:nth-child(4) {
+          animation-delay: -0.144s; }
+          .canv .lds-roller div:after:nth-child(4):after {
+            top: 72px;
+            left: 40px; }
+        .canv .lds-roller div:after:nth-child(5) {
+          animation-delay: -0.18s; }
+          .canv .lds-roller div:after:nth-child(5):after {
+            top: 71px;
+            left: 32px; }
+        .canv .lds-roller div:after:nth-child(6) {
+          animation-delay: -0.216s; }
+          .canv .lds-roller div:after:nth-child(6):after {
+            top: 68px;
+            left: 24px; }
+        .canv .lds-roller div:after:nth-child(7) {
+          animation-delay: -0.252s; }
+          .canv .lds-roller div:after:nth-child(7):after {
+            top: 63px;
+            left: 17px; }
+        .canv .lds-roller div:after:nth-child(8) {
+          animation-delay: -0.288s; }
+          .canv .lds-roller div:after:nth-child(8):after {
+            top: 56px;
+            left: 12px; }
 
 @keyframes lds-roller {
   0% {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
-
-.canv .app {
-  position: relative;
-  z-index: 4; }
-  .canv .app .toast:not(.showing):not(.show) {
-    opacity: 1; }
-  .canv .app header .modal.fade {
-    background-color: rgba(0, 0, 0, 0.5); }
-    .canv .app header .modal.fade .modal-footer {
-      justify-content: flex-start; }
-  .canv .app header .nav-item {
-    text-align: center;
-    min-width: 100px; }
-    .canv .app header .nav-item .loggout_btn,
-    .canv .app header .nav-item .user_profile {
-      cursor: pointer; }
-    .canv .app header .nav-item.position-relative::before {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 52px;
-      height: 50px;
-      width: 100%;
-      left: 0; }
-    .canv .app header .nav-item.position-relative .list-group {
-      display: none;
-      position: absolute;
-      top: 52px;
-      width: max-content;
-      z-index: 99999; }
-    .canv .app header .nav-item.position-relative:hover .list-group {
-      display: block; }
-  .canv .app header .user_menu .user-menu-list {
-    min-width: 250px;
-    left: unset;
-    right: 0; }
-  .canv .app .container {
-    padding: 20px 0; }
-    .canv .app .container h2 {
-      color: #fff; }
-    .canv .app .container .trash,
-    .canv .app .container .manager-back {
-      line-height: 30px;
-      margin-left: 100px;
-      position: relative; }
-      .canv .app .container .trash .countVal,
-      .canv .app .container .manager-back .countVal {
-        text-align: center;
-        position: absolute;
-        color: #fff;
-        top: -9px;
-        right: -21px;
-        line-height: 20px;
-        border-radius: 50px;
-        font-size: 14px;
-        width: 20px;
-        height: 20px;
-        background-color: #fa1c1c; }
-    .canv .app .container .select-all {
-      align-items: center; }
-      .canv .app .container .select-all .action-select {
-        max-width: 130px; }
-    .canv .app .container .select-all > {
-      margin-left: 16px; }
-    .canv .app .container table {
-      width: 100%;
-      text-align: center; }
-      .canv .app .container table td,
-      .canv .app .container table th {
-        vertical-align: middle; }
-    .canv .app .container .pagination-down .paginationjs {
-      display: flex;
-      justify-content: center;
+  .canv .app {
+    position: relative;
+    z-index: 4; }
+    .canv .app .toast:not(.showing):not(.show) {
+      opacity: 1; }
+    .canv .app header .modal.fade {
+      background-color: rgba(0, 0, 0, 0.5); }
+      .canv .app header .modal.fade .modal-footer {
+        justify-content: flex-start; }
+    .canv .app header .nav-item {
       text-align: center;
-      line-height: 40px; }
-      .canv .app .container .pagination-down .paginationjs > * {
-        margin: 5px; }
-      .canv .app .container .pagination-down .paginationjs .paginationjs-pages ul {
-        display: flex;
-        justify-content: center; }
-        .canv .app .container .pagination-down .paginationjs .paginationjs-pages ul li {
-          list-style-type: none;
-          width: 40px;
-          height: 40px;
-          background-color: wheat;
-          font-size: 22px;
-          margin: 2px; }
-          .canv .app .container .pagination-down .paginationjs .paginationjs-pages ul li.active {
-            background-color: red;
-            color: white; }
-      .canv .app .container .pagination-down .paginationjs .paginationjs-go-input input {
-        width: 50px; }
-      .canv .app .container .pagination-down .paginationjs .paginationjs-go-button input {
-        width: 50px; }
-    .canv .app .container form .form-select-cus {
-      padding: 0.375rem 2.25rem 0.375rem 0.75rem;
-      -moz-padding-start: calc(0.75rem - 3px);
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.5;
-      width: 70%;
-      margin-left: calc(var(--bs-gutter-x) * 0.8); }
-    .canv .app .container form .input-group-text {
-      color: #fff;
-      font-weight: 700;
-      width: calc(15% - 16px); }
-    .canv .app .container form .message {
-      color: red; }
-    .canv .app .container form .select-day-of-week-item {
-      flex-grow: 1;
-      justify-content: space-evenly;
-      display: flex;
-      padding-right: 15px; }
-      .canv .app .container form .select-day-of-week-item select[name="dayOfWeek"] {
-        width: calc(100% - 6px); }
-    .canv .app .container form .link-meet {
-      flex-grow: 1;
-      display: flex;
-      width: calc(50% - 16px);
-      margin-right: 16px; }
-      .canv .app .container form .link-meet .input-group-text {
-        line-height: 180%;
-        margin-left: 8px; }
-      .canv .app .container form .link-meet .form-select-cus {
-        margin-left: 0;
-        margin-right: 0; }
-    .canv .app .container .chat-view .chat {
-      margin-top: auto;
-      margin-bottom: auto; }
-    .canv .app .container .chat-view .card {
-      height: 500px;
-      border-radius: 15px !important;
-      background-color: rgba(0, 0, 0, 0.4) !important; }
-    .canv .app .container .chat-view .contacts_body {
-      padding: 0.75rem 0 !important;
-      overflow-y: auto;
-      white-space: nowrap; }
-    .canv .app .container .chat-view .msg_card_body {
-      overflow-y: auto; }
-    .canv .app .container .chat-view .card-header {
-      border-radius: 15px 15px 0 0 !important;
-      border-bottom: 0 !important; }
-    .canv .app .container .chat-view .card-footer {
-      border-radius: 0 0 15px 15px !important;
-      border-top: 0 !important; }
-    .canv .app .container .chat-view .container {
-      align-content: center; }
-    .canv .app .container .chat-view .search {
-      border-radius: 15px 0 0 15px !important;
-      background-color: rgba(0, 0, 0, 0.3) !important;
-      border: 0 !important;
-      color: white !important; }
-    .canv .app .container .chat-view .search:focus {
-      box-shadow: none !important;
-      outline: 0px !important; }
-    .canv .app .container .chat-view .type_msg {
-      background-color: rgba(0, 0, 0, 0.3) !important;
-      border: 0 !important;
-      color: white !important;
-      height: 60px !important;
-      overflow-y: auto; }
-    .canv .app .container .chat-view .type_msg:focus {
-      box-shadow: none !important;
-      outline: 0px !important; }
-    .canv .app .container .chat-view .attach_btn {
-      border-radius: 15px 0 0 15px !important;
-      background-color: rgba(0, 0, 0, 0.3) !important;
-      border: 0 !important;
-      color: white !important;
-      cursor: pointer; }
-    .canv .app .container .chat-view .send_btn {
-      border-radius: 0 15px 15px 0 !important;
-      background-color: rgba(0, 0, 0, 0.3) !important;
-      border: 0 !important;
-      color: white !important;
-      cursor: pointer; }
-    .canv .app .container .chat-view .search_btn {
-      border-radius: 0 15px 15px 0 !important;
-      background-color: rgba(0, 0, 0, 0.3) !important;
-      border: 0 !important;
-      color: white !important;
-      cursor: pointer; }
-    .canv .app .container .chat-view .contacts {
-      list-style: none;
-      padding: 0; }
-    .canv .app .container .chat-view .contacts li {
-      width: 100% !important;
-      padding: 5px 10px;
-      margin-bottom: 15px !important; }
-    .canv .app .container .chat-view .active {
-      background-color: rgba(0, 0, 0, 0.3); }
-    .canv .app .container .chat-view .user_img {
-      height: 70px;
-      width: 70px;
-      border: 1.5px solid #f5f6fa; }
-    .canv .app .container .chat-view .user_img_msg {
-      height: 40px;
-      width: 40px;
-      border: 1.5px solid #f5f6fa; }
-    .canv .app .container .chat-view .img_cont {
-      position: relative;
-      height: 70px;
-      width: 70px; }
-    .canv .app .container .chat-view .img_cont_msg {
-      height: 40px;
-      width: 40px; }
-    .canv .app .container .chat-view .online_icon {
-      position: absolute;
-      height: 15px;
-      width: 15px;
-      background-color: #4cd137;
-      border-radius: 50%;
-      bottom: 0.2em;
-      right: 0.4em;
-      border: 1.5px solid white; }
-    .canv .app .container .chat-view .offline {
-      background-color: #c23616 !important; }
-    .canv .app .container .chat-view .user_info {
-      margin-top: auto;
-      margin-bottom: auto;
-      margin-left: 15px; }
-    .canv .app .container .chat-view .user_info span {
-      font-size: 20px;
-      color: white; }
-    .canv .app .container .chat-view .user_info p {
-      font-size: 10px;
-      color: rgba(255, 255, 255, 0.6); }
-    .canv .app .container .chat-view .video_cam {
-      margin-left: 50px;
-      margin-top: 5px; }
-    .canv .app .container .chat-view .video_cam span {
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-      margin-right: 20px; }
-    .canv .app .container .chat-view .msg_cotainer {
-      margin-top: auto;
-      margin-bottom: auto;
-      margin-left: 10px;
-      border-radius: 25px;
-      background-color: #82ccdd;
-      padding: 10px;
-      position: relative; }
-    .canv .app .container .chat-view .msg_cotainer_send {
-      margin-top: auto;
-      margin-bottom: auto;
-      margin-right: 10px;
-      border-radius: 25px;
-      background-color: #78e08f;
-      padding: 10px;
-      position: relative; }
-    .canv .app .container .chat-view .msg_time {
-      position: absolute;
-      left: 0;
-      bottom: -15px;
-      color: rgba(255, 255, 255, 0.5);
-      white-space: nowrap;
-      font-size: 10px; }
-    .canv .app .container .chat-view .msg_time_send {
-      position: absolute;
-      right: 0;
-      bottom: -15px;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 10px; }
-    .canv .app .container .chat-view .msg_head {
-      position: relative; }
-    .canv .app .container .chat-view #action_menu_btn {
-      position: absolute;
-      right: 10px;
-      top: 10px;
-      color: white;
-      cursor: pointer;
-      font-size: 20px; }
-    .canv .app .container .chat-view .action_menu {
-      z-index: 1;
-      position: absolute;
-      padding: 15px 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      border-radius: 15px;
-      top: 30px;
-      right: 15px;
-      display: none; }
-    .canv .app .container .chat-view .action_menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0; }
-    .canv .app .container .chat-view .action_menu ul li {
-      width: 100%;
-      padding: 10px 15px;
-      margin-bottom: 5px; }
-    .canv .app .container .chat-view .action_menu ul li i {
-      padding-right: 10px; }
-    .canv .app .container .chat-view .action_menu ul li:hover {
-      cursor: pointer;
-      background-color: rgba(0, 0, 0, 0.2); }
-    .canv .app .container .create-schedule .error,
-    .canv .app .container .form-modify-schedule .error {
-      display: block;
-      background-color: #fff;
-      position: absolute;
-      top: -10px; }
-    .canv .app .container .game-room {
-      width: 100%;
-      height: calc(100vh - 115px);
-      margin-bottom: 55px;
-      background-color: #1c2331;
-      position: relative; }
-      .canv .app .container .game-room .character {
+      min-width: 100px; }
+      .canv .app header .nav-item .loggout_btn,
+      .canv .app header .nav-item .user_profile {
+        cursor: pointer; }
+      .canv .app header .nav-item.position-relative::before {
+        content: "";
         display: block;
         position: absolute;
-        width: 20px;
-        height: 30px;
-        background-color: red;
-        border-radius: 5px; }
-        .canv .app .container .game-room .character .message {
-          position: absolute;
-          background-color: #f5f6fa;
-          max-height: 300px;
-          width: max-content;
-          word-wrap: break-word;
-          padding: 5px;
-          border-radius: 5px;
-          transform: translateX(calc(-50% + 10px));
-          max-width: 400px;
-          text-align: center;
-          overflow: hidden; }
-        .canv .app .container .game-room .character .message.bottom {
-          top: 45px; }
-          .canv .app .container .game-room .character .message.bottom:after {
-            top: -10px;
-            content: "";
-            width: 0;
-            height: 0;
-            position: absolute;
-            right: 5px;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-bottom: 5px solid #f5f6fa; }
-        .canv .app .container .game-room .character .message.top {
-          bottom: 45px; }
-          .canv .app .container .game-room .character .message.top:after {
-            top: -10px;
-            content: "";
-            width: 0;
-            height: 0;
-            position: absolute;
-            right: 5px;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-bottom: 5px solid #f5f6fa; }
-        .canv .app .container .game-room .character .message.left {
-          left: 0;
-          transform: unset; }
-          .canv .app .container .game-room .character .message.left:after {
-            top: -10px;
-            content: "";
-            width: 0;
-            height: 0;
-            position: absolute;
-            right: 5px;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-bottom: 5px solid #f5f6fa; }
-        .canv .app .container .game-room .character .message.right {
-          right: 0;
-          transform: unset; }
-          .canv .app .container .game-room .character .message.right:after {
-            top: -10px;
-            content: "";
-            width: 0;
-            height: 0;
-            position: absolute;
-            right: 5px;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-bottom: 5px solid #f5f6fa; }
-      .canv .app .container .game-room .action-container {
+        top: 52px;
+        height: 50px;
+        width: 100%;
+        left: 0; }
+      .canv .app header .nav-item.position-relative .list-group {
+        display: none;
         position: absolute;
-        top: 100%;
-        width: 100%; }
-        .canv .app .container .game-room .action-container .chat-area {
+        top: 52px;
+        width: max-content;
+        z-index: 99999; }
+      .canv .app header .nav-item.position-relative:hover .list-group {
+        display: block; }
+    .canv .app header .user_menu .user-menu-list {
+      min-width: 250px;
+      left: unset;
+      right: 0; }
+    .canv .app .container {
+      padding: 20px 0; }
+      .canv .app .container h2 {
+        color: #fff; }
+      .canv .app .container .trash,
+      .canv .app .container .manager-back {
+        line-height: 30px;
+        margin-left: 100px;
+        position: relative; }
+        .canv .app .container .trash .countVal,
+        .canv .app .container .manager-back .countVal {
+          text-align: center;
+          position: absolute;
+          color: #fff;
+          top: -9px;
+          right: -21px;
+          line-height: 20px;
+          border-radius: 50px;
+          font-size: 14px;
+          width: 20px;
+          height: 20px;
+          background-color: #fa1c1c; }
+      .canv .app .container .select-all {
+        align-items: center; }
+        .canv .app .container .select-all .action-select {
+          max-width: 130px; }
+      .canv .app .container .select-all > {
+        margin-left: 16px; }
+      .canv .app .container table {
+        width: 100%;
+        text-align: center; }
+        .canv .app .container table td,
+        .canv .app .container table th {
+          vertical-align: middle; }
+      .canv .app .container .pagination-down .paginationjs {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        line-height: 40px; }
+        .canv .app .container .pagination-down .paginationjs > * {
+          margin: 5px; }
+        .canv .app .container .pagination-down .paginationjs .paginationjs-pages ul {
+          display: flex;
+          justify-content: center; }
+          .canv .app .container .pagination-down .paginationjs .paginationjs-pages ul li {
+            list-style-type: none;
+            width: 40px;
+            height: 40px;
+            background-color: wheat;
+            font-size: 22px;
+            margin: 2px; }
+            .canv .app .container .pagination-down .paginationjs .paginationjs-pages ul li.active {
+              background-color: red;
+              color: white; }
+        .canv .app .container .pagination-down .paginationjs .paginationjs-go-input input {
+          width: 50px; }
+        .canv .app .container .pagination-down .paginationjs .paginationjs-go-button input {
+          width: 50px; }
+      .canv .app .container form .form-select-cus {
+        padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+        -moz-padding-start: calc(0.75rem - 3px);
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        width: 70%;
+        margin-left: calc(var(--bs-gutter-x) * 0.8); }
+      .canv .app .container form .input-group-text {
+        color: #fff;
+        font-weight: 700;
+        width: calc(15% - 16px); }
+      .canv .app .container form .message {
+        color: red; }
+      .canv .app .container form .select-day-of-week-item {
+        flex-grow: 1;
+        justify-content: space-evenly;
+        display: flex;
+        padding-right: 15px; }
+        .canv .app .container form .select-day-of-week-item select[name="dayOfWeek"] {
+          width: calc(100% - 6px); }
+      .canv .app .container form .link-meet {
+        flex-grow: 1;
+        display: flex;
+        width: calc(50% - 16px);
+        margin-right: 16px; }
+        .canv .app .container form .link-meet .input-group-text {
+          line-height: 180%;
+          margin-left: 8px; }
+        .canv .app .container form .link-meet .form-select-cus {
+          margin-left: 0;
+          margin-right: 0; }
+      .canv .app .container .chat-view .chat {
+        margin-top: auto;
+        margin-bottom: auto; }
+      .canv .app .container .chat-view .card {
+        height: 500px;
+        border-radius: 15px !important;
+        background-color: rgba(0, 0, 0, 0.4) !important; }
+      .canv .app .container .chat-view .contacts_body {
+        padding: 0.75rem 0 !important;
+        overflow-y: auto;
+        white-space: nowrap; }
+      .canv .app .container .chat-view .msg_card_body {
+        overflow-y: auto; }
+      .canv .app .container .chat-view .card-header {
+        border-radius: 15px 15px 0 0 !important;
+        border-bottom: 0 !important; }
+      .canv .app .container .chat-view .card-footer {
+        border-radius: 0 0 15px 15px !important;
+        border-top: 0 !important; }
+      .canv .app .container .chat-view .container {
+        align-content: center; }
+      .canv .app .container .chat-view .search {
+        border-radius: 15px 0 0 15px !important;
+        background-color: rgba(0, 0, 0, 0.3) !important;
+        border: 0 !important;
+        color: white !important; }
+      .canv .app .container .chat-view .search:focus {
+        box-shadow: none !important;
+        outline: 0px !important; }
+      .canv .app .container .chat-view .type_msg {
+        background-color: rgba(0, 0, 0, 0.3) !important;
+        border: 0 !important;
+        color: white !important;
+        height: 60px !important;
+        overflow-y: auto; }
+      .canv .app .container .chat-view .type_msg:focus {
+        box-shadow: none !important;
+        outline: 0px !important; }
+      .canv .app .container .chat-view .attach_btn {
+        border-radius: 15px 0 0 15px !important;
+        background-color: rgba(0, 0, 0, 0.3) !important;
+        border: 0 !important;
+        color: white !important;
+        cursor: pointer; }
+      .canv .app .container .chat-view .send_btn {
+        border-radius: 0 15px 15px 0 !important;
+        background-color: rgba(0, 0, 0, 0.3) !important;
+        border: 0 !important;
+        color: white !important;
+        cursor: pointer; }
+      .canv .app .container .chat-view .search_btn {
+        border-radius: 0 15px 15px 0 !important;
+        background-color: rgba(0, 0, 0, 0.3) !important;
+        border: 0 !important;
+        color: white !important;
+        cursor: pointer; }
+      .canv .app .container .chat-view .contacts {
+        list-style: none;
+        padding: 0; }
+      .canv .app .container .chat-view .contacts li {
+        width: 100% !important;
+        padding: 5px 10px;
+        margin-bottom: 15px !important; }
+      .canv .app .container .chat-view .active {
+        background-color: rgba(0, 0, 0, 0.3); }
+      .canv .app .container .chat-view .user_img {
+        height: 70px;
+        width: 70px;
+        border: 1.5px solid #f5f6fa; }
+      .canv .app .container .chat-view .user_img_msg {
+        height: 40px;
+        width: 40px;
+        border: 1.5px solid #f5f6fa; }
+      .canv .app .container .chat-view .img_cont {
+        position: relative;
+        height: 70px;
+        width: 70px; }
+      .canv .app .container .chat-view .img_cont_msg {
+        height: 40px;
+        width: 40px; }
+      .canv .app .container .chat-view .online_icon {
+        position: absolute;
+        height: 15px;
+        width: 15px;
+        background-color: #4cd137;
+        border-radius: 50%;
+        bottom: 0.2em;
+        right: 0.4em;
+        border: 1.5px solid white; }
+      .canv .app .container .chat-view .offline {
+        background-color: #c23616 !important; }
+      .canv .app .container .chat-view .user_info {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 15px; }
+      .canv .app .container .chat-view .user_info span {
+        font-size: 20px;
+        color: white; }
+      .canv .app .container .chat-view .user_info p {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.6); }
+      .canv .app .container .chat-view .video_cam {
+        margin-left: 50px;
+        margin-top: 5px; }
+      .canv .app .container .chat-view .video_cam span {
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        margin-right: 20px; }
+      .canv .app .container .chat-view .msg_cotainer {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 10px;
+        border-radius: 25px;
+        background-color: #82ccdd;
+        padding: 10px;
+        position: relative; }
+      .canv .app .container .chat-view .msg_cotainer_send {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-right: 10px;
+        border-radius: 25px;
+        background-color: #78e08f;
+        padding: 10px;
+        position: relative; }
+      .canv .app .container .chat-view .msg_time {
+        position: absolute;
+        left: 0;
+        bottom: -15px;
+        color: rgba(255, 255, 255, 0.5);
+        white-space: nowrap;
+        font-size: 10px; }
+      .canv .app .container .chat-view .msg_time_send {
+        position: absolute;
+        right: 0;
+        bottom: -15px;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 10px; }
+      .canv .app .container .chat-view .msg_head {
+        position: relative; }
+      .canv .app .container .chat-view #action_menu_btn {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: white;
+        cursor: pointer;
+        font-size: 20px; }
+      .canv .app .container .chat-view .action_menu {
+        z-index: 1;
+        position: absolute;
+        padding: 15px 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border-radius: 15px;
+        top: 30px;
+        right: 15px;
+        display: none; }
+      .canv .app .container .chat-view .action_menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0; }
+      .canv .app .container .chat-view .action_menu ul li {
+        width: 100%;
+        padding: 10px 15px;
+        margin-bottom: 5px; }
+      .canv .app .container .chat-view .action_menu ul li i {
+        padding-right: 10px; }
+      .canv .app .container .chat-view .action_menu ul li:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.2); }
+      .canv .app .container .create-schedule .error,
+      .canv .app .container .form-modify-schedule .error {
+        display: block;
+        background-color: #fff;
+        position: absolute;
+        top: -10px; }
+      .canv .app .container .game-room {
+        width: 100%;
+        height: calc(100vh - 115px);
+        margin-bottom: 55px;
+        background-color: #1c2331;
+        position: relative; }
+        .canv .app .container .game-room .character {
+          display: block;
+          position: absolute;
+          width: 20px;
+          height: 30px;
+          background-color: red;
+          border-radius: 5px; }
+          .canv .app .container .game-room .character .message {
+            position: absolute;
+            background-color: #f5f6fa;
+            max-height: 300px;
+            width: max-content;
+            word-wrap: break-word;
+            padding: 5px;
+            border-radius: 5px;
+            transform: translateX(calc(-50% + 10px));
+            max-width: 400px;
+            text-align: center;
+            overflow: hidden; }
+          .canv .app .container .game-room .character .message.bottom {
+            top: 45px; }
+            .canv .app .container .game-room .character .message.bottom:after {
+              top: -10px;
+              content: "";
+              width: 0;
+              height: 0;
+              position: absolute;
+              right: 5px;
+              border-left: 5px solid transparent;
+              border-right: 5px solid transparent;
+              border-bottom: 5px solid #f5f6fa; }
+          .canv .app .container .game-room .character .message.top {
+            bottom: 45px; }
+            .canv .app .container .game-room .character .message.top:after {
+              top: -10px;
+              content: "";
+              width: 0;
+              height: 0;
+              position: absolute;
+              right: 5px;
+              border-left: 5px solid transparent;
+              border-right: 5px solid transparent;
+              border-bottom: 5px solid #f5f6fa; }
+          .canv .app .container .game-room .character .message.left {
+            left: 0;
+            transform: unset; }
+            .canv .app .container .game-room .character .message.left:after {
+              top: -10px;
+              content: "";
+              width: 0;
+              height: 0;
+              position: absolute;
+              right: 5px;
+              border-left: 5px solid transparent;
+              border-right: 5px solid transparent;
+              border-bottom: 5px solid #f5f6fa; }
+          .canv .app .container .game-room .character .message.right {
+            right: 0;
+            transform: unset; }
+            .canv .app .container .game-room .character .message.right:after {
+              top: -10px;
+              content: "";
+              width: 0;
+              height: 0;
+              position: absolute;
+              right: 5px;
+              border-left: 5px solid transparent;
+              border-right: 5px solid transparent;
+              border-bottom: 5px solid #f5f6fa; }
+        .canv .app .container .game-room .action-container {
+          position: absolute;
+          top: 100%;
           width: 100%; }
-        .canv .app .container .game-room .action-container .arrow-btns {
-          display: none;
-          position: relative; }
-  .canv .app footer {
-    background-color: #1c2331; }
-    .canv .app footer .top-footer {
-      background-color: #6351ce; }
-
-.canv .modal-backdrop {
-  display: none; }
+          .canv .app .container .game-room .action-container .chat-area {
+            width: 100%; }
+          .canv .app .container .game-room .action-container .arrow-btns {
+            display: none;
+            position: relative; }
+    .canv .app footer {
+      background-color: #1c2331; }
+      .canv .app footer .top-footer {
+        background-color: #6351ce; }
+  .canv .modal-backdrop {
+    display: none; }
 
 @media (max-width: 575px) {
   .canv .app .hidden-mb {
