@@ -23,6 +23,7 @@ class PostController {
                 return data
             })
             .then(data => {
+                console.log(data);
                 res.render('posts/viewPost', data);
             })
             .catch(err => {
