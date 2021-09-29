@@ -43,7 +43,7 @@ class PostController {
 
         Post.create(post)
             .then(data => {
-                res.redirect(`/posts/${postInfo.slug}`);
+                res.redirect(`/posts/${data.slug}`);
             })
             .catch(err => {
                 res.redirect('/500')
