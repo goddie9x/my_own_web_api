@@ -96,6 +96,7 @@ app.use(passport.session());
 app.use(cookieParser());
 app.use(getInfoUser);
 app.use(getBreadcrumbs);
+app.options('*', cors());
 
 route(app);
 
