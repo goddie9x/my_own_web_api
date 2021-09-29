@@ -2,8 +2,7 @@ const Schedule = require('../models/Schedule');
 const { multipleMongooseToObjects } = require('../../utils/mongoose');
 const { convertDateToDMY } = require('../../utils/convertDate');
 const checkAndAddHttpSlash = require('../../utils/checkAndAddHttpSlash');
-const path = require('path');
-const fs = require('fs');
+const { resourcesCloudinary } = require('../../config/cloudinary/cloudinary.config');
 class SiteController {
 
     index(req, res, next) {
@@ -73,34 +72,17 @@ class SiteController {
     loginSessionExpired(req, res, next) {
         res.render('sites/loginSessionExpired');
     }
-    upImage(req, res, next) {
-        try {
-            fs.readFile(req.files.upload.path, function(err, data) {
-                var newPath = path.join(__dirname, '../../public/images/' + req.files.upload.name);
-                fs.writeFile(newPath, data, function(err) {
-                    if (err) console.log({ err: err });
-                    else {
-                        //     imgl = '/images/req.files.upload.originalFilename';
-                        //     let img = "<script>window.parent.CKEDITOR.tools.callFunction('','"+imgl+"','ok');</script>";
-                        //    res.status(201).send(img);
-
-                        let fileName = req.files.upload.name;
-                        let url = '/images/' + fileName;
-                        let msg = 'Upload successfully';
-                        let funcNum = req.query.CKEditorFuncNum;
-
-                        res.status(201).send("<script>window.parent.CKEDITOR.tools.callFunction('" + funcNum + "','" + url + "','" + msg + "');</script>");
-                    }
-                });
-            });
-        } catch (error) {
-            console.log(error.message);
-        }
-    }
     images(req, res, next) {
-        const images = fs.readdirSync(path.join(__dirname, '../../public/images'));
+        resourcesCloudinary(function(error, result) {
+            if (result) {
+                let images = Object.keys(result.resources).map((key) => [result.resources[key].url]);
 
-        res.render('posts/viewImages', { images });
+                res.render('posts/viewImages', { images });
+            } else {
+                res.redirect('/404');
+            }
+        });
+
     }
     cloudinary(req, res, next) {
         if (!req.file) {
@@ -108,7 +90,12 @@ class SiteController {
             return;
         }
 
-        res.json({ secure_url: req.file.path });
+        let url = req.file.path;
+        let msg = 'Upload successfully';
+        let funcNum = req.query.CKEditorFuncNum;
+
+        res.status(201).send("<script>window.parent.CKEDITOR.tools.callFunction('" +
+            funcNum + "','" + url + "','" + msg + "');</script>");
     }
 }
 module.exports = new SiteController;

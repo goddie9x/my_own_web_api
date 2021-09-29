@@ -2,9 +2,7 @@ CKEDITOR.replace('description', {
     height: 100,
     removePlugins: ['image', 'uploadimage', "exportpdf"],
     extraPlugins: 'filebrowser',
-    filebrowserBrowseUrl: '/images', //upload  location
     filebrowserUploadMethod: 'form',
-    filebrowserUploadUrl: '/upload' //route,
 });
 CKEDITOR.replace('content', {
     height: 200,
@@ -12,7 +10,7 @@ CKEDITOR.replace('content', {
     removePlugins: "exportpdf",
     filebrowserBrowseUrl: '/images', //upload  location
     filebrowserUploadMethod: 'form',
-    filebrowserUploadUrl: '/upload' //route
+    filebrowserUploadUrl: '/cloudinary-upload' //route
 });
 
 function slugify(text) {
@@ -46,8 +44,6 @@ function readURL(input, imgReview) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
-
 
 function uploadImage(buttonFiles, imgReview) {
     let btnFile = $(buttonFiles);

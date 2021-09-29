@@ -25,7 +25,6 @@
         "bcrypt-nodejs": "0.0.3",
         "cloudinary": "^1.27.0",
         "connect-flash": "^0.1.1",
-        "connect-multiparty": "^2.2.0",
         "cookie-parser": "^1.4.5",
         "cors": "^2.8.5",
         "dotenv": "^10.0.0",

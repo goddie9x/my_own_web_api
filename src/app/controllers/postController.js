@@ -1,5 +1,3 @@
-const path = require('path');
-const fs = require('fs');
 const Post = require('../models/Post');
 const User = require('../models/User');
 class PostController {
@@ -50,21 +48,12 @@ class PostController {
             });
     }
     storeAvatar(req, res, next) {
-        try {
-            fs.readFile(req.files.file.path, function(err, data) {
-                var newPath = path.join(__dirname, '../../public/images/' + req.files.file.name);
-                fs.writeFile(newPath, data, function(err) {
-                    if (err) console.log({ err: err });
-                    else {
-                        let fileName = req.files.file.name;
-                        let url = '/images/' + fileName;
-                        res.status(201).send(url);
-                    }
-                });
-            });
-        } catch (error) {
-            console.log(error.message);
+        if (!req.file) {
+            next(new Error('No file uploaded!'));
+            return;
         }
+
+        res.json({ secure_url: req.file.path });
     }
 }
 module.exports = new PostController;

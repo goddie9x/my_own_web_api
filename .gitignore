@@ -2,5 +2,3 @@ node_modules/
 src/resourse/scss
 nodemon.json
 .env
-src/public/images/*
-!src/public/images/.gitkeep

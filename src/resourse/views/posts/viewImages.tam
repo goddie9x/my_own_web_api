@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
         {{#each images}}
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                <img class="w-100" src="/images/{{this}}" alt="image uploaded" onclick="returnFileUrl(event)">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-center bg-secondary border">
+                <img class="image-uploaded" src="{{this}}" alt="image uploaded" onclick="returnFileUrl(event)">
             </div>
         {{/each}}
     </div>
