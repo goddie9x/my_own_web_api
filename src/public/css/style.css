@@ -389,7 +389,8 @@
           border-radius: 5px; }
           .canv .app .container .game-room .character .message {
             position: absolute;
-            background-color: #f5f6fa;
+            background-color: #fff;
+            color: #1c2331;
             max-height: 300px;
             width: max-content;
             word-wrap: break-word;

@@ -1,6 +1,6 @@
 CKEDITOR.replace('description', {
     height: 100,
-    removePlugins: "exportpdf",
+    removePlugins: ['image', 'uploadimage', "exportpdf"],
     extraPlugins: 'filebrowser',
     filebrowserBrowseUrl: '/images', //upload  location
     filebrowserUploadMethod: 'form',
