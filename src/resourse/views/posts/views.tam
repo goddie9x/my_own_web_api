@@ -1,7 +1,7 @@
 <main id="root">
    <div class="row">
        {{#each posts}}
-            <div class="new-item card text-white overflow col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="new-item card shadow text-white bg-transparent border-0 overflow col-lg-3 col-md-4 col-sm-6 col-12">
             <div class="height-ratio image-wrapper" >
                 <a href="{{this.slug}}">
                     <img src="{{this.avatarUrl}}" class="img-fluid lazy wp-post-image loaded"/>
@@ -11,7 +11,7 @@
                 <a href="/posts/notofi" class="p-1 badge bg-primary text-white" >
                     Post 
                 </a> 
-                <h3 class="h5 h3-sm h5-md text-light my-1" >
+                <h3 class="h5 h3-sm h5-md text-light my-1 pe-2" >
                     <a href="{{this.slug}}" class="text-white" > {{{this.description}}} </a>
                 </h3>
             </div>

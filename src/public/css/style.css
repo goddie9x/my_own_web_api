@@ -76,6 +76,12 @@
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
+  .canv #root .new-item {
+    transition: all 0.5s; }
+    .canv #root .new-item:hover {
+      transform: scale(1.1); }
+      .canv #root .new-item:hover h3 {
+        animation: slideInUp .2s linear; }
   .canv .app {
     position: relative;
     z-index: 4; }

@@ -1,10 +1,12 @@
 const Post = require('../models/Post');
 const User = require('../models/User');
+const { multipleMongooseToObjects } = require('../../utils/mongoose');
 class PostController {
     index(req, res, next) {
         Post.find({}).sort({ updatedAt: 'desc' })
             .then((data) => {
-                let posts = data.map(post => {
+                let posts = multipleMongooseToObjects(data);
+                posts = posts.map(post => {
                     delete post.content;
                     post.description = post.description.slice(0, 100);
 
