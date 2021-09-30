@@ -147,15 +147,15 @@
           text-align: center; }
           .canv .app .container #root .new-item .image-wrapper a img {
             height: 165px; }
+        .canv .app .container #root .new-item:hover {
+          transform: scale(1.1); }
+          .canv .app .container #root .new-item:hover h3 {
+            animation: slideInUp .2s linear; }
         .canv .app .container #root .new-item .position-absolute {
           left: 0; }
           .canv .app .container #root .new-item .position-absolute h3 {
             background-color: #1c23313d;
             padding: 15px; }
-          .canv .app .container #root .new-item .position-absolute:hover {
-            transform: scale(1.1); }
-            .canv .app .container #root .new-item .position-absolute:hover h3 {
-              animation: slideInUp .2s linear; }
       .canv .app .container table {
         width: 100%;
         text-align: center; }
