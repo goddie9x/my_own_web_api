@@ -1,7 +1,7 @@
 <main id="root" class=" my-5">
    <div class="row">
        {{#each posts}}
-            <div class="new-item card shadow text-white bg-transparent border-0 overflow col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="new-item card shadow my-4 text-white bg-transparent border-0 overflow col-lg-3 col-md-4 col-sm-6 col-12">
             <div class="height-ratio image-wrapper" >
                 <a href="/posts/{{this.slug}}">
                     <img src="{{this.avatarUrl}}" class="img-fluid lazy wp-post-image loaded"/>
