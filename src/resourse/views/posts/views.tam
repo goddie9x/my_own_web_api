@@ -1,4 +1,4 @@
-<main id="root">
+<main id="root" class=" my-5">
    <div class="row">
        {{#each posts}}
             <div class="new-item card shadow text-white bg-transparent border-0 overflow col-lg-3 col-md-4 col-sm-6 col-12">
