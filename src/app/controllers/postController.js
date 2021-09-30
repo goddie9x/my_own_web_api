@@ -2,7 +2,49 @@ const Post = require('../models/Post');
 const User = require('../models/User');
 class PostController {
     index(req, res, next) {
-        res.render('posts/views');
+        Post.find({}).sort({ updatedAt: 'desc' })
+            .then((data) => {
+                let posts = data.map(post => {
+                    delete post.content;
+                    post.description = post.description.slice(0, 100);
+
+                    return post;
+                });
+                res.render('posts/views', { posts });
+            })
+            .catch(err => {
+                res.status(500).send(err);
+            });
+    }
+    notifs(req, res, next) {
+        Post.find({ type: 2 }).sort({ updatedAt: 'desc' })
+            .then((data) => {
+                data = data.map(post => {
+                    delete post.content;
+                    post.description = post.description.slice(0, 100);
+
+                    return post;
+                });
+                res.send(data);
+            })
+            .catch(err => {
+                res.status(500).send(err);
+            });
+    }
+    news(req, res, next) {
+        Post.find({ type: 1 }).sort({ updatedAt: 'desc' })
+            .then((data) => {
+                data = data.map(post => {
+                    delete post.content;
+                    post.description = post.description.slice(0, 100);
+
+                    return post;
+                });
+                res.send(data);
+            })
+            .catch(err => {
+                res.status(500).send(err);
+            })
     }
     create(req, res, next) {
         res.render('posts/create');
@@ -30,14 +72,11 @@ class PostController {
     store(req, res, next) {
         let idUserCreatedPost = req.data._id;
         let postInfo = req.body;
-        let avatarUrl = postInfo.avatarUrl;
+        console.log(req.files);
         let post = Object.assign(postInfo, {
             authorId: idUserCreatedPost,
+            avatarUrl: (req.file) ? (req.file.path) : ('/images/default.png')
         });
-        if (avatarUrl) {
-            avatarUrl = '/images/' + avatarUrl;
-            post.avatarUrl = avatarUrl;
-        }
 
         Post.create(post)
             .then(data => {
@@ -46,14 +85,6 @@ class PostController {
             .catch(err => {
                 res.redirect('/500')
             });
-    }
-    storeAvatar(req, res, next) {
-        if (!req.file) {
-            next(new Error('No file uploaded!'));
-            return;
-        }
-
-        res.json({ secure_url: req.file.path });
     }
 }
 module.exports = new PostController;

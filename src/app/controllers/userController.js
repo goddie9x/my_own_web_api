@@ -16,7 +16,7 @@ class UserController {
                 if (Object.keys(user).length === 0) {
                     User.create({ account, password })
                         .then((user) => {
-                            let token = jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '1h' });
+                            let token = jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '48h' });
                             res.send({ token });
                         })
                         .catch(next);
@@ -36,7 +36,7 @@ class UserController {
             .then(user => {
                 if (user._id) {
                     User.updateOne({ _id: user._id }, { status: true });
-                    jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '1h' },
+                    jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '48h' },
                         function(err, token) {
                             res.send({ token });
                         });

@@ -40,38 +40,14 @@ function readURL(input, imgReview) {
         reader.onload = function(e) {
             $(imgReview).attr('src', e.target.result);
         }
-
         reader.readAsDataURL(input.files[0]);
     }
 }
 
 function uploadImage(buttonFiles, imgReview) {
     let btnFile = $(buttonFiles);
+
     btnFile.change(function() {
-        let _this = this;
-        let imageFile = btnFile[0].files[0];
-
-        if (imageFile) {
-            let formData = new FormData();
-            formData.append('file', imageFile);
-
-            $.ajax({
-                type: 'POST',
-                url: '/posts/avatar',
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function(data) {
-                    if (imgReview) {
-                        readURL(_this, imgReview);
-                    }
-                },
-                error: function(data) {
-                    console.log("error");
-                    console.log(data);
-                }
-            });
-        }
+        readURL(this, imgReview);
     });
 }

@@ -1,0 +1,20 @@
+<main id="root">
+   
+</main>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel" src="./scripts/RenderPosts.js"></script>
+<script type="text/babel" src="./scripts/AppPosts.js"></script>
+<script type="text/babel">
+    $.get('posts/notifs')
+    .done(data => {
+       ReactDOM.render(<AppPosts 
+       posts={data} 
+       Callback={PostItem}/>
+       ,document.getElementById('root'));
+    })
+    .fail(error => {
+
+    })
+</script>

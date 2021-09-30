@@ -75,14 +75,15 @@ class SiteController {
     images(req, res, next) {
         resourcesCloudinary(function(error, result) {
             if (result) {
-                let images = Object.keys(result.resources).map((key) => [result.resources[key].url]);
+                let images = Object.keys(result.resources).map(
+                    (key) => [result.resources[key].url]
+                );
 
                 res.render('posts/viewImages', { images });
             } else {
                 res.redirect('/404');
             }
         });
-
     }
     cloudinary(req, res, next) {
         if (!req.file) {

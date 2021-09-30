@@ -1,5 +1,5 @@
 <div class="container">
-    <form action="" method="POST">
+    <form action="" enctype="multipart/form-data" method="POST">
         <div class="row">
             <h1 class="text-center text-white">Tạo bài đăng</h1>
             <div class="col-md-8 col-12 text-white">
@@ -26,11 +26,11 @@
                 </div>
             </div>
             <div class="col-md-4 col-12 text-white">
-                <form class="form-group my-3">
+                <div class="form-group my-3">
                     <label for="avatarUrl" class="mb-2 d-block">Chọn ảnh đại diện</label>
                     <img src="" class="image-preview w-100  my-2" alt="image preview" >
-                    <input type="file" name="avatarUrl" class="input-group input-image my-3" accept="image/*"/>
-                </form>
+                    <input type="file" id="avatarUrl" name="avatarUrl" class="input-group input-image my-3" accept="image/*"/>
+                </div>
                 <div class="form-group my-3 row ">
                     <div class="form-check col-sm-6 col-12">
                         <input class="form-check-input ms-5" type="checkbox" value="1" id="flexCheckDefault"

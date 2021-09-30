@@ -11,7 +11,7 @@
           <li class="nav-item position-relative">
             <a class="nav-link " aria-current="page" href="/posts/news">Tin tức</a>
             {{#if _user}}
-            <ul class="list-group ">
+            <ul class="list-group text-start">
               <li class="list-group-item  bg-dark"><a href="/posts/create"> Đăng tin</a></li>
               <li class="list-group-item  bg-dark"><a href=""> Tin đã đăng</a></li>
               <li class="list-group-item  bg-dark"><a href=""> Báo cáo tin tức</a></li>
@@ -21,7 +21,7 @@
           <li class="nav-item position-relative">
             <a class="nav-link " aria-current="page" href="/posts">Bài viết</a>
             {{#if _user}}
-            <ul class="list-group  ">
+            <ul class="list-group  text-start">
               <li class="list-group-item  bg-dark"><a href="/posts/create"> Đăng bài</a></li>
               <li class="list-group-item  bg-dark"><a href=""> Tin đã đăng</a></li>
               <li class="list-group-item  bg-dark"><a href=""> Báo cáo tin tức</a></li>
