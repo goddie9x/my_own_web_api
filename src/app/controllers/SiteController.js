@@ -3,6 +3,7 @@ const { multipleMongooseToObjects } = require('../../utils/mongoose');
 const { convertDateToDMY } = require('../../utils/convertDate');
 const checkAndAddHttpSlash = require('../../utils/checkAndAddHttpSlash');
 const { resourcesCloudinary } = require('../../config/cloudinary/cloudinary.config');
+const { destroySingleCloudinary } = require('../../config/cloudinary/cloudinary.config');
 class SiteController {
 
     index(req, res, next) {
@@ -76,13 +77,24 @@ class SiteController {
         resourcesCloudinary(function(error, result) {
             if (result) {
                 let images = Object.keys(result.resources).map(
-                    (key) => [result.resources[key].url]
+                    (key) =>
+                    ({
+                        url: result.resources[key].url,
+                        id: result.resources[key].public_id
+                    })
                 );
-
                 res.render('posts/viewImages', { images });
             } else {
                 res.redirect('/404');
             }
+        });
+    }
+    cloudinaryDelete(req, res, next) {
+        let image = req.params.image;
+        console.log(req.params);
+
+        destroySingleCloudinary(image, function(error, result) {
+            res.send(result);
         });
     }
     cloudinary(req, res, next) {

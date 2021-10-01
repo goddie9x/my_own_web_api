@@ -51,6 +51,18 @@ class PostController {
     create(req, res, next) {
         res.render('posts/create');
     }
+    delete(req, res, next) {
+        console.log(res.locals.user.role);
+        let slug = req.params.slug;
+        console.log(slug);
+        /* Post.delete({ slug })
+            .then(data => {
+                res.send('success');
+            })
+            .catch(err => {
+                res.status(500).send('500');
+            }) */
+    }
     viewPost(req, res, next) {
         let slug = req.params.slug;
 

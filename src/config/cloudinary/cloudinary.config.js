@@ -18,5 +18,6 @@ const storage = new CloudinaryStorage({
 
 const uploadCloud = multer({ storage: storage });
 const resourcesCloudinary = cloudinary.api.resources;
+const destroySingleCloudinary = cloudinary.uploader.destroy;
 
-module.exports = { uploadCloud, resourcesCloudinary };
+module.exports = { uploadCloud, resourcesCloudinary, destroySingleCloudinary };
