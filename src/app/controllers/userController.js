@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const { multipleMongooseToObjects } = require('../../utils/mongoose');
+const { multipleMongooseToObjects, mongooseToObject } = require('../../utils/mongoose');
 const jwt = require('jsonwebtoken');
 const ITEM_PER_PAGE = 8;
 class UserController {
@@ -50,35 +50,40 @@ class UserController {
     }
     profile(req, res, next) {
         let accountID = req.params.id;
-        console.log(res.data);
 
-        User.findById(accountID)
+        User.findOne({ _id: accountID })
             .then(user => {
-                let { password, ...userInfo } = user;
+                let userInfo = mongooseToObject(user);
 
-                if (req.cookies.tokenUID) {
-                    let temp = req.cookies.tokenUID;
-                    let userId;
+                if (req.cookies.tokenUser) {
+                    let temp = req.cookies.tokenUser;
+                    let currentUse;
+
                     try {
-                        userId = jwt.verify(temp, process.env.JWT);
+                        currentUse = jwt.verify(temp, process.env.JWT);
                     } catch (err) {
                         res.status(500).redirect('/loginSessionExpired');
                     }
-                    if (userId == user._id) {
+
+                    if (currentUse._id == accountID) {
                         res.render('users/profile', { userInfo });
                     }
-                    res.render('users/profile', userInfo);
+                } else {
+
+                    //we do not want other user can get password of this
+                    delete userInfo.password;
+                    res.render('users/profile', { userInfo });
                 }
-                res.render('users/profile', userInfo);
             })
             .catch(function(err) {
                 res.status(404).redirect('/404');
-                next();
             });
     }
-    userInfo(req, res, next) {
-        let user = req.data;
-        res.send(user);
+    userUpdateInfo(req, res, next) {
+        let currentUserId = req.data.currentUser._id;
+        let userID = req.params.id;
+
+        if (currentUserId == userID) {}
     }
     bannedUsers(req, res, next) {
         User.findDeleted({})

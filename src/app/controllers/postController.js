@@ -52,16 +52,22 @@ class PostController {
         res.render('posts/create');
     }
     delete(req, res, next) {
-        console.log(res.locals.user.role);
+        let currentUserRole = req.data.currentUser.role;
+        let currentUserId = req.data.currentUser._id;
+        let userIdOfPost = res.body.userIdOfPost;
         let slug = req.params.slug;
-        console.log(slug);
-        /* Post.delete({ slug })
-            .then(data => {
-                res.send('success');
-            })
-            .catch(err => {
-                res.status(500).send('500');
-            }) */
+
+        if (userIdOfPost == currentUserId || currentUserRole == 0) {
+            Post.delete({ slug })
+                .then(data => {
+                    res.send('success');
+                })
+                .catch(err => {
+                    res.status(500).send('500');
+                })
+        } else {
+            res.status(500).send('not permition');
+        }
     }
     viewPost(req, res, next) {
         let slug = req.params.slug;
@@ -84,9 +90,9 @@ class PostController {
             })
     }
     store(req, res, next) {
-        let idUserCreatedPost = req.data._id;
+        let idUserCreatedPost = req.data.currentUser._id;
         let postInfo = req.body;
-        console.log(req.files);
+
         let post = Object.assign(postInfo, {
             authorId: idUserCreatedPost,
             avatarUrl: (req.file) ? (req.file.path) : ('/images/default.png')
@@ -98,6 +104,28 @@ class PostController {
             })
             .catch(err => {
                 res.redirect('/500')
+            });
+    }
+    viewAllPosts(req, res, next) {
+        let userRole = req.data.currentUser.role;
+        let currentUserId = req.data.currentUser._id;
+
+        if (userRole == 0) {
+            Post.find({})
+                .then((data) => {
+                    res.status(200).send(data);
+                })
+                .catch((err) => {
+                    res.status(500).send(err);
+                });
+        }
+
+        Post.find({ authorId: currentUserId })
+            .then((data) => {
+                res.status(200).send(data);
+            })
+            .catch((err) => {
+                res.status(500).send(err);
             });
     }
 }

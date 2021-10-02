@@ -54,5 +54,7 @@
 <script src="/ckeditor/ckeditor.js"></script>
 <script src="/scripts/postHandler.js"></script>
 <script>
+    replaceCkeditorMinimal('content',150);
+    replaceCkeditorNano('description',60);
     uploadImage('.input-image','.image-preview');
 </script>

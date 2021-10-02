@@ -13,8 +13,8 @@ module.exports = function getBreadcrumbs(req, res, next) {
     if (req.originalUrl.includes('modify')) {
         urls.pop();
     }
-    if(req.originalUrl.includes('user')){
-        urls.shift();
+    if (req.originalUrl.includes('user')) {
+        urls.pop();
     }
     urls.shift();
 

@@ -5,8 +5,8 @@ const viewUser = require('../app/middlewares/viewUser');
 const checkUserLogin = require('../app/middlewares/checkUserLogin');
 const checkAdminLogin = require('../app/middlewares/checkAdminLogin');
 
+router.patch('/profile/:id', viewUser, userController.userUpdateInfo);
 router.get('/profile/:id', viewUser, userController.profile);
-router.get('/info', checkUserLogin, userController.userInfo);
 router.get('/manager', checkUserLogin, checkAdminLogin, userController.manager);
 router.get('/banned', checkUserLogin, checkAdminLogin, userController.bannedUsers);
 router.post('/login', userController.login);

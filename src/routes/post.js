@@ -6,6 +6,7 @@ const { uploadCloud } = require('../config/cloudinary/cloudinary.config');
 
 router.get('/create', checkUserLogin, PostController.create);
 router.post('/create', checkUserLogin, uploadCloud.single('avatarUrl'), PostController.store);
+router.get('/all', checkUserLogin, PostController.viewAllPosts);
 router.get('/news', PostController.news);
 router.get('/notifs', PostController.notifs);
 router.delete('/:image', checkUserLogin, PostController.delete);

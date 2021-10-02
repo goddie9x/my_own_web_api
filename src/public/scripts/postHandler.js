@@ -1,17 +1,43 @@
-CKEDITOR.replace('description', {
-    height: 100,
-    removePlugins: ['image', 'uploadimage', "exportpdf"],
-    extraPlugins: 'filebrowser',
-    filebrowserUploadMethod: 'form',
-});
-CKEDITOR.replace('content', {
-    height: 200,
-    extraPlugins: 'filebrowser',
-    removePlugins: "exportpdf",
-    filebrowserBrowseUrl: '/images', //upload  location
-    filebrowserUploadMethod: 'form',
-    filebrowserUploadUrl: '/cloudinary-upload' //route
-});
+function replaceCkeditorNano(elementID, height) {
+    CKEDITOR.replace(elementID, {
+        height: height,
+        removePlugins: ['Form', 'exportpdf', 'Source', 'Save', 'Templates', 'NewPage', 'Preview', 'Print', 'NumberedList', 'BulletedList', 'Indent', 'Outdent', 'CreateDiv', 'BidiLtr', 'BidiRtl', 'Language', 'Link', 'Unlink', 'Anchor', 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe', 'about'],
+        allowedContent: 'p h1 h2',
+    });
+}
+
+function replaceCkeditorMinimal(elementID, height) {
+    CKEDITOR.replace(elementID, {
+        height: height,
+        removePlugins: ['Save', 'Templates', 'NewPage', 'exportpdf', 'Preview', 'Print', 'CreateDiv', 'Flash', 'HorizontalRule', 'about', 'Radio', 'Checkbox', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField', 'Form', 'Source', 'Anchor', 'Unlink', 'Link', 'Image', 'SpecialChar', 'Smiley', 'Iframe', 'PageBreak'],
+        extraPlugins: 'filebrowser',
+        filebrowserBrowseUrl: '/images', //upload  location
+        filebrowserUploadMethod: 'form',
+        filebrowserUploadUrl: '/cloudinary-upload' //route
+    });
+}
+
+function replaceCkeditorNomal(elementID, height) {
+    CKEDITOR.replace(elementID, {
+        height: height,
+        removePlugins: ['Save', 'Templates', 'NewPage', 'exportpdf', 'Preview', 'Print', 'CreateDiv', 'Flash', 'HorizontalRule', 'about'],
+        extraPlugins: 'filebrowser',
+        filebrowserBrowseUrl: '/images', //upload  location
+        filebrowserUploadMethod: 'form',
+        filebrowserUploadUrl: '/cloudinary-upload' //route
+    });
+}
+
+function replaceCkeditorFull(elementID, height) {
+    CKEDITOR.replace(elementID, {
+        height: height,
+        extraPlugins: 'filebrowser',
+        removePlugins: "exportpdf",
+        filebrowserBrowseUrl: '/images', //upload  location
+        filebrowserUploadMethod: 'form',
+        filebrowserUploadUrl: '/cloudinary-upload' //route
+    });
+}
 
 function slugify(text) {
     return text.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');

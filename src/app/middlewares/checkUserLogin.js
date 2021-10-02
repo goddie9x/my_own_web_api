@@ -9,7 +9,7 @@ module.exports = function checkUserLogin(req, res, next) {
             .then((user) => {
                 if (user) {
                     let { password, ...data } = user._doc;
-                    req.data = data;
+                    req.data.currentUser = data;
                     next();
                 } else {
                     res.status(404).redirect('/loginSessionExpired');

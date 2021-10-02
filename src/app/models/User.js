@@ -19,7 +19,8 @@ const User = new Schema({
     email: [{ type: String, maxLength: 255 }],
     phone: [{ type: String, maxLength: 255 }],
     address: { type: String, maxLength: 255 },
-    description: { type: String, maxLength: 600 },
+    quote: { type: String, maxLength: 255 },
+    description: String,
 }, { timestamps: true });
 
 User.method.encryptPassword = function(password) {
