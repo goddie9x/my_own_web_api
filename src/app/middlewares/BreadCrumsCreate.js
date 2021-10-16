@@ -10,12 +10,8 @@ module.exports = function getBreadcrumbs(req, res, next) {
 
     const urls = req.originalUrl.split('/');
 
-    if (req.originalUrl.includes('modify')) {
-        urls.pop();
-    }
-    if (req.originalUrl.includes('user')) {
-        urls.pop();
-    }
+    urls.pop();
+
     urls.shift();
 
     res.locals.breadcrumbs = urls.map((url, i) => {
