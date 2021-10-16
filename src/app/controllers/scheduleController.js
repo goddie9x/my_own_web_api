@@ -7,6 +7,7 @@ const path = require('path');
 class ScheduleController {
     index(req, res, next) {
             let page = req.query.page;
+            let userRole = req.data && req.data.currentUser.role && req.data.currentUser.role;
 
             if (page) {
                 if (page < 1) {
@@ -26,9 +27,15 @@ class ScheduleController {
                         schedules = schedules.map(function(schedule) {
                             schedule.dayStart = convertDateToDMY(schedule.dayStart);
                             schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
-                            schedule.linkMeet = schedule.linkMeet.map(function(link) {
-                                return checkAndAddHttpSlash(link);
-                            });
+                            if (userRole && userRole < 3) {
+                                schedule.linkMeet = schedule.linkMeet.map(function(link) {
+                                    return checkAndAddHttpSlash(link);
+                                });
+                            } else {
+                                schedule.linkMeet = schedule.linkMeet.map(function(link) {
+                                    return '/notPermission';
+                                });
+                            }
                             return schedule;
                         });
                         res.send({ schedules, notDelete });

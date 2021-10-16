@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt-nodejs');
 const ITEM_PER_PAGE = 8;
 const SALT_ROUNDS = 10;
+const PRE_CLASSMATE_STRING = 'UHC';
 class UserController {
     index(req, res, next) {
         res.render('users/profile');
@@ -11,6 +12,8 @@ class UserController {
     register(req, res, next) {
         let account = req.body.account;
         let password = req.body.password;
+        let isClassmate = account.slice(0, 3) == PRE_CLASSMATE_STRING;
+        console.log(account.slice(0, 3));
         User.find({
                 account: account
             })
@@ -18,12 +21,21 @@ class UserController {
                 if (Object.keys(user).length === 0) {
                     const salt = bcrypt.genSaltSync(SALT_ROUNDS);
                     const passwordEncrypted = bcrypt.hashSync(password, salt);
-                    User.create({ account, password: passwordEncrypted })
-                        .then((user) => {
-                            let token = jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '48h' });
-                            res.send({ token });
-                        })
-                        .catch(next);
+                    if (isClassmate) {
+                        User.create({ account, password: passwordEncrypted, role: 2 })
+                            .then((user) => {
+                                let token = jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '48h' });
+                                res.send({ token });
+                            })
+                            .catch(next);
+                    } else {
+                        User.create({ account, password: passwordEncrypted })
+                            .then((user) => {
+                                let token = jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '48h' });
+                                res.send({ token });
+                            })
+                            .catch(next);
+                    }
                 } else {
                     res.status(404).redirect('/404');
                 }
@@ -40,6 +52,7 @@ class UserController {
             .then(user => {
                 if (user._id) {
                     let isCorrectPassword = bcrypt.compareSync(password, user.password);
+
                     if (isCorrectPassword) {
                         User.findOneAndUpdate({ _id: user._id }, { status: true });
                         jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '48h' },

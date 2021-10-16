@@ -14,7 +14,7 @@ const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
 const getInfoUser = require('./app/middlewares/getInfoUser');
 const cors = require('cors');
-
+const checkRole = require('./app/middlewares/checkRole');
 //create server socket
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
@@ -97,6 +97,7 @@ app.use(cookieParser());
 app.use(getInfoUser);
 app.use(getBreadcrumbs);
 app.options('*', cors());
+app.use(checkRole);
 
 route(app);
 

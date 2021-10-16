@@ -11,7 +11,7 @@ const User = new Schema({
     dateOfBirth: { type: Date },
     status: { type: Boolean, default: false },
     //0: admin, 1: mod, 2: populer user
-    role: { type: Number, default: 2 },
+    role: { type: Number, default: 3 },
     image: { type: String, maxLength: 255 },
     fullName: { type: String, maxLength: 255 },
     email: [{ type: String, maxLength: 255 }],

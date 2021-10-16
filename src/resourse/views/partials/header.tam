@@ -57,9 +57,12 @@
             <li class="nav-item">
               <a class="nav-link user_profile" href="/user/profile/{{ _user._id}}">Quản lý tài khoản</a>
             </li>
+            {{#if _user.role}}
+            {{else}}
             <li class="nav-item">
               <a class="nav-link user_manager" href="/user/manager">Quản lý người dùng</a>
             </li>
+            {{/if}}
             <li class="nav-item">
               <a class="nav-link view_schedule" aria-current="page" href="/schedules">Lịch học</a>
             </li>

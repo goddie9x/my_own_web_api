@@ -7,6 +7,7 @@ const { destroySingleCloudinary } = require('../../config/cloudinary/cloudinary.
 class SiteController {
 
     index(req, res, next) {
+        let userRole = req.data && req.data.currentUser && req.data.currentUser.role;
         if (req.query.page) {
             let today = new Date();
 
@@ -18,9 +19,15 @@ class SiteController {
                 .then(schedules => {
                     schedules = multipleMongooseToObjects(schedules);
                     schedules.forEach(schedule => {
-                        schedule.linkMeet = schedule.linkMeet.map(function(link) {
-                            return checkAndAddHttpSlash(link);
-                        });
+                        if (userRole && userRole < 3) {
+                            schedule.linkMeet = schedule.linkMeet.map(function(link) {
+                                return checkAndAddHttpSlash(link);
+                            });
+                        } else {
+                            schedule.linkMeet = schedule.linkMeet.map(function(link) {
+                                return '/notPermission';
+                            });
+                        }
                     })
 
                     schedules = schedules.map(function(schedule) {
