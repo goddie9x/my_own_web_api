@@ -13,7 +13,6 @@ class UserController {
         let account = req.body.account;
         let password = req.body.password;
         let isClassmate = account.slice(0, 3) == PRE_CLASSMATE_STRING;
-        console.log(account.slice(0, 3));
         User.find({
                 account: account
             })

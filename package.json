@@ -4,7 +4,8 @@
     "description": "create my own web",
     "main": "./src/index.js",
     "scripts": {
-        "start": "nodemon src/index.js",
+        "start": "node src/index.js",
+        "nodemon": "nodemon src/index.js",
         "comcss": "node-sass --watch ./src/resourse/scss/ -o ./src/public/css/",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
