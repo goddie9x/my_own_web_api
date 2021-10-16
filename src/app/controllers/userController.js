@@ -1,7 +1,9 @@
 const User = require('../models/User');
 const { multipleMongooseToObjects, mongooseToObject } = require('../../utils/mongoose');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt-nodejs');
 const ITEM_PER_PAGE = 8;
+const SALT_ROUNDS = 10;
 class UserController {
     index(req, res, next) {
         res.render('users/profile');
@@ -14,7 +16,9 @@ class UserController {
             })
             .then(user => {
                 if (Object.keys(user).length === 0) {
-                    User.create({ account, password })
+                    const salt = bcrypt.genSaltSync(SALT_ROUNDS);
+                    const passwordEncrypted = bcrypt.hashSync(password, salt);
+                    User.create({ account, password: passwordEncrypted })
                         .then((user) => {
                             let token = jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '48h' });
                             res.send({ token });
@@ -29,17 +33,22 @@ class UserController {
     login(req, res, next) {
         let account = req.body.account;
         let password = req.body.password;
+
         User.findOne({
-                account,
-                password
+                account
             })
             .then(user => {
                 if (user._id) {
-                    User.updateOne({ _id: user._id }, { status: true });
-                    jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '48h' },
-                        function(err, token) {
-                            res.send({ token });
-                        });
+                    let isCorrectPassword = bcrypt.compareSync(password, user.password);
+                    if (isCorrectPassword) {
+                        User.findOneAndUpdate({ _id: user._id }, { status: true });
+                        jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '48h' },
+                            function(error, token) {
+                                res.send({ token });
+                            });
+                    } else {
+                        res.status(500).json({ message: 'error' });
+                    }
                 } else {
                     res.status(500).json({ message: 'error' });
                 }
