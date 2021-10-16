@@ -3,7 +3,6 @@ const scheduleRouter = require('./schedule');
 const userRouter = require('./user');
 const postRouter = require('./post');
 const checkUserLogin = require('../app/middlewares/checkUserLogin');
-const checkRole = require('../app/middlewares/checkRole');
 const miniLinkDirect = require('./miniLinkDirect');
 
 function router(app) {
