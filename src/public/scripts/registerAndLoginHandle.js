@@ -81,24 +81,27 @@ function onSubmitRegester(event) {
             if (clickedCount % 3 == 1) {
                 let account = formRegester.find('.account').val();
                 let password = formRegester.find('.password').val();
+                let rePassWord = formRegester.find('#password_confirm').val();
 
-                $.post('/user/register', {
-                        account: account,
-                        password: password,
-                    })
-                    .then(function(data) {
-                        if (data.token) {
-                            document.cookie = `tokenUser=${data.token};max-age=86400`;
-                            formRegester.closest('.modal-content').find('.btn-close').click();
-                            showToast('Đăng ký thành công', 'giờ đây bạn có thể khám phá nhiều tính năng hơn');
-                            location.reload();
-                        } else {
+                if (password == rePassWord) {
+                    $.post('/user/register', {
+                            account: account,
+                            password: password,
+                        })
+                        .then(function(data) {
+                            if (data.token) {
+                                document.cookie = `tokenUser=${data.token};max-age=86400`;
+                                formRegester.closest('.modal-content').find('.btn-close').click();
+                                showToast('Đăng ký thành công', 'giờ đây bạn có thể khám phá nhiều tính năng hơn');
+                                location.reload();
+                            } else {
+                                showToast('Đăng ký không thành công', 'vui lòng thử lại');
+                            }
+                        })
+                        .catch(error => {
                             showToast('Đăng ký không thành công', 'vui lòng thử lại');
-                        }
-                    })
-                    .catch(error => {
-                        showToast('Đăng ký không thành công', 'vui lòng thử lại');
-                    })
+                        })
+                }
             }
         }
     });
