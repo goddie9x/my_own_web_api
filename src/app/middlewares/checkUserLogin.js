@@ -6,7 +6,7 @@ module.exports = function checkUserLogin(req, res, next) {
     if (currentUserRole < 4) {
         next();
     } else {
-        res.status(404).redirect('/loginSessionExpired');
+        res.status(500).redirect('/loginSessionExpired');
     }
 
 }

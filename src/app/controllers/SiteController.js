@@ -4,6 +4,7 @@ const { convertDateToDMY } = require('../../utils/convertDate');
 const checkAndAddHttpSlash = require('../../utils/checkAndAddHttpSlash');
 const { resourcesCloudinary } = require('../../config/cloudinary/cloudinary.config');
 const { destroySingleCloudinary } = require('../../config/cloudinary/cloudinary.config');
+const transporter = require('../../utils/sendAmail');
 class SiteController {
 
     index(req, res, next) {
@@ -29,7 +30,19 @@ class SiteController {
                             });
                         }
                     })
-
+                    const mailOptions = {
+                        from: process.env.MAIL_ACCOUNT,
+                        to: 'boykeodang@gmail.com',
+                        subject: 'My first Email!!!',
+                        text: "This is my first email. I am so excited!"
+                    };
+                    transporter.sendMail(mailOptions, function(error, info) {
+                        if (error) {
+                            console.log(error);
+                        } else {
+                            console.log('Email sent: ' + info.response);
+                        }
+                    });
                     schedules = schedules.map(function(schedule) {
                         schedule.dayStart = convertDateToDMY(schedule.dayStart);
                         schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
