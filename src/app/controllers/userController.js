@@ -54,7 +54,7 @@ class UserController {
 
                     if (isCorrectPassword) {
                         User.findOneAndUpdate({ _id: user._id }, { status: true });
-                        jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '48h' },
+                        jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '720h' },
                             function(error, token) {
                                 res.send({ token });
                             });
