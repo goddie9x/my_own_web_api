@@ -14,14 +14,14 @@
         "url": "git+ssh://git@github.com/goddie9x/my_own_web.git"
     },
     "keywords": [
-        "my_own_web"
+        "my_own_web_api"
     ],
     "author": "HoangTam",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/goddie9x/my_own_web/issues"
+        "url": "https://github.com/goddie9x/my_own_web_api/issues"
     },
-    "homepage": "https://github.com/goddie9x/my_own_web#readme",
+    "homepage": "https://github.com/goddie9x/my_own_web_api#readme",
     "dependencies": {
         "bcrypt-nodejs": "0.0.3",
         "cloudinary": "^1.27.0",
