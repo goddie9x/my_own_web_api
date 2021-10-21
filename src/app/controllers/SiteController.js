@@ -97,7 +97,6 @@ class SiteController {
     }
     cloudinaryDelete(req, res, next) {
         let image = req.params.image;
-        console.log(req.params);
 
         destroySingleCloudinary(image, function(error, result) {
             res.send(result);

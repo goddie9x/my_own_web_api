@@ -8,7 +8,6 @@ class ScheduleController {
     index(req, res, next) {
             let page = req.query.page;
             let userRole = req.data && req.data.currentUser.role && req.data.currentUser.role;
-            console.log(userRole);
 
             if (page) {
                 if (page < 1) {
