@@ -8,6 +8,7 @@ class ScheduleController {
     index(req, res, next) {
             let page = req.query.page;
             let userRole = req.data && req.data.currentUser.role && req.data.currentUser.role;
+            console.log(userRole);
 
             if (page) {
                 if (page < 1) {
@@ -27,7 +28,7 @@ class ScheduleController {
                         schedules = schedules.map(function(schedule) {
                             schedule.dayStart = convertDateToDMY(schedule.dayStart);
                             schedule.dayEnd = convertDateToDMY(schedule.dayEnd);
-                            if (userRole && userRole < 3) {
+                            if (userRole && userRole < 3 || userRole == 0) {
                                 schedule.linkMeet = schedule.linkMeet.map(function(link) {
                                     return checkAndAddHttpSlash(link);
                                 });

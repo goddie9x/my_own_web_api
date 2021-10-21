@@ -12,7 +12,6 @@ const session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
-const getInfoUser = require('./app/middlewares/getInfoUser');
 const cors = require('cors');
 const checkRole = require('./app/middlewares/checkRole');
 //create server socket
@@ -94,7 +93,6 @@ app.use(cors());
 app.use(passport.initialize())
 app.use(passport.session());
 app.use(cookieParser());
-app.use(getInfoUser);
 app.use(getBreadcrumbs);
 app.options('*', cors());
 app.use(checkRole);

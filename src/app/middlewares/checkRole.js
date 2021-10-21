@@ -9,7 +9,12 @@ module.exports = function checkRole(req, res, next) {
             .then((user) => {
                 if (user) {
                     let { password, ...data } = user._doc;
-                    req.data.currentUser = data;
+                    if (req.data) {
+                        req.data = {...req.data, currentUser: data }
+                    } else {
+                        req.data = { currentUser: data };
+                    }
+                    res.locals._user = data;
                     next();
                 } else {
                     next();
