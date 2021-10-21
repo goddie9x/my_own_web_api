@@ -19,7 +19,7 @@ class SiteController {
                 .then(schedules => {
                     schedules = multipleMongooseToObjects(schedules);
                     schedules.forEach(schedule => {
-                        if (userRole && userRole < 3) {
+                        if (userRole && userRole < 3 || userRole == 0) {
                             schedule.linkMeet = schedule.linkMeet.map(function(link) {
                                 return checkAndAddHttpSlash(link);
                             });
