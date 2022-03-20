@@ -1,59 +1,46 @@
 const express = require('express');
+require('dotenv').config();
 const path = require('path');
-const handlebars = require('express-handlebars');
 const app = express();
 const route = require('./routes');
-const db = require('./config/db');
-const PORT = process.env.PORT || 3000;
+const methodOverride = require('method-override');
+const PORT = process.env.PORT || 3001;
+const getBreadcrumbs = require('./app/middlewares/BreadCrumsCreate');
+const passport = require('passport');
+const flash = require('connect-flash');
+const cookieParser = require('cookie-parser');
+const autoCallClientWeb = require('./utils/autoCallClientWeb');
+const corsMiddleware = require('./app/middlewares/cors');
+const server = require('http').createServer(app);
+const getUserInfo = require('./app/middlewares/getUserInfo');
+const io = require('socket.io')(server, {
+    cors: {
+        origin: '*',
+        methods: ["GET", "POST"]
+    }
+});
+const connectIo = require('./config/socket/index');
 
-db.connect();
-
-//create static direct
-app.use(express.static(path.join(__dirname, 'src/public')));
-
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(
     express.urlencoded({
         extended: true,
     }),
 );
-//convert req to json
 app.use(express.json());
-//use engine handlebars to create view
-app.engine(
-    'tam',
-    handlebars({
-        extname: '.tam',
-        helpers: {
-            sum: (a, b) => a + b,
-            sortable: (field, sort) => {
-                const sortType = field == sort.column ? sort.type : 'default';
-
-                const classTypes = {
-                    default: '',
-                    asc: 'asc',
-                    desc: 'desc',
-                }
-                const types = {
-                    asc: 'desc',
-                    desc: 'asc',
-                    default: 'desc',
-                }
-
-                classType = classTypes[sortType];
-                nextType = types[sortType];
-
-                return `href="?_sort&column=${field}&type=${nextType}" class="${classType} ms-3"`;
-            }
-        },
-    }),
-);
-
-
-app.set('view engine', 'tam');
-app.set('views', path.join(__dirname, 'src', 'resource', 'views'));
+app.use(methodOverride('_method'));
+app.use(flash());
+app.use(getBreadcrumbs);
+app.use(corsMiddleware);
+app.use(cookieParser());
+app.use(getUserInfo);
 
 route(app);
 
-app.listen(PORT, () => {
-    console.log(`Our app is running on port ${ PORT }`);
+connectIo(io);
+
+autoCallClientWeb.start();
+
+server.listen(PORT, () => {
+    console.log(`Our app is running on port ${PORT}`);
 });
