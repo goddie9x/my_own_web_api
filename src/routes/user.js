@@ -4,17 +4,20 @@ const userController = require('../app/controllers/userController');
 const getUserInfo = require('../app/middlewares/getUserInfo');
 const checkUserLogin = require('../app/middlewares/checkUserLogin');
 const { uploadCloud } = require('../config/cloudinary/cloudinary.config');
-const checkAdminLogin = require('../app/middlewares/checkAdminLogin');
+const checkModLogin = require('../app/middlewares/checkModLogin');
 
-router.patch('/profile/avatar/:id', uploadCloud.single('image'), getUserInfo, userController.updateAvartar);
-router.patch('/profile/:id', getUserInfo, userController.updateInfo);
+router.patch('/profile/avatar/:id', uploadCloud.single('image'), userController.updateAvartar);
+router.patch('/profile/:id', userController.updateInfo);
+router.post('/ban/:id', checkModLogin, userController.banUser);
+router.delete('/delete/:id', checkModLogin, userController.forceDelete);
+router.post('/unban/:id', checkModLogin, userController.unbanUser);
 router.get('/profile/:id', userController.profile);
-router.get('/manager', checkUserLogin, checkAdminLogin, userController.manager);
-router.get('/banned', checkUserLogin, checkAdminLogin, userController.bannedUsers);
+router.post('/manager', checkModLogin, userController.manager);
+router.post('/banned', checkModLogin, userController.bannedUsers);
 router.post('/login', userController.login);
 router.post('/register', userController.register);
 router.post('/reset-password', userController.restore);
 router.post('/reset-password/:tokenRestore', userController.resetPassword);
-router.post('/', getUserInfo, userController.index);
+router.post('/', userController.index);
 
 module.exports = router;

@@ -69,37 +69,35 @@ class UserController {
     }
     login(req, res) {
         const { account, password } = req.body;
-        User.findOne({
-                account
-            })
-            .then(user => {
-                if (user._id) {
-                    let isCorrectPassword = bcrypt.compareSync(password, user.password);
-                    if (isCorrectPassword) {
-                        User.updateOne({ _id: user._id }, { $set: { status: true } });
-                        jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '720h' },
-                            function(error, token) {
-                                res.send({ token });
-                            });
-                    } else {
-                        console.log('password is not correct');
-                        res.status(500).json({ message: 'error' });
-                        return;
-                    }
+        const checkDeleted = User.findOneDeleted({ account: account });
+        const checkAccount = User.findOne({ account: account });
+        Promise.all([checkDeleted, checkAccount])
+            .then(([deleted, account]) => {
+                if (deleted) {
+                    res.status(403).json({ message: 'Account is baned' });
                 } else {
-                    console.log('account is not correct');
-                    res.status(500).json({ message: 'error' });
+                    if (account) {
+                        const isMatch = bcrypt.compareSync(password, account.password);
+                        if (isMatch) {
+                            let token = jwt.sign({ _id: account._id }, process.env.JWT, { expiresIn: '720h' });
+                            res.send({ token });
+                        } else {
+                            res.status(402).json({ message: 'Wrong password' });
+                        }
+                    } else {
+                        res.status(404).json({ message: 'Account not found' });
+                    }
                 }
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err);
-                res.status(500).json({ error: err });
+                res.status(500).json({ message: 'Login failed' });
             });
     }
     profile(req, res) {
         let accountID = req.params.id;
         if (accountID.match(/^[0-9a-fA-F]{24}$/)) {
-            User.findOne({ _id: accountID })
+            User.findOneWithDeleted({ _id: accountID })
                 .then(user => {
                     let userInfo = mongooseToObject(user);
                     delete userInfo.password;
@@ -193,40 +191,101 @@ class UserController {
             res.status(401).json('not permition');
         }
     }
-
     bannedUsers(req, res) {
-        User.findDeleted({})
-            .then((users) => {
-                users = multipleMongooseToObjects(users);
-                res.send(users);
-            })
-            .catch((err) => {
-                res.status(500).json('500');
-            })
-    }
-    manager(req, res) {
-        let page = req.query.page;
-        if (page) {
+        const currentUser = req.data.currentUser;
+        if (currentUser.role < 2) {
+            let query = {};
+            if (currentUser.role == 1) {
+                query = { role: { $gte: 1 } };
+            }
+            const page = req.query.page;
+            const perPage = req.query.perPage || ITEM_PER_PAGE;
             if (page < 1) {
                 page = 1;
             }
-            let pageSkip = (page - 1) * ITEM_PER_PAGE;
-
-            User.find({})
+            let pageSkip = (page - 1) * perPage;
+            const userBanned = User.findDeleted(query)
+                .sort({ createdAt: -1 })
                 .skip(pageSkip)
-                .limit(ITEM_PER_PAGE)
-                .then((users) => {
-                    users = multipleMongooseToObjects(users);
-                    res.send({ users });
+                .limit(perPage);
+            const userNotBannedCount = User.count(query);
+            const userBannedCount = User.countDeleted(query);
+            Promise.all([userBanned, userNotBannedCount, userBannedCount])
+                .then(([userBanned, countOpositeStored, countCurrentStored]) => {
+                    const users = multipleMongooseToObjects(userBanned);
+                    res.send({ users, countOpositeStored, countCurrentStored });
                 })
                 .catch((err) => {
+                    console.log(err);
                     res.status(500).json('500');
-                })
+                });
+        } else {
+            res.status(500).json('500');
         }
-        User.countDeleted({})
-            .then(countUserBanned => {
-                res.json(countUserBanned);
-            })
+    }
+    banUser(req, res) {
+        const userID = req.params.id;
+        const currentUser = req.data.currentUser;
+        if (currentUser.role < 2) {
+            User.delete({ _id: userID, role: { $gte: currentUser.role } })
+                .then(() => {
+                    res.status(200).json({ message: 'Band user success' });
+                })
+                .catch((err) => {
+                    console.log(err);
+                    res.status(500).json({ message: 'Band user failed' });
+                });
+        } else {
+            res.status(500).json('500');
+        }
+    }
+    unbanUser(req, res) {
+        const userID = req.params.id;
+        const currentUser = req.data.currentUser;
+        if (currentUser.role < 2) {
+            User.restore({ _id: userID, role: { $gte: currentUser.role } })
+                .then(() => {
+                    res.status(200).json({ message: 'Unband user success' });
+                })
+                .catch((err) => {
+                    console.log(err);
+                    res.status(500).json({ message: 'Unband user failed' });
+                });
+        } else {
+            res.status(500).json('500');
+        }
+    }
+    manager(req, res) {
+        const currentUser = req.data.currentUser;
+        if (currentUser.role < 2) {
+            let query = {};
+            if (currentUser.role == 1) {
+                query = { role: { $gte: 1 } };
+            }
+            const page = req.query.page;
+            const perPage = req.query.perPage || ITEM_PER_PAGE;
+            if (page < 1) {
+                page = 1;
+            }
+            let pageSkip = (page - 1) * perPage;
+            const userBannedCount = User.countDeleted(query);
+            const userNotBanned = User.count(query);
+            const userFound = User.find(query)
+                .sort({ updatedAt: 'desc' })
+                .skip(pageSkip)
+                .limit(perPage);
+            Promise.all([userBannedCount, userNotBanned, userFound])
+                .then(([countOpositeStored, countCurrentStored, userFound]) => {
+                    const users = multipleMongooseToObjects(userFound);
+                    res.send({ users, countOpositeStored, countCurrentStored });
+                })
+                .catch((err) => {
+                    console.log(err);
+                    res.status(500).json('500');
+                });
+        } else {
+            res.status(500).json('500');
+        }
     }
     restore(req, res) {
         const emailCheck = req.body.email;
@@ -283,6 +342,70 @@ class UserController {
         } catch (err) {
             console.log(err);
             res.status(500).send('token expired or invalid');
+        }
+    }
+    handleMultiAction(req, res) {
+        let method = req.body.method;
+        let userIds = req.body.ids;
+        switch (method) {
+            case 'delete':
+                {
+                    User.delete({ '_id': userIds })
+                    .then(
+                        function(done) {
+                            res.status(200).json('done');
+                        }
+                    )
+                    .catch((err) => {
+                        console.log(err);
+                        res.status(500).json('error');
+                    });
+                    break;
+                }
+            case 'restore':
+                {
+                    User.restore({ '_id': userIds })
+                    .then(
+                        function(done) {
+                            res.status(200).json('done');
+                        }
+                    )
+                    .catch((err) => {
+                        console.log(err);
+                        res.status(500).json('error');
+                    });
+                    break;
+                }
+            case 'forceDelete':
+                {
+                    User.deleteMany({ '_id': userIds })
+                    .then(
+                        function(done) {
+                            res.status(200).json('done');
+                        }
+                    )
+                    .catch((err) => {
+                        console.log(err);
+                        res.status(500).json('error');
+                    });
+                    break;
+                }
+        }
+    }
+    forceDelete(req, res) {
+        const userID = req.params.id;
+        const currentUser = req.data.currentUser;
+        if (currentUser.role < 2) {
+            User.deleteOne({ _id: userID, role: { $gte: currentUser.role } })
+                .then(() => {
+                    res.status(200).json({ message: 'Delete user success' });
+                })
+                .catch((err) => {
+                    console.log(err);
+                    res.status(500).json({ message: 'Delete user failed' });
+                });
+        } else {
+            res.status(500).json('500');
         }
     }
 }

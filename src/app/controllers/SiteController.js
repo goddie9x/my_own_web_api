@@ -31,14 +31,12 @@ class SiteController {
                 res.status(500).send('error');
             })
     }
-
     common(req, res) {
         Common.findOne({ active: true })
             .then(data => {
                 res.send({ data });
             })
     }
-
     search(req, res) {
         const search = req.params.value;
         const regex = '.*' + search + '.*';
@@ -109,13 +107,13 @@ class SiteController {
             });
     }
     cloudinaryDelete(req, res) {
-        let imageId = req.params.imageId;
-        if (imageId.match(/^[0-9a-fA-F]{24}$/)) {
-            Image.findOneAndDelete({ _id: imageId })
-                .then(res => {
+        let image = req.params.image;
+        if (image.match(/^[0-9a-fA-F]{24}$/)) {
+            Image.findOneAndDelete({ _id: image })
+                .then(() => {
                     destroySingleCloudinary(image, function(error, result) {
                         if (result) {
-                            res.send(result);
+                            res.status(200).send(result);
                         } else {
                             res.status(500).send('error');
                         }

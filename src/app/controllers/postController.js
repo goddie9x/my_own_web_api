@@ -24,7 +24,6 @@ class PostController {
             if (type) {
                 query.type = type;
             }
-            console.log(query);
             Post.find(query).sort({ updatedAt: 'desc' })
                 .limit(limit)
                 .skip(skip)
@@ -45,12 +44,19 @@ class PostController {
         }
     }
     delete(req, res) {
-        const currentUserId = req.data.currentUser._id;
+        const currentUser = req.data.currentUser;
         const slug = req.params.slug;
-
-        Post.findOneAndRemove({ slug, authorId: currentUserId })
-            .then(() => {
-                res.send('success');
+        const query = { slug };
+        if (currentUser.role > 2) {
+            query.authorId = currentUser._id;
+        }
+        Post.findOneAndRemove(query)
+            .then((response) => {
+                if (response) {
+                    res.send('success');
+                } else {
+                    res.status(500).send('error');
+                }
             })
             .catch(() => {
                 res.status(500).send('500');
@@ -69,20 +75,17 @@ class PostController {
             });
     }
     store(req, res) {
-        const userCreatedPost = req.data.currentUser.fullName;
-        const authorAvatar = req.data.currentUser.image || '/images/default.png';
-        const authorQuote = req.data.currentUser.quote;
-        const authorId = req.data.currentUser._id;
+        const currentUser = req.data.currentUser;
         const postInfo = req.body;
         const contentGen = toc.Generate(postInfo.content);
         const content = contentGen.updatedText ? contentGen.updatedText : postInfo.content;
         const headingList = contentGen.tocList ? contentGen.tocList : '';
         const slug = req.params.slug;
         let post = Object.assign(postInfo, {
-            author: userCreatedPost,
-            authorAvatar,
-            authorQuote,
-            authorId,
+            author: currentUser.fullName || currentUser.username,
+            authorAvatar: currentUser.image || '/images/default.png',
+            authorQuote: currentUser.quote,
+            authorId: currentUser._id,
             content,
             headingList,
         });
@@ -92,8 +95,8 @@ class PostController {
             });
             let handlePostDone = Post.updateOne({ slug }, post);
             let createNotifDone = Notifs.create({
-                userNameAthor: userCreatedPost,
-                userAthorAvatar: authorAvatar,
+                userNameAthor: currentUser.fullName || currentUser.username,
+                userAthorAvatar: currentUser.image || '/images/default.png',
                 forAll: postInfo.type == 1,
                 url: '/posts/' + slug,
                 type: postInfo.type,
@@ -111,10 +114,10 @@ class PostController {
             Post.create(post)
                 .then((post) => {
                     return Notifs.create({
-                            userNameAthor: userCreatedPost,
-                            userAthorAvatar: authorAvatar,
+                            userNameAthor: currentUser.fullName || currentUser.username,
+                            userAthorAvatar: currentUser.image || '/images/default.png',
                             forAll: postInfo.type == 1,
-                            url: '/posts/' + post.slug,
+                            url: '/posts/' + slug,
                             type: postInfo.type,
                         })
                         .then(() => {
