@@ -8,16 +8,17 @@ const getABriefPosts = require('../../utils/getABriefPosts');
 const { destroySingleCloudinary } = require('../../config/cloudinary/cloudinary.config');
 class SiteController {
     index(req, res) {
-        let getNotifs = Post.find({ type: 2, deleted: false }).sort({ updatedAt: -1 }).limit(6);
-        let getPosts = Post.find({ type: 1, deleted: false }).sort({ updatedAt: -1 }).limit(6);
+        let getNotifs = Post.find({ type: 2, publicType: 0, deleted: false }).sort({ updatedAt: -1 }).limit(6);
+        let getPosts = Post.find({ type: 1, publicType: 0, deleted: false }).sort({ updatedAt: -1 }).limit(6);
         let getUsers = User.find({ account: { $regex: 'UHC.' } });
 
         Promise.all([getNotifs, getPosts, getUsers])
             .then(([NotifsRow, PostsRow, UsersRaw]) => {
                 let listUser = multipleMongooseToObjects(UsersRaw);
                 const users = listUser.map((User) => {
-                    const { account, role, __v, ...user } = User;
-                    return user;
+                    let { account, fullName, quote, ...user } = User;
+                    account = account.replace('UHC', '');
+                    return { account, fullName, quote };
                 })
                 const Notifs = multipleMongooseToObjects(NotifsRow);
                 const Posts = multipleMongooseToObjects(PostsRow);

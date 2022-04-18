@@ -9,7 +9,8 @@ const PRE_CLASSMATE_STRING = 'UHC';
 const startSendMail = require('../../utils/sendAmail');
 class UserController {
     index(req, res) {
-        res.json(req.data);
+        const userData =
+            res.json(req.data);
     }
     register(req, res) {
         const account = req.body.account;
@@ -99,10 +100,12 @@ class UserController {
         if (accountID.match(/^[0-9a-fA-F]{24}$/)) {
             User.findOneWithDeleted({ _id: accountID })
                 .then(user => {
-                    let userInfo = mongooseToObject(user);
-                    delete userInfo.password;
-                    delete userInfo.createdAt;
-                    delete userInfo.updatedAt;
+                    let userInfoRaw = mongooseToObject(user);
+                    delete userInfoRaw.password;
+                    delete userInfoRaw.createdAt;
+                    delete userInfoRaw.updatedAt;
+                    let { account, ...userInfo } = userInfoRaw;
+                    userInfo.account = account.replace('UHC', '');
                     res.json(userInfo);
                     return;
                 })
@@ -263,7 +266,7 @@ class UserController {
                 query = { role: { $gte: 1 } };
             }
             const page = req.query.page;
-            const perPage = req.query.perPage || ITEM_PER_PAGE;
+            const perPage = +req.query.perPage || ITEM_PER_PAGE;
             if (page < 1) {
                 page = 1;
             }
@@ -272,8 +275,8 @@ class UserController {
             const userNotBanned = User.count(query);
             const userFound = User.find(query)
                 .sort({ updatedAt: 'desc' })
-                .skip(pageSkip)
-                .limit(perPage);
+                .limit(perPage)
+                .skip(pageSkip);
             Promise.all([userBannedCount, userNotBanned, userFound])
                 .then(([countOpositeStored, countCurrentStored, userFound]) => {
                     const users = multipleMongooseToObjects(userFound);

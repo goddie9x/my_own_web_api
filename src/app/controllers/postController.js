@@ -5,7 +5,8 @@ const { multipleMongooseToObjects } = require('../../utils/mongoose');
 const PER_PAGE_DEFAULT = 8;
 class PostController {
     index(req, res) {
-        const userRole = req.data && req.data.currentUser && req.data.currentUser.role || 4;
+        const currentUser = req.data ? req.data.currentUser : undefined;
+        const userRole = currentUser ? req.data.currentUser.role : 4;
         const { userId } = req.body;
         if (userId == 'nope') {
             res.status(200).send([]);
@@ -15,6 +16,7 @@ class PostController {
             const limit = req.query.limit || PER_PAGE_DEFAULT;
             const skip = limit * (page - 1);
             const query = userRole < 3 ? {} : { publicType: 0 };
+
             if (tag) {
                 query.tag = tag;
             }
@@ -24,17 +26,19 @@ class PostController {
             if (type) {
                 query.type = type;
             }
-            Post.find(query).sort({ updatedAt: 'desc' })
+            const amount = Post.countDocuments(query);
+            const posts = Post.find(query).sort({ updatedAt: 'desc' })
                 .limit(limit)
-                .skip(skip)
-                .then((data) => {
-                    let posts = multipleMongooseToObjects(data);
+                .skip(skip);
+            Promise.all([amount, posts])
+                .then(([amount, rawPosts]) => {
+                    let posts = multipleMongooseToObjects(rawPosts);
                     posts = posts.map(function(post) {
                         delete post.content;
                         post.description = post.description.slice(0, 200);
                         return post;
                     });
-                    res.send(posts);
+                    res.send({ posts, amount });
                     return;
                 })
                 .catch(err => {

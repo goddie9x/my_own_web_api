@@ -9,7 +9,13 @@ const connectIo = (io) => {
             userConnected,
             userChat
         } = require('./chatRoom.js')(io);
+        const {
+            postsUpdated,
+            scheduleUpdated
+        } = require('./common.js')(io);
 
+        socket.on('posts:updated', postsUpdated);
+        socket.on('schedule:updated', scheduleUpdated);
         socket.on("notif:created", createNotifDone);
         socket.on("chat-room:updated", chatRoomUpdated);
         socket.on("chat-room:user-leave", userLeave);
