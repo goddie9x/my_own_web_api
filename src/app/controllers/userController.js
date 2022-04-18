@@ -123,7 +123,7 @@ class UserController {
         let userID = req.params.id;
         if (userID.match(/^[0-9a-fA-F]{24}$/)) {
             if (currentUserId == userID) {
-                let { currentUser, role, ...userInfo } = req.body;
+                let { currentUser, role, account, ...userInfo } = req.body;
                 if (userInfo.image) {
                     User.updateOne({ _id: userID }, { $set: { image: userInfo.image } })
                         .then(() => {
@@ -201,7 +201,7 @@ class UserController {
             if (currentUser.role == 1) {
                 query = { role: { $gte: 1 } };
             }
-            const page = req.query.page;
+            const page = +req.query.page;
             const perPage = req.query.perPage || ITEM_PER_PAGE;
             if (page < 1) {
                 page = 1;
@@ -322,6 +322,37 @@ class UserController {
                 res.status(404).send('Account not found');
             })
     }
+    editRole(req, res) {
+        const userID = req.params.id;
+        const currentUser = req.data.currentUser;
+        const currenUserRole = currentUser ? currentUser.role : 4;
+        const role = req.body.role;
+
+        if (currenUserRole < 2 && role > currenUserRole) {
+            User.findOne({ _id: userID, role: { $gte: currenUserRole } })
+                .then(user => {
+                    if (user) {
+                        user.role = role;
+                        user.save()
+                            .then(() => {
+                                res.status(200).json({ message: 'Edit role success' });
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                                res.status(500).json({ message: 'Edit role failed' });
+                            });
+                    } else {
+                        res.status(404).json('404');
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                    res.status(500).json('500');
+                });
+        } else {
+            res.status(500).json('500');
+        }
+    }
     resetPassword(req, res) {
         const tokenRestore = req.params.tokenRestore;
         const newPassword = req.body.password;
@@ -348,57 +379,83 @@ class UserController {
         }
     }
     handleMultiAction(req, res) {
-        let method = req.body.method;
-        let userIds = req.body.ids;
-        switch (method) {
-            case 'delete':
-                {
-                    User.delete({ '_id': userIds })
-                    .then(
-                        function(done) {
-                            res.status(200).json('done');
+        const method = req.body.method;
+        const userIds = req.body.ids;
+        const currentUser = req.data.currentUser;
+        const currenUserRole = currentUser ? currentUser.role : 4;
+
+        if (currentUser && currenUserRole < 2) {
+            switch (method) {
+                case 'delete':
+                    {
+                        User.delete({ '_id': userIds, role: { $gte: currenUserRole } })
+                        .then(
+                            function(done) {
+                                res.status(200).json('done');
+                            }
+                        )
+                        .catch((err) => {
+                            console.log(err);
+                            res.status(500).json('error');
+                        });
+                        break;
+                    }
+                case 'restore':
+                    {
+                        User.restore({ '_id': userIds, role: { $gte: currenUserRole } })
+                        .then(
+                            function(done) {
+                                res.status(200).json('done');
+                            }
+                        )
+                        .catch((err) => {
+                            console.log(err);
+                            res.status(500).json('error');
+                        });
+                        break;
+                    }
+                case 'forceDelete':
+                    {
+                        User.deleteMany({ '_id': userIds, role: { $gte: currenUserRole } })
+                        .then(
+                            function(done) {
+                                res.status(200).json('done');
+                            }
+                        )
+                        .catch((err) => {
+                            console.log(err);
+                            res.status(500).json('error');
+                        });
+                        break;
+                    }
+                case 'editRole':
+                    {
+                        const role = req.body.role;
+                        if (role > currenUserRole) {
+                            User.updateMany({ '_id': userIds, role: { $gte: currenUserRole } }, { $set: { role: req.body.role } })
+                                .then(
+                                    function(done) {
+                                        res.status(200).json('done');
+                                    }
+                                )
+                                .catch((err) => {
+                                    console.log(err);
+                                    res.status(500).json('error');
+                                });
+                        } else {
+                            res.status(500).json('error');
                         }
-                    )
-                    .catch((err) => {
-                        console.log(err);
-                        res.status(500).json('error');
-                    });
-                    break;
-                }
-            case 'restore':
-                {
-                    User.restore({ '_id': userIds })
-                    .then(
-                        function(done) {
-                            res.status(200).json('done');
-                        }
-                    )
-                    .catch((err) => {
-                        console.log(err);
-                        res.status(500).json('error');
-                    });
-                    break;
-                }
-            case 'forceDelete':
-                {
-                    User.deleteMany({ '_id': userIds })
-                    .then(
-                        function(done) {
-                            res.status(200).json('done');
-                        }
-                    )
-                    .catch((err) => {
-                        console.log(err);
-                        res.status(500).json('error');
-                    });
-                    break;
-                }
+                        break;
+                    }
+            }
+        } else {
+            res.status(500).json('500');
         }
     }
     forceDelete(req, res) {
         const userID = req.params.id;
         const currentUser = req.data.currentUser;
-        if (currentUser.role < 2) {
+        if (currenUserRole < 2) {
             User.deleteOne({ _id: userID, role: { $gte: currentUser.role } })
                 .then(() => {
                     res.status(200).json({ message: 'Delete user success' });
