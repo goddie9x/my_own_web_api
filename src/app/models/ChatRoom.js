@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('../../config/db');
 
 const ChatRoomSchema = new mongoose.Schema({
     topic: String,

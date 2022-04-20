@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('../../config/db');
 // instantiate a mongoose schema
 const TagSchema = new mongoose.Schema({
     tag: { type: String, required: true, unique: true },

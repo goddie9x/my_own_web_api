@@ -6,10 +6,9 @@ const route = require('./routes');
 const methodOverride = require('method-override');
 const PORT = process.env.PORT || 3001;
 const getBreadcrumbs = require('./app/middlewares/BreadCrumsCreate');
-const passport = require('passport');
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
-const autoCallClientWeb = require('./utils/autoCallClientWeb');
+const startAllSchedule = require('./app/schedules');
 const corsMiddleware = require('./app/middlewares/cors');
 const server = require('http').createServer(app);
 const getUserInfo = require('./app/middlewares/getUserInfo');
@@ -39,7 +38,7 @@ route(app);
 
 connectIo(io);
 
-autoCallClientWeb.start();
+startAllSchedule();
 
 server.listen(PORT, () => {
     console.log(`Our app is running on port ${PORT}`);

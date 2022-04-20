@@ -2,6 +2,7 @@ const Schedule = require('../models/Schedule');
 const Post = require('../models/Post');
 const User = require('../models/User');
 const Common = require('../models/Common');
+const Dashboard = require('../models/Dashboard');
 const Image = require('../models/Image');
 const { multipleMongooseToObjects } = require('../../utils/mongoose');
 const getABriefPosts = require('../../utils/getABriefPosts');
@@ -149,6 +150,16 @@ class SiteController {
                 } else {
                     res.status(201).json(url);
                 }
+            })
+            .catch(error => {
+                console.log(error);
+                res.status(500).send('error');
+            });
+    }
+    dashboard(req, res) {
+        Dashboard.findOne({})
+            .then(data => {
+                res.send({...data });
             })
             .catch(error => {
                 console.log(error);

@@ -1,6 +1,8 @@
 const User = require('../models/User');
 const Image = require('../models/Image');
+const Dashboard = require('../models/Dashboard');
 const { multipleMongooseToObjects, mongooseToObject } = require('../../utils/mongoose');
+const getCurrentWeek = require('../../utils/getCurrentWeek');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt-nodejs');
 const ITEM_PER_PAGE = 8;
@@ -9,8 +11,16 @@ const PRE_CLASSMATE_STRING = 'UHC';
 const startSendMail = require('../../utils/sendAmail');
 class UserController {
     index(req, res) {
-        const userData =
-            res.json(req.data);
+        const currentWeek = getCurrentWeek();
+        Dashboard.findOneAndUpdate({}, {
+            $inc: { amountConnectPerMonth: 1, amountConnectPerMonth: 1 },
+            amountConnectAnalyticsMonthByWeek: {
+                $inc: {
+                    [currentWeek]: 1
+                }
+            }
+        });
+        res.json(req.data);
     }
     register(req, res) {
         const account = req.body.account;
@@ -57,11 +67,13 @@ class UserController {
                                 res.status(500).send('Create account failed');
                             });
                     }
+                    Dashboard.findOneAndUpdate({}, {
+                        amountUser: { $inc: { totalUser: 1 } },
+                    });
                 } catch (err) {
                     console.log(err);
                     res.status(500).send('Create account failed');
                 }
-
             })
             .catch((err) => {
                 console.log(err);
@@ -418,7 +430,9 @@ class UserController {
                     {
                         User.deleteMany({ '_id': userIds, role: { $gte: currenUserRole } })
                         .then(
-                            function(done) {
+                            function(data) {
+                                const amount = data.deletedCount;
+                                Dashboard.findOneAndUpdate({}, { $inc: { amountUser: -amount } });
                                 res.status(200).json('done');
                             }
                         )
@@ -456,6 +470,7 @@ class UserController {
         const userID = req.params.id;
         const currentUser = req.data.currentUser;
         if (currenUserRole < 2) {
+            Dashboard.findOneAndUpdate({}, { $inc: { amountUser: -1 } });
             User.deleteOne({ _id: userID, role: { $gte: currentUser.role } })
                 .then(() => {
                     res.status(200).json({ message: 'Delete user success' });

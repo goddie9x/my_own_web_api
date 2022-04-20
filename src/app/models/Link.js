@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('../../config/db');
 const slug = require('mongoose-slug-generator');
 
 // instantiate a mongoose schema

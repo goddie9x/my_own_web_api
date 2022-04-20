@@ -1,5 +1,6 @@
 const Post = require('../models/Post');
 const Notifs = require('../models/Notification');
+const Dashboard = require('../models/Dashboard');
 const toc = require("@pakjiddat/toc/index");
 const { multipleMongooseToObjects } = require('../../utils/mongoose');
 const PER_PAGE_DEFAULT = 8;
@@ -16,7 +17,6 @@ class PostController {
             const limit = req.query.limit || PER_PAGE_DEFAULT;
             const skip = limit * (page - 1);
             const query = userRole < 3 ? {} : { publicType: 0 };
-
             if (tag) {
                 query.tag = tag;
             }
@@ -57,6 +57,7 @@ class PostController {
         Post.findOneAndRemove(query)
             .then((response) => {
                 if (response) {
+                    Dashboard.findOneAndUpdate({}, { $inc: { amountPost: -1, amountConnectPerMonth: -1 } });
                     res.send('success');
                 } else {
                     res.status(500).send('error');
@@ -115,6 +116,7 @@ class PostController {
                     res.status(500).send('error');
                 });
         } else {
+            Dashboard.findOneAndUpdate({}, { $inc: { amountPost: 1, amountPostPerMonth: 1 } });
             Post.create(post)
                 .then((post) => {
                     return Notifs.create({
@@ -133,6 +135,30 @@ class PostController {
                     console.log(e);
                     res.status(500).send('error');
                 });
+        }
+    }
+    handleMultiAction(req, res) {
+        const currentUser = req.data.currentUser;
+        const { action, postIds } = req.body;
+        const query = {
+            _id: { $in: postIds },
+        };
+        if (currentUser.role > 2) {
+            query.authorId = currentUser._id;
+        }
+        switch (action) {
+            case 'delete':
+                Post.deleteMany(query)
+                    .then((data) => {
+                        const amount = data.deletedCount;
+                        Dashboard.findOneAndUpdate({}, { $inc: { amountPost: -amount, amountPostPerMonth: -amount } });
+                        res.status(200).send('success');
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                        res.status(500).send('error');
+                    });
+                break;
         }
     }
 }

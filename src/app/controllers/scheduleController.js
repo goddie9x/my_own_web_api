@@ -4,10 +4,9 @@ const { multipleMongooseToObjects, mongooseToObject } = require('../../utils/mon
 const checkAndAddHttpSlash = require('../../utils/checkAndAddHttpSlash');
 const { convertDateToDMY, reverseDateForDisplayInForm } = require('../../utils/convertDate');
 const SCHEDULE_PER_PAGE = 8;
-const path = require('path');
 const axios = require('axios');
-const qs = require('qs');
 const cheerio = require('cheerio');
+const Dashboard = require('../models/Dashboard');
 class ScheduleController {
     index(req, res, next) {
         let page = req.query.page;
@@ -65,35 +64,38 @@ class ScheduleController {
         }
     }
     template(req, res) {
-        const data = qs.stringify({
-            'txtusername': process.env.TXTUSERNAME,
-            'txtpassword': process.env.TXTPASSWORD,
-            'btnDangNhap': 'Đăng nhập',
-            '__VIEWSTATE': process.env.__VIEWSTATE,
-            '__VIEWSTATEGENERATOR': process.env.__VIEWSTATEGENERATOR,
-            '__EVENTVALIDATION': process.env.__EVENTVALIDATION,
-        });
-        const config = {
-            method: 'get',
-            url: process.env.URL_GETSCHEDULE,
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Cookie': '.ASPXAUTH=' + process.env.ASPXAUTH_GETSCHEDULE + '; ASP.NET_SessionId=' + process.env.SESSION_ID_GETSCHEDULE + '; language='
-            },
-            data: data
-        };
-
-        axios(config)
+        axios.get('http://sinhvien.eaut.edu.vn/')
             .then(function(response) {
-                const data = response.data;
-                const $ = cheerio.load(data);
-                const table = $('html').html();
-                res.send(table);
+                const __VIEWSTATE = response.data.match(/(?<=id="__VIEWSTATE" value=").*?(?=")/)[0];
+                const __EVENTVALIDATION = response.data.match(/(?<=id="__EVENTVALIDATION" value=").*?(?=")/)[0];
+                const __VIEWSTATEGENERATOR = response.data.match(/(?<=id="__VIEWSTATEGENERATOR" value=").*?(?=")/)[0];
+                const data = { __VIEWSTATE, __EVENTVALIDATION, __VIEWSTATEGENERATOR };
+                return data;
+            })
+            .then(function(data) {
+                return axios.post('http://sinhvien.eaut.edu.vn/', {
+                    'txtusername': process.env.TXTUSERNAME,
+                    'txtpassword': process.env.TXTPASSWORD,
+                    'btnDangNhap': 'Đăng nhập',
+                    ...data
+                });
+            })
+            .then(function(response) {
+                return axios.get('http://sinhvien.eaut.edu.vn/SinhVien.aspx?Chuyen_nganh=1', {
+                    headers: {
+                        'Cookie': response.headers['set-cookie'][0]
+                    }
+                });
+            })
+            .then(function(response) {
+                /*   const data = response.data;
+                  const $ = cheerio.load(data);
+                  const table = $('table').html();
+                  res.send(data); */
             })
             .catch(function(error) {
                 console.log(error);
             });
-
     }
     create(req, res) {
         let userCreatedPost = req.data.currentUser.fullName;
@@ -101,11 +103,13 @@ class ScheduleController {
         let rawSchedule = {...req.body };
         let dayOfWeek = rawSchedule.dayOfWeek;
         let schedules = [];
+        let amount = 0;
 
         if (Array.isArray(dayOfWeek)) {
             dayOfWeek.forEach((day, currentIndex) => {
                 let temp = {...rawSchedule };
 
+                amount++;
                 temp.dayOfWeek = day;
                 temp.partOfDay = rawSchedule.partOfDay[currentIndex];
                 temp.dayStart = Date.parse(rawSchedule.dayStart);
@@ -119,6 +123,7 @@ class ScheduleController {
                 schedules.push(temp);
             });
         } else {
+            amount++;
             rawSchedule.dayStart = Date.parse(rawSchedule.dayStart);
             rawSchedule.dayEnd = rawSchedule.dayEnd ? Date.parse(rawSchedule.dayEnd) : 0;
             rawSchedule.linkMeet = rawSchedule.linkMeet.map(function(link) {
@@ -137,7 +142,8 @@ class ScheduleController {
             //schedule type: {0: schedule, 1: exam} -> notif type: {1: post, 2:news, 3: schedule, 4: exam,  5: comment, 6: like, 7: follow, 8: message}
             type: rawSchedule.type + 3,
             url: '/schedules/' + (rawSchedule.type == 0 ? '' : 'examination'),
-        })
+        });
+        Dashboard.findOneAndUpdate({}, { $inc: { amountSchedule: amount } });
         Promise.all([createNotifDone, createScheduleDone])
             .then(() => {
                 res.status(200).send('done');
@@ -205,6 +211,7 @@ class ScheduleController {
 
         Schedule.delete({ '_id': id })
             .then((done) => {
+                Dashboard.findOneAndUpdate({}, { $inc: { amountSchedule: -1 } });
                 res.status(200).send('done');
             })
             .catch((err) => {
@@ -343,7 +350,7 @@ class ScheduleController {
                 {
                     Schedule.delete({ '_id': scheduleIds })
                     .then(
-                        function(done) {
+                        function() {
                             res.status(200).json('done');
                         }
                     )
@@ -371,7 +378,9 @@ class ScheduleController {
                 {
                     Schedule.deleteMany({ '_id': scheduleIds })
                     .then(
-                        function(done) {
+                        function(data) {
+                            const amount = data.deletedCount;
+                            Dashboard.findOneAndUpdate({}, { $inc: { amountSchedule: -amount } });
                             res.status(200).json('done');
                         }
                     )

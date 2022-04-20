@@ -15,9 +15,11 @@ const Post = new Schema({
     description: String,
     content: String,
     headingList: String,
+    reactions: { type: Array, default: [0, 0, 0, 0, 0, 0], maxItems: 6, minItems: 6 },
+    commentCount: Number,
     slug: { type: String, slug: 'title', unique: true },
     tag: [{ type: String }],
-    //0: public, 1: private
+    //0: public, 1: private, 2:classmate
     publicType: Number,
 }, { timestamps: true });
 
