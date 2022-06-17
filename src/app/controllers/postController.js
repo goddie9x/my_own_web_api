@@ -57,8 +57,14 @@ class PostController {
         Post.findOneAndRemove(query)
             .then((response) => {
                 if (response) {
-                    Dashboard.findOneAndUpdate({}, { $inc: { amountPost: -1, amountConnectPerMonth: -1 } });
-                    res.send('success');
+                    Dashboard.findOneAndUpdate({}, { $inc: { amountPost: -1, amountPostPerMonth: -1 } })
+                        .then(() => {
+                            res.send('success');
+                        })
+                        .catch((e) => {
+                            console.log(e);
+                            res.send('success');
+                        });
                 } else {
                     res.status(500).send('error');
                 }
@@ -116,7 +122,6 @@ class PostController {
                     res.status(500).send('error');
                 });
         } else {
-            Dashboard.findOneAndUpdate({}, { $inc: { amountPost: 1, amountPostPerMonth: 1 } });
             Post.create(post)
                 .then((post) => {
                     return Notifs.create({
@@ -127,7 +132,14 @@ class PostController {
                             type: postInfo.type,
                         })
                         .then(() => {
-                            res.status(200).json(post.slug);
+                            Dashboard.findOneAndUpdate({}, { $inc: { amountPost: 1, amountPostPerMonth: 1 } })
+                                .then(() => {
+                                    res.status(200).json(post.slug);
+                                })
+                                .catch((e) => {
+                                    console.log(e);
+                                    res.status(200).json(post.slug);
+                                });
                             return;
                         });
                 })
@@ -151,8 +163,10 @@ class PostController {
                 Post.deleteMany(query)
                     .then((data) => {
                         const amount = data.deletedCount;
-                        Dashboard.findOneAndUpdate({}, { $inc: { amountPost: -amount, amountPostPerMonth: -amount } });
-                        res.status(200).send('success');
+                        Dashboard.findOneAndUpdate({}, { $inc: { amountPost: -amount, amountPostPerMonth: -amount } })
+                            .finally(() => {
+                                res.status(200).send('success');
+                            });
                     })
                     .catch((e) => {
                         console.log(e);

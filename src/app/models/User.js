@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 const mongooseDelete = require('mongoose-delete');
 
 const User = new Schema({
-    name: { type: String, maxLength: 255 },
     account: { type: String, maxLength: 255, required: true, unique: true },
     password: { type: String, maxLength: 255, required: true },
     gender: String,

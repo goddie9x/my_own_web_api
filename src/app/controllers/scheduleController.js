@@ -103,7 +103,7 @@ class ScheduleController {
         let rawSchedule = {...req.body };
         let dayOfWeek = rawSchedule.dayOfWeek;
         let schedules = [];
-        let amount = 0;
+        let amount = 1;
 
         if (Array.isArray(dayOfWeek)) {
             dayOfWeek.forEach((day, currentIndex) => {
@@ -123,7 +123,7 @@ class ScheduleController {
                 schedules.push(temp);
             });
         } else {
-            amount++;
+            amount = 1;
             rawSchedule.dayStart = Date.parse(rawSchedule.dayStart);
             rawSchedule.dayEnd = rawSchedule.dayEnd ? Date.parse(rawSchedule.dayEnd) : 0;
             rawSchedule.linkMeet = rawSchedule.linkMeet.map(function(link) {
@@ -143,10 +143,16 @@ class ScheduleController {
             type: rawSchedule.type + 3,
             url: '/schedules/' + (rawSchedule.type == 0 ? '' : 'examination'),
         });
-        Dashboard.findOneAndUpdate({}, { $inc: { amountSchedule: amount } });
         Promise.all([createNotifDone, createScheduleDone])
             .then(() => {
-                res.status(200).send('done');
+                Dashboard.findOneAndUpdate({}, { $inc: { amountSchedule: amount } })
+                    .then(() => {
+                        res.status(200).send('done');
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        res.status(200).send('done');
+                    });
             })
             .catch((err) => {
                 res.status(500).send(err);
@@ -210,8 +216,7 @@ class ScheduleController {
         let id = req.params.id;
 
         Schedule.delete({ '_id': id })
-            .then((done) => {
-                Dashboard.findOneAndUpdate({}, { $inc: { amountSchedule: -1 } });
+            .then(() => {
                 res.status(200).send('done');
             })
             .catch((err) => {
@@ -377,13 +382,17 @@ class ScheduleController {
             case 'forceDelete':
                 {
                     Schedule.deleteMany({ '_id': scheduleIds })
-                    .then(
-                        function(data) {
-                            const amount = data.deletedCount;
-                            Dashboard.findOneAndUpdate({}, { $inc: { amountSchedule: -amount } });
-                            res.status(200).json('done');
-                        }
-                    )
+                    .then(function(data) {
+                        const amount = data.deletedCount;
+                        Dashboard.findOneAndUpdate({}, { $inc: { amountSchedule: -amount } })
+                            .then(() => {
+                                res.status(200).json('done');
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                                res.status(200).json('done');
+                            });
+                    })
                     .catch((err) => {
                         console.log(err);
                         res.status(500).json('error');
@@ -446,7 +455,14 @@ class ScheduleController {
             Schedule.findDeleted({ '_id': id }).remove()
                 .then(
                     () => {
-                        res.status(200).json('done');
+                        Dashboard.findOneAndUpdate({}, { $inc: { amountSchedule: -1 } })
+                            .then(() => {
+                                res.status(200).send('done');
+                            })
+                            .catch(err => {
+                                console.log(err);
+                                res.status(200).send('done');
+                            });
                     }
                 )
                 .catch((err) => {

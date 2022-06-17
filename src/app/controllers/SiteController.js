@@ -159,7 +159,7 @@ class SiteController {
     dashboard(req, res) {
         Dashboard.findOne({})
             .then(data => {
-                res.send({...data });
+                res.send(data);
             })
             .catch(error => {
                 console.log(error);

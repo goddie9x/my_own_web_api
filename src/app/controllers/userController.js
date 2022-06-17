@@ -12,34 +12,41 @@ const startSendMail = require('../../utils/sendAmail');
 class UserController {
     index(req, res) {
         const currentWeek = getCurrentWeek();
-        Dashboard.findOneAndUpdate({}, {
-            $inc: { amountConnectPerMonth: 1, amountConnectPerMonth: 1 },
-            amountConnectAnalyticsMonthByWeek: {
-                $inc: {
-                    [currentWeek]: 1
-                }
-            }
-        });
-        res.json(req.data);
+        const dataDashBoardUpdate = {
+            $inc: { amountConnectPerMonth: 1 },
+        };
+        dataDashBoardUpdate.$inc[`amountConnectAnalyticsMonthByWeek.${currentWeek}`] = 1;
+        Dashboard.findOneAndUpdate({}, dataDashBoardUpdate)
+            .then(() => {
+                res.json(req.data);
+            })
+            .catch(err => {
+                console.log(err);
+                res.json(req.data);
+            });
     }
     register(req, res) {
         const account = req.body.account;
         const password = req.body.password;
-        let email = req.body.email;
+        const email = req.body.email;
+        if (!email) {
+            res.status(403).json({ message: 'email must not be empty' });
+            return;
+        }
         const isClassmate = account.slice(0, 3) == PRE_CLASSMATE_STRING;
-        const checkAccountExit = User.find({
+        const checkAccountExit = User.findOne({
             account: account
         });
-        const checkEmailExit = User.find({
-            email: { $in: email }
+        const checkEmailExit = User.findOne({
+            email: email
         });
         Promise.all([checkAccountExit, checkEmailExit])
             .then(([accountExit, emailExit]) => {
-                if (Object.keys(accountExit).length !== 0) {
+                if (accountExit) {
                     res.status(401).json({ message: 'account existed' });
                     return;
                 }
-                if (Object.keys(emailExit).length !== 0) {
+                if (emailExit) {
                     res.status(402).json({ message: 'email existed' });
                     return;
                 }
@@ -50,7 +57,14 @@ class UserController {
                         User.create({ account, password: passwordEncrypted, email: [email], role: 2 })
                             .then((user) => {
                                 let token = jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '720h' });
-                                res.send({ token });
+                                Dashboard.findOneAndUpdate({}, { $inc: { amountUser: 1 } })
+                                    .then(() => {
+                                        res.send({ token });
+                                    })
+                                    .catch(err => {
+                                        console.log(err);
+                                        res.send({ token });
+                                    });
                             })
                             .catch((err) => {
                                 console.log(err);
@@ -60,16 +74,20 @@ class UserController {
                         User.create({ account, password: passwordEncrypted, email: [email] })
                             .then((user) => {
                                 let token = jwt.sign({ _id: user._id }, process.env.JWT, { expiresIn: '720h' });
-                                res.send({ token });
+                                Dashboard.findOneAndUpdate({}, { $inc: { amountUser: 1 } })
+                                    .then(() => {
+                                        res.send({ token });
+                                    })
+                                    .catch(err => {
+                                        console.log(err);
+                                        res.send({ token });
+                                    });
                             })
                             .catch((err) => {
                                 console.log(err);
                                 res.status(500).send('Create account failed');
                             });
                     }
-                    Dashboard.findOneAndUpdate({}, {
-                        amountUser: { $inc: { totalUser: 1 } },
-                    });
                 } catch (err) {
                     console.log(err);
                     res.status(500).send('Create account failed');
@@ -277,7 +295,7 @@ class UserController {
             if (currentUser.role == 1) {
                 query = { role: { $gte: 1 } };
             }
-            const page = req.query.page;
+            let page = req.query.page;
             const perPage = +req.query.perPage || ITEM_PER_PAGE;
             if (page < 1) {
                 page = 1;
@@ -432,8 +450,14 @@ class UserController {
                         .then(
                             function(data) {
                                 const amount = data.deletedCount;
-                                Dashboard.findOneAndUpdate({}, { $inc: { amountUser: -amount } });
-                                res.status(200).json('done');
+                                Dashboard.findOneAndUpdate({}, { $inc: { amountUser: -amount } })
+                                    .then(() => {
+                                        res.status(200).json('done');
+                                    })
+                                    .catch((err) => {
+                                        console.log(err);
+                                        res.status(200).json('done');
+                                    });
                             }
                         )
                         .catch((err) => {
@@ -470,10 +494,16 @@ class UserController {
         const userID = req.params.id;
         const currentUser = req.data.currentUser;
         if (currenUserRole < 2) {
-            Dashboard.findOneAndUpdate({}, { $inc: { amountUser: -1 } });
             User.deleteOne({ _id: userID, role: { $gte: currentUser.role } })
                 .then(() => {
-                    res.status(200).json({ message: 'Delete user success' });
+                    Dashboard.findOneAndUpdate({}, { $inc: { amountUser: -1 } })
+                        .then(() => {
+                            res.status(200).json({ message: 'Delete user success' });
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            res.status(200).json({ message: 'Delete user success' });
+                        });
                 })
                 .catch((err) => {
                     console.log(err);
